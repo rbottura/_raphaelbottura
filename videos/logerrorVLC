@@ -1,0 +1,15 @@
+﻿-- logger module started --
+main: Lancement de vlc avec l'interface par défaut. Utiliser « cvlc » pour démarrer VLC sans interface.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics 630, vendor 8086(Intel), device 3e9b, revision 0) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: Lancement de vlc avec l'interface par défaut. Utiliser « cvlc » pour démarrer VLC sans interface.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics 630, vendor 8086(Intel), device 3e9b, revision 0) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: Lancement de vlc avec l'interface par défaut. Utiliser « cvlc » pour démarrer VLC sans interface.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics 630, vendor 8086(Intel), device 3e9b, revision 0) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --

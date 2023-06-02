@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    font-family: Minipax;
+}
+
+.contact_infos {
+    display: block;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.addr {
+    display: block;
+    color: white;
+    background-color: black;
+}
+
+@media (max-width: 768px) {
+    p {
+        font-size: 22px;
+    }
+
+    .addr {
+        padding: 15px;
+    }
+}
+
+@media (min-width: 769px) {
+    p {
+        font-size: 60px;
+    }
+    .addr {
+        padding: 50px;
+    }
+}

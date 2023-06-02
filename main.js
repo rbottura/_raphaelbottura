@@ -1,10 +1,12 @@
 
 window.addEventListener('load', function () {
     console.log('hey')
-    let random = Math.floor(Math.random() * 3) + 1
+    let random = Math.floor(Math.random() * 4) + 1
     let random_sm_vid = './videos/smart_phone_vid_(' + Math.floor(random) + ').mp4'
+    // let random_sm_vid = './videos/smart_phone_vid_(1).mp4'
 
-    let random_pc_vid = './videos/pc_vid_(1).mp4'
+    let random_pc_vid = './videos/pc_vid_(' + Math.floor(random) + ').mp4'
+    // let random_pc_vid = './videos/pc_vid_(2).mp4'
 
     let videoContainer = document.getElementById('video-container');
 
@@ -25,14 +27,31 @@ let loop = 0;
 let loopSprites = true
 function animateSprites() {
     let imgs = document.querySelectorAll('.sprites')
+    let posterIndex = Math.floor(indexSprite/3)
+    
+    if(posterIndex == 3) {
+        posterIndex = 0;
+    }
+
+    // console.log(posterIndex)
     let color = 'white';
     if (loop % 2 == 0) {
         color = 'black'
     } else {
         color = 'transparent'
     }
+    
     imgs[indexSprite].style.backgroundColor = color;
     imgs[indexSprite].style.transform = 'rotate(' + 90 * loop + 'deg)'
+    
+    let posters1 = document.querySelectorAll('.gp_posters_1')
+    if (indexSprite % 3 == 0) {
+        for (let i = 0; i < posters1.length; i++) {
+            posters1[i].style.flexGrow = '1'
+        }
+        posters1[posterIndex].style.flexGrow = '1.2'
+    }
+    
     indexSprite++
     if (indexSprite == imgs.length) {
         indexSprite = 0
@@ -44,15 +63,6 @@ function animateSprites() {
     if (loopSprites) {
         setTimeout(() => { animateSprites() }, 1000);
     }
-
-    let posters1 = document.querySelectorAll('.gp_posters_1')
-    if (indexSprite % 3 == 0) {
-        for (let i = 0; i < posters1.length; i++) {
-            posters1[i].style.flexGrow = '1'
-        }
-        posters1[Math.floor(indexSprite/2.5)].style.flexGrow = '1.8'
-    }
-    console.log(indexSprite)
 }
 
 function animatePosters1() {
