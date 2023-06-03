@@ -1,11 +1,12 @@
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
     var mediaElements = document.querySelectorAll('video, img');
     var totalMediaElements = mediaElements.length;
     var loadedMediaCount = 0;
 
-    // console.log(loadedMediaCount)
+    console.log(loadedMediaCount)
     function checkAllMediaLoaded() {
         loadedMediaCount++;
+        console.log(loadedMediaCount)
         if (loadedMediaCount === totalMediaElements) {
             var body = document.body;
             body.removeAttribute('hidden');
