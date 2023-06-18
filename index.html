@@ -11,94 +11,113 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="./css/head.css">
     <link rel="stylesheet" href="./css/main.css">
-    <script src="./main.js" async defer></script>
+    <script src="./main.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Domine&family=Libre+Baskerville&family=Modak&family=PT+Serif&family=Raleway+Dots&family=Space+Grotesk:wght@400;500&display=swap"
+        rel="stylesheet">
 </head>
 
-<body hidden lang="en-US">
-
+<body>
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
     <div id="header_container">
         <div class="btns_head" id="btn_mainPage"><a href="index.html">-main-</a></div>
         <div class="btns_head" id="btn_contact"><a href="contact.html">-contact-</a></div>
-        <div class="btns_head" id="btn_tools"><a href="tools.html">-tools-</a></div>
+        <div class="btns_head" id="btn_tools"><a href="about.html">-about-</a></div>
+        <!-- <div class="btns_head" id="btn_tools"><a href="tools.html">-tools-</a></div> -->
     </div>
-    <div id="header_gap"></div>
-    <div id="video-container"></div>
-    <div class="main_page_text_infos" id="first_infos">
-        <p>
-            I'm graduating in graphic design (j -23, and <strong>available for hiring</strong>). I use javascript and
-            web techs as my main tools to produce,
-            edit, process images, shapes, fonts, and operate movements, interactions, sound synching, etc.
-        </p>
+
+    <div id="virtualCursor" class="action_btn">
+        <div id="virtualCursorContent"></div>
     </div>
-    <div class="main_page_text_infos" id="second_para">
-        <p>
-            The video above was made with <a href="https://colorkinetype.com">ColorKineType</a>, a web app i'm
-            developping.
-            Feel free to visit, sadly for now it's not adapted for phones.
-        </p>
-        <p>
-            It uses <a target="_blank" class="ext_link" href="https://p5js.org/">p5.js</a>, <a target="_blank"
-                class="ext_link" href="https://brm.io/matter-js/">Matter.js</a>, <a target="_blank" class="ext_link"
-                href="https://docs.opencv.org/3.4/d5/d10/tutorial_js_root.html">OpenCV.js</a>, and images I made for it.
-        </p>
-    </div>
-    <div class="showbox" id="sprites_showbox">
-        <img class="sprites" src="./img/sprite_(1).png" alt="">
-        <img class="sprites" src="./img/sprite_(2).png" alt="">
-        <img class="sprites" src="./img/sprite_(3).png" alt="">
-        <img class="sprites" src="./img/sprite_(4).png" alt="">
-        <img class="sprites" src="./img/sprite_(5).png" alt="">
-        <img class="sprites" src="./img/sprite_(6).png" alt="">
-        <img class="sprites" src="./img/sprite_(7).png" alt="">
-        <img class="sprites" src="./img/sprite_(8).png" alt="">
-        <img class="sprites" src="./img/sprite_(9).png" alt="">
-        <img class="sprites" src="./img/sprite_(10).png" alt="">
-    </div>
-    <div class="main_page_text_infos">
-        <p>
-            In 2021 I began to use the <a
-                href="https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API">gamepad
-                API</a> to use a gamepad controller (ps3 or XBOX) as a drawing tool.
-            <br>
-            I asked a few friends to use the app, and made these :
-        </p>
-    </div>
-    <div class="gamepad_showbox showbox" id="gamepad_showbox1">
-        <div class="gp_posters_1">
-            <img class="img_gpPosters_1" src="./img/gp_posters_(1).png" alt="">
+
+    <div id="main_wrapper">
+        <div id="header_gap"></div>
+
+        <div id="main_container">
+            <div id="card1" class="card card1">
+                <div class="action_btn action_panel_btn">
+                    +
+                </div>
+                <div class="card_infos_container">
+                    <h2>CRITERIUM</h2>
+                    <p class="date">2022</p>
+                    <p class="tags_container"><span class="tags">Web</span><span class="tags">Video</span><span
+                            class="tags">3D</span><span class="tags">Music</span><span
+                            class="tags">Interactiv</span><span class="tags">Animated</span></p>
+                </div>
+                <div class="card_content_container">
+
+                </div>
+            </div>
+            <div id="card2" class="card">
+                <div class="action_btn action_panel_btn">
+                    +
+                </div>
+                <div class="card_infos_container">
+                    <h2>Sketch-2-print</h2>
+                    <p class="date">2023</p>
+                    <p class="tags_container"><span class="tags">Web</span><span class="tags">Web2Print</span><span
+                            class="tags">Print</span><span class="tags">Gamepad</span><span
+                            class="tags">Interactiv</span><span class="tags">Tool</span></p>
+                </div>
+                <div class="card_content_container">
+
+                </div>
+            </div>
+            <div id="card3" class="card">
+                <div class="action_btn action_panel_btn">
+                    +
+                </div>
+                <div class="card_infos_container">
+                    <h2>Color-Kine-Type</h2>
+                    <p class="date">2023</p>
+                    <p class="tags_container"><span class="tags">Web</span><span class="tags">Animated</span><span
+                            class="tags">TypeDesign</span><span class="tags">Tool</span><span
+                            class="tags">Interactiv</span></p>
+                </div>
+                <div class="card_content_container">
+
+                </div>
+            </div>
+            <div id="card4" class="card">
+                <div class="action_btn action_panel_btn">
+                    +
+                </div>
+                <div class="card_infos_container">
+                    <h2>Coded sketches</h2>
+                    <p class="date">2019 - 2021</p>
+                    <p class="tags_container"><span class="tags">Web</span><span class="tags">Animated</span><span
+                            class="tags">Interactiv</span></p>
+                </div>
+                <div class="card_content_container">
+
+                </div>
+            </div>
+            <div id="card5" class="card">
+                <div class="action_btn action_panel_btn">
+                    +
+                </div>
+                <div class="card_infos_container">
+                    <h2>Others</h2>
+                    <p class="date">2018 - 2023</p>
+                    <p class="tags_container"><span class="tags">Web</span><span class="tags">Animated</span><span
+                            class="tags">TypeDesign</span><span class="tags">Tool</span><span class="tags">Object
+                            design</span></p>
+                </div>
+                <div class="card_content_container">
+
+                </div>
+            </div>
         </div>
-        <div id="gp3" class="gp_posters_1">
-            <img class="img_gpPosters_1" src="./img/gp_posters_(3).png" alt="">
-        </div>
-        <div id="gp4" class="gp_posters_1">
-            <img class="img_gpPosters_1" src="./img/gp_posters_(5).png" alt="">
-        </div>
     </div>
-    <div class="main_page_text_infos">
-        <p class="noBreakPara">And more 2 years later, leading new experiments, building new features, thinking about an
-            all in one poster edtiting web app I'm calling : <a
-                href="https://github.com/rbottura/sketch-2-print">Sketch-2-Print</a></p>
-    </div>
-    <div id="wk_posters_container">
-        <img src="./img/potagerPoster.webp" alt="" class="wk_posters">
-        <img src="./img/montagnePoster.webp" alt="" class="wk_posters">
-        <img src="./img/calmePoster.webp" alt="" class="wk_posters">
-        <img src="./img/ilePoster.webp" alt="" class="wk_posters">
-        <img src="./img/plainePoster.webp" alt="" class="wk_posters">
-    </div>
-    <a target="_blank" href="https://github.com/rbottura/sketch-2-print/wiki/Gamepad-Brush-School-Workshop">> learn more about these posters here <</a>
-    <div class="main_page_text_infos">
-        <p>Thanks to Ksawery Kirklewski, I got interested in processing and p5.js.</p>
-        <p>I experimented with what processing could offer.</p>
-        <p>I experimented with what desconstructing a pencil could look like -></p>
-    </div>
+
 </body>
 
 </html>

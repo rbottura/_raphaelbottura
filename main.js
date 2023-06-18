@@ -1,92 +1,69 @@
-window.addEventListener('load', function () {
-    var mediaElements = document.querySelectorAll('video, img');
-    var totalMediaElements = mediaElements.length;
-    var loadedMediaCount = 0;
+window.addEventListener('load', () => {
+    let virCursor = document.querySelector('#virtualCursor');
 
-    console.log(loadedMediaCount)
-    function checkAllMediaLoaded() {
-        loadedMediaCount++;
-        console.log(loadedMediaCount)
-        if (loadedMediaCount === totalMediaElements) {
-            var body = document.body;
-            body.removeAttribute('hidden');
-        }
+    document.addEventListener('mousemove', e => dragCursor(e))
+    function dragCursor(e) {
+        let x, y;
+        x = e.clientX
+        y = window.scrollY + e.clientY
+        virCursor.style.top = y - 30 + "px";
+        virCursor.style.left = x - 30 + "px";
     }
 
-    mediaElements.forEach(function (media) {
-        // console.log(media)
-        media.addEventListener('load', checkAllMediaLoaded);
-        media.addEventListener('error', checkAllMediaLoaded);
-        if (media.complete) {
-            checkAllMediaLoaded();
-        }
-    });
+    let action_panel_btn = document.querySelectorAll('.action_panel_btn');
+    action_panel_btn.forEach(elem => {
+        // console.log(elem)
+        elem.addEventListener('click', (e) => {
+            let btn = e.target
+            let panel = e.target.parentNode
 
+            if (btn.classList.contains('activ_panel_btn')) {
+                unfocusPanel(panel, btn)
+            } else {
+                focusPanel(panel, btn)
+            }
+        })
+    })
+
+    function focusPanel(panel, btn) {
+        for (const elem of action_panel_btn) {
+            elem.parentNode.style.flexGrow = 1;
+            elem.classList.remove('activ_panel_btn')
+            elem.parentNode.classList.remove('activ_panel')
+            toggleContent('hide', elem.parentNode )
+        }
+        panel.style.flexGrow = 20
+        panel.classList.add('activ_panel')
+        btn.classList.add('activ_panel_btn')
+        toggleContent('open', panel)
+    }
     
-    let random = Math.floor(Math.random() * 4) + 1
-    let random_sm_vid = './videos/smart_phone_vid_(' + Math.floor(random) + ').mp4'
-    // let random_sm_vid = './videos/smart_phone_vid_(1).mp4'
-
-    let random_pc_vid = './videos/pc_vid_(' + Math.floor(random) + ').mp4'
-    // let random_pc_vid = './videos/pc_vid_(2).mp4'
-
-    let videoContainer = document.getElementById('video-container');
-
-    // Check if the device is a smartphone
-    let isSmartphone = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-    if (isSmartphone) {
-        videoContainer.innerHTML = '<video src="' + random_sm_vid + '"  autoplay muted loop></video>';
-    } else {
-        videoContainer.innerHTML = '<video src="' + random_pc_vid + '"  autoplay muted loop></video>';
+    function unfocusPanel(panel, btn) {
+        panel.style.flexGrow = 1
+        panel.classList.remove('activ_panel')
+        btn.classList.remove('activ_panel_btn')
+        toggleContent('hide', panel)
     }
 
-    animateSprites()
-});
-
-let indexSprite = 0;
-let loop = 0;
-let loopSprites = true
-function animateSprites() {
-    let imgs = document.querySelectorAll('.sprites')
-    let posterIndex = Math.floor(indexSprite / 3)
-
-    if (posterIndex == 3) {
-        posterIndex = 0;
-    }
-
-    // console.log(posterIndex)
-    let color = 'white';
-    if (loop % 2 == 0) {
-        color = 'black'
-    } else {
-        color = 'transparent'
-    }
-
-    imgs[indexSprite].style.backgroundColor = color;
-    imgs[indexSprite].style.transform = 'rotate(' + 90 * loop + 'deg)'
-
-    let posters1 = document.querySelectorAll('.gp_posters_1')
-    if (indexSprite % 3 == 0) {
-        for (let i = 0; i < posters1.length; i++) {
-            posters1[i].style.flexGrow = '1'
+    function toggleContent(action, panel){
+        let content_container;
+        let infos;
+        for(const elem of panel.children){
+            if(elem.classList.contains('card_content_container')){
+                content_container = elem
+            }
+            if(elem.classList.contains('card_infos_container')){
+                infos = elem
+            }
         }
-        posters1[posterIndex].style.flexGrow = '1.2'
-    }
-
-    indexSprite++
-    if (indexSprite == imgs.length) {
-        indexSprite = 0
-        loop++
-    }
-    if (loop == 25) {
-        loopSprites = false
-    }
-    if (loopSprites) {
-        setTimeout(() => { animateSprites() }, 1000);
-    }
-}
-
-function animatePosters1() {
-    let
-}
+        // for(let i=0;i<panel.children)
+        if(action == 'open'){
+            content_container.style.display = 'flex'
+            content_container.style.opacity = 1
+            infos.classList.add('transformed_infos')
+        } else if (action == 'hide'){
+            content_container.style.opacity = 0
+            infos.classList.remove('transformed_infos')
+        }
+    }   
+})

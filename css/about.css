@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+p {
+    margin: 0;
+    font-family: Minipax;
+}
+
+video {
+    width: 100vw;
+}
+
+#video-container {
+    display: block;
+    position: relative;
+    clear: both;
+}
+
+.ext_link {
+    color: black;
+    text-decoration: underline;
+}
+
+.showbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#sprites_showbox>img {
+    transition: background-color 2s, transform 2s;
+}
+
+#gamepad_showbox1 {
+    width: 100%;
+    flex-flow: row wrap;
+    overflow-x: hidden;
+}
+
+.gp_posters_1 {
+    transition: flex-grow 2s;
+}
+
+.img_gpPosters_1 {
+    width: 100%;
+}
+
+.noBreakPara {
+    hyphens: none;
+}
+
+#wk_posters_container {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.main_page_text_infos {
+    position: relative;
+    padding: 10px 20px;
+}
+
+@media (max-width: 768px) {
+
+    /* Styles for small screens */
+    .main_page_text_infos {
+        font-size: 26px;
+    }
+
+    #sprites_showbox>img {
+        width: 20%;
+        object-fit: contain;
+    }
+
+    .gp_posters_1 {
+        /* width: 50%; */
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+
+    #gamepad_showbox1 {
+        position: relative;
+        min-height: 280px;
+    }
+
+    #wk_posters_container>img {
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width: 769px) {
+    .main_page_text_infos {
+        font-size: 55px;
+    }
+
+    #sprites_showbox>img {
+        width: 10%;
+        object-fit: contain;
+        background-color: white;
+    }
+
+    .gp_posters_1 {
+        flex: 1 0;
+    }
+
+    #gamepad_showbox1 {
+        min-height: 110vh;
+    }
+
+    #wk_posters_container>img {
+        height: 100vh;
+    }
+}
