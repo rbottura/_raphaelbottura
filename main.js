@@ -1,14 +1,5 @@
 window.addEventListener('load', () => {
-    let virCursor = document.querySelector('#virtualCursor');
-
-    document.addEventListener('mousemove', e => dragCursor(e))
-    function dragCursor(e) {
-        let x, y;
-        x = e.clientX
-        y = window.scrollY + e.clientY
-        virCursor.style.top = y - 30 + "px";
-        virCursor.style.left = x - 30 + "px";
-    }
+   
 
     let action_panel_btn = document.querySelectorAll('.action_panel_btn');
     action_panel_btn.forEach(elem => {
