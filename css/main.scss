@@ -241,7 +241,22 @@ body {
         // background-color: red;
         min-height: 30px;
         width: 100vw;
+    }
 
+    #footer {
+        display: block;
+        position: relative;
+        width: 100vw;
+        height: 70vh;
+        align-items: baseline;
+        p {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 25px;
+            font-size: 14pt;
+            font-family: sans-serif;
+        }
     }
 
 }
@@ -379,6 +394,10 @@ body {
     .small_image3 {
         grid-column: 3;
         grid-row: 3;
+    }
+
+    #footer {
+        display: none;
     }
 
 }

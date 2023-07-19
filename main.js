@@ -52,11 +52,16 @@ window.addEventListener('load', () => {
     function focusPanel(panel, btn) {
         for (const elem of action_panel_btn) {
             elem.parentNode.style.flexGrow = 1;
+            if(isSmartphone){
+                elem.parentNode.style.height = 'calc(34vh - 38px)'
+                elem.parentNode.style.border = 'none'
+            }
             elem.classList.remove('activ_panel_btn')
             elem.parentNode.classList.remove('activ_panel')
             toggleContent('hide', elem.parentNode)
         }
         if (isSmartphone) {
+            scrolltop(panel)
             panel.style.height = '100%'
             panel.style.border = 'solid 4px rgb(137 20 255)'
         } else {
@@ -92,9 +97,7 @@ window.addEventListener('load', () => {
                 infos = elem
             }
         }
-        // for(let i=0;i<panel.children)
-
-        console.log(infos.children)
+        // console.log(infos.children)
         if (action == 'open') {
             content_container.style.display = 'flex'
             content_container.style.width = 'calc(100vw - 8px)'
@@ -119,4 +122,12 @@ window.addEventListener('load', () => {
         }
     }
 
+    function scrolltop(panel){
+        let main = document.querySelector('#main_container')
+        let index = parseInt(panel.getAttribute('name'))
+        // console.log(parseInt(panel.getAttribute('name')))
+        console.log(panel.getBoundingClientRect())
+        console.log(main.scrollTop)
+        main.scrollTop += panel.getBoundingClientRect().y - 38
+    }
 })
