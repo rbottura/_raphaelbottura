@@ -16,6 +16,11 @@ window.addEventListener('load', () => {
         console.log("Connection made from a PC");
     }
 
+    let cssProps = {
+
+    }
+
+    //function for clicking on title, not the + button
     let projectTitles = document.querySelectorAll('.proj_title').forEach(elem => {
         elem.addEventListener('click', (e) => {
             let btn = e.target.parentNode.previousSibling.previousSibling
@@ -45,24 +50,32 @@ window.addEventListener('load', () => {
     })
 
     function focusPanel(panel, btn) {
-        foldContent()
         for (const elem of action_panel_btn) {
             elem.parentNode.style.flexGrow = 1;
             elem.classList.remove('activ_panel_btn')
             elem.parentNode.classList.remove('activ_panel')
             toggleContent('hide', elem.parentNode)
         }
-        panel.style.flexGrow = 20
-        panel.style.width = '0%'
+        if (isSmartphone) {
+            panel.style.height = '100%'
+            panel.style.border = 'solid 4px rgb(137 20 255)'
+        } else {
+            panel.style.flexGrow = 20
+            panel.style.width = '0%'
+        }
         panel.classList.add('activ_panel')
         btn.classList.add('activ_panel_btn')
         toggleContent('open', panel)
     }
 
     function unfocusPanel(panel, btn) {
-        foldContent()
-        panel.style.flexGrow = 1
-        panel.style.width = '0%'
+        if (isSmartphone) {
+            panel.style.height = 'calc(34vh - 38px)'
+            panel.style.border = 'none'
+        } else {
+            panel.style.flexGrow = 1
+            panel.style.width = '0%'
+        }
         panel.classList.remove('activ_panel')
         btn.classList.remove('activ_panel_btn')
         toggleContent('hide', panel)
@@ -80,20 +93,29 @@ window.addEventListener('load', () => {
             }
         }
         // for(let i=0;i<panel.children)
+
+        console.log(infos.children)
         if (action == 'open') {
             content_container.style.display = 'flex'
-            content_container.style.opacity = 1
-            infos.classList.add('transformed_infos')
+            content_container.style.width = 'calc(100vw - 8px)'
+            infos.style.position = 'relative'
+            if (isSmartphone) {
+                infos.style.backdropFilter = 'none'
+            }
+            for (let i = 1; i < infos.children.length; i++) {
+                infos.children[i].style.display = 'none'
+            }
+            // infos.classList.add('transformed_infos')
         } else if (action == 'hide') {
-            content_container.style.opacity = 0
-            infos.classList.remove('transformed_infos')
-        }
-    }
-
-    function foldContent() {
-        let card_content_containers = document.querySelectorAll('.card_content_container')
-        for (const elem of card_content_containers) {
-            elem.style.display = "none"
+            content_container.style.display = 'none'
+            infos.style.position = 'absolute'
+            if (isSmartphone) {
+                infos.style.backdropFilter = 'blur(4px)'
+            }
+            for (let i = 1; i < infos.children.length; i++) {
+                infos.children[i].style.display = 'flex'
+            }
+            // infos.classList.remove('transformed_infos')
         }
     }
 

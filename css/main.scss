@@ -24,7 +24,7 @@ body {
     display: flex;
     flex: 1 1 auto;
     flex-flow: column;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     position: relative;
     height: 100%;
@@ -51,9 +51,6 @@ body {
 
 .action_panel_btn {
     display: flex;
-    position: absolute;
-    top: 30vh;
-    left: calc(50vw - 2vw);
     z-index: 2;
     background-color: rgba(255, 255, 255, 0);
     box-sizing: border-box;
@@ -71,11 +68,6 @@ body {
     background-color: rgb(0, 0, 0);
     color: white;
     height: calc(100% - 6vw);
-    width: calc(100% - 1.6vw);
-    margin: .8vw;
-    opacity: .0;
-
-    transition: opacity .8s;
 }
 
 .activ_panel_btn {
@@ -157,6 +149,9 @@ body {
 }
 
 @media (max-width: 768px) {
+    .action_panel_btn {
+        display: none;
+    }
 
     #virtualCursor {
         display: none;
@@ -175,6 +170,8 @@ body {
         height: calc(34vh - 38px);
         background-size: 60%;
         background-position: bottom -40px left 80px;
+        box-sizing: border-box;
+        overflow-y: scroll;
     }
 
     .card_infos_container {
@@ -184,9 +181,73 @@ body {
         width: calc(100% - 4vh);
     }
 
+    .grid_content {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+        grid-auto-columns: minmax(auto, 30%);
+        grid-auto-rows: minmax(10vh, auto);
+        width: 100%;
+
+        img {
+            filter: saturate(1.1) contrast(1.0);
+        }
+    }
+
+    .explication_para {
+        width: 100vw;
+        height: 150px;
+        font-size: 18pt;
+        color: white;
+        overflow: scroll;
+        p {
+            padding: 5px;
+            margin: 0;
+        }
+    }
+
+    .big_image {
+        display: flex;
+        max-height: 18vh;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+        }
+        video {
+            position: relative;
+            // top: 50px;
+            height: 100%;
+            // width: 100%;
+        }
+    }
+
+    .small_image {
+        height: 15vh;
+        img {
+            width: 100vw;
+            object-fit: cover;
+        }
+    }
+
+    .head_spacer {
+        display: block;
+        position: relative;
+        // background-color: red;
+        min-height: 80px;
+        width: 100vw;
+
+    }
+
 }
 
 @media (min-width: 769px) {
+    .head_spacer {
+        display: none;
+    }
+
     #main_container {
         height: calc(100vh - 38px);
     }
@@ -234,7 +295,9 @@ body {
 
     .card_content_container {
         flex-direction: row;
+        margin: .8vw;
         margin-top: 60px;
+        width: calc(100% - 1.6vw);
     }
 
     .grid_content {
@@ -243,6 +306,7 @@ body {
         gap: 10px;
         grid-auto-rows: minmax(100px, auto);
         padding: 12px;
+
         img {
             filter: saturate(1.1) contrast(1.0);
         }
