@@ -24,8 +24,8 @@ body {
     display: flex;
     flex: 1 1 auto;
     flex-flow: column;
-    align-items: flex-start;
-    justify-content: center;
+    // align-items: flex-start;
+    justify-content: flex-start;
     position: relative;
     height: 100%;
     box-sizing: border-box;
@@ -186,7 +186,7 @@ body {
         grid-template-columns: repeat(1, 1fr);
         gap: 10px;
         grid-auto-columns: minmax(auto, 30%);
-        grid-auto-rows: minmax(10vh, auto);
+        grid-auto-rows: minmax(auto, 100vh);
         width: 100%;
 
         img {
@@ -225,7 +225,9 @@ body {
     }
 
     .small_image {
-        height: 15vh;
+        max-height: 100vh;
+        width: 100vw;
+
         img {
             width: 100vw;
             object-fit: cover;
