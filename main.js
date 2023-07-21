@@ -152,7 +152,8 @@ window.addEventListener('load', () => {
     })
     showImgFullscreen()
     function showImgFullscreen(image){
-        console.log(image.src)
+        console.log(image)
+        console.log(image.naturalHeight / image.naturalWidth)
         console.log(imgs)
 
         let imageViewerWrapper = document.createElement('div')
@@ -172,7 +173,11 @@ window.addEventListener('load', () => {
         })
 
         let bigImage = document.createElement('img')
-        bigImage.style.height = '92%'
+        if(image.naturalHeight / image.naturalWidth > 1){
+            bigImage.style.height = '92%'
+        } else {
+            bigImage.style.width = '86%'
+        }
         bigImage.src = image.src
 
         imageViewerWrapper.appendChild(bigImage)
