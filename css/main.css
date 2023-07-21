@@ -247,6 +247,9 @@ body {
   }
 }
 @media (min-width: 769px) {
+  img {
+    cursor: pointer;
+  }
   .head_spacer {
     display: none;
   }

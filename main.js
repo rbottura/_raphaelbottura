@@ -143,4 +143,39 @@ window.addEventListener('load', () => {
         console.log(main.scrollTop)
         main.scrollTop += panel.getBoundingClientRect().y - 38
     }
+
+    let imgs = document.querySelectorAll('img')
+    imgs.forEach(elem => {
+        elem.addEventListener('click', (e) => {
+            showImgFullscreen(e.target)
+        })
+    })
+    showImgFullscreen()
+    function showImgFullscreen(image){
+        console.log(image.src)
+        console.log(imgs)
+
+        let imageViewerWrapper = document.createElement('div')
+        imageViewerWrapper.style.display = 'flex'
+        imageViewerWrapper.style.alignItems = 'center'
+        imageViewerWrapper.style.justifyContent = 'center'
+        imageViewerWrapper.style.position = 'absolute'
+        imageViewerWrapper.style.top = '0px'
+        imageViewerWrapper.style.width = '100vw'
+        imageViewerWrapper.style.height = '100vh'
+        imageViewerWrapper.style.zIndex = '500'
+        imageViewerWrapper.style.backgroundColor = 'rgba(255, 160, 255, .4)'
+        imageViewerWrapper.style.backdropFilter = 'blur(4px)'
+
+        imageViewerWrapper.addEventListener('click', e => {
+            imageViewerWrapper.remove()
+        })
+
+        let bigImage = document.createElement('img')
+        bigImage.style.height = '92%'
+        bigImage.src = image.src
+
+        imageViewerWrapper.appendChild(bigImage)
+        document.body.appendChild(imageViewerWrapper)
+    }
 })
