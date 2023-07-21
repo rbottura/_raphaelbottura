@@ -31,9 +31,9 @@ p {
 
 @media (min-width: 769px) {
     p {
-        font-size: 60px;
+        font-size: 3vw;
     }
     .addr {
-        padding: 50px;
+        padding: 2.5vw;
     }
 }

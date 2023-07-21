@@ -21,28 +21,17 @@ window.addEventListener('load', function () {
             checkAllMediaLoaded();
         }
     });
-
-    
-    let random = Math.floor(Math.random() * 4) + 1
-    let random_sm_vid = './videos/smart_phone_vid_(' + Math.floor(random) + ').mp4'
-    // let random_sm_vid = './videos/smart_phone_vid_(1).mp4'
-
-    let random_pc_vid = './videos/pc_vid_(' + Math.floor(random) + ').mp4'
-    // let random_pc_vid = './videos/pc_vid_(2).mp4'
-
-    let videoContainer = document.getElementById('video-container');
-
     // Check if the device is a smartphone
     let isSmartphone = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    if (isSmartphone) {
-        videoContainer.innerHTML = '<video src="' + random_sm_vid + '"  autoplay muted loop></video>';
-    } else {
-        videoContainer.innerHTML = '<video src="' + random_pc_vid + '"  autoplay muted loop></video>';
-    }
-
     animateSprites()
 });
+
+function showPencil(){
+    console.log('oue')
+    console.log(document.querySelector('#btn_mainPage').childNodes[0])
+    document.querySelector('#btn_mainPage').childNodes[0].click()
+}
 
 let indexSprite = 0;
 let loop = 0;

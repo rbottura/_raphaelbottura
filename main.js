@@ -3,22 +3,28 @@ window.addEventListener('load', () => {
     // Get the User-Agent header value
     const userAgent = navigator.userAgent;
 
-    // Define regular expressions for common smartphone user agents
-    const smartphoneRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    // Define regular expressions for common smartphone and tablet user agents
+    const smartphoneRegex = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    const tabletRegex = /iPad|Android|Tablet|Kindle|PlayBook/i;
 
-    // Check if the User-Agent matches a smartphone
-    const isSmartphone = smartphoneRegex.test(userAgent);
+    // Check if the User-Agent matches a smartphone or tablet
+    let isSmartphone = smartphoneRegex.test(userAgent);
+    let isTablet = tabletRegex.test(userAgent) && !isSmartphone; // Avoid false positives with tablets having 'Android' or 'iPad' in their user agent.
 
+    // console.log(window.innerWidth)
+    if(window.innerWidth > 769 && isSmartphone){
+        isSmartphone = !isSmartphone
+    }
+    // if(wind)
     // Output the result
     if (isSmartphone) {
         console.log("Connection made from a smartphone");
+    } else if (isTablet) {
+        console.log("Connection made from a tablet");
     } else {
         console.log("Connection made from a PC");
     }
 
-    let cssProps = {
-
-    }
 
     //function for clicking on title, not the + button
     let projectTitles = document.querySelectorAll('.proj_title').forEach(elem => {
@@ -52,7 +58,7 @@ window.addEventListener('load', () => {
     function focusPanel(panel, btn) {
         for (const elem of action_panel_btn) {
             elem.parentNode.style.flexGrow = 1;
-            if(isSmartphone){
+            if (isSmartphone) {
                 elem.parentNode.style.height = 'calc(34vh - 38px)'
                 elem.parentNode.style.border = 'none'
             }
@@ -100,10 +106,14 @@ window.addEventListener('load', () => {
         // console.log(infos.children)
         if (action == 'open') {
             content_container.style.display = 'flex'
-            content_container.style.width = 'calc(100vw - 8px)'
             infos.style.position = 'relative'
+            infos.style.top = '0px'
             if (isSmartphone) {
+                panel.style.overflowY = 'scroll'
+                content_container.style.width = 'calc(100vw - 8px)'
                 infos.style.backdropFilter = 'none'
+            } else {
+                content_container.style.width = 'calc(100vw - 14.6vw)'
             }
             for (let i = 1; i < infos.children.length; i++) {
                 infos.children[i].style.display = 'none'
@@ -113,7 +123,10 @@ window.addEventListener('load', () => {
             content_container.style.display = 'none'
             infos.style.position = 'absolute'
             if (isSmartphone) {
+                panel.style.overflowY = 'hidden'
                 infos.style.backdropFilter = 'blur(4px)'
+            } else {
+                infos.style.top = '15vh'
             }
             for (let i = 1; i < infos.children.length; i++) {
                 infos.children[i].style.display = 'flex'
@@ -122,7 +135,7 @@ window.addEventListener('load', () => {
         }
     }
 
-    function scrolltop(panel){
+    function scrolltop(panel) {
         let main = document.querySelector('#main_container')
         let index = parseInt(panel.getAttribute('name'))
         // console.log(parseInt(panel.getAttribute('name')))
