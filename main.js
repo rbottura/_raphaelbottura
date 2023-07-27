@@ -146,15 +146,17 @@ window.addEventListener('load', () => {
 
     let imgs = document.querySelectorAll('img')
     imgs.forEach(elem => {
-        elem.addEventListener('click', (e) => {
-            showImgFullscreen(e.target)
-        })
+        if(!elem.classList.contains('link_icon')){
+            elem.addEventListener('click', (e) => {
+                showImgFullscreen(e.target)
+            })
+        }
     })
     showImgFullscreen()
     function showImgFullscreen(image){
-        console.log(image)
-        console.log(image.naturalHeight / image.naturalWidth)
-        console.log(imgs)
+        // console.log(image)
+        // console.log(image.naturalHeight / image.naturalWidth)
+        // console.log(imgs)
 
         let imageViewerWrapper = document.createElement('div')
         imageViewerWrapper.style.display = 'flex'
