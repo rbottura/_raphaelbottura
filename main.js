@@ -147,6 +147,7 @@ window.addEventListener('load', () => {
     let imgs = document.querySelectorAll('img')
     imgs.forEach(elem => {
         if(!elem.classList.contains('link_icon')){
+            elem.classList.add('imageViews')
             elem.addEventListener('click', (e) => {
                 showImgFullscreen(e.target)
             })
@@ -175,14 +176,16 @@ window.addEventListener('load', () => {
         })
 
         let bigImage = document.createElement('img')
-        if(image.naturalHeight / image.naturalWidth > 1){
-            bigImage.style.height = '92%'
-        } else {
-            bigImage.style.width = '86%'
+        if(image){
+            if(image.naturalHeight / image.naturalWidth > 1){
+                bigImage.style.height = '92%'
+            } else {
+                bigImage.style.width = '86%'
+            }
+            bigImage.src = image.src
+            imageViewerWrapper.appendChild(bigImage)
+            document.body.appendChild(imageViewerWrapper)
         }
-        bigImage.src = image.src
 
-        imageViewerWrapper.appendChild(bigImage)
-        document.body.appendChild(imageViewerWrapper)
     }
 })
