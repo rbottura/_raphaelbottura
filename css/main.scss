@@ -27,22 +27,20 @@ body {
     // align-items: flex-start;
     justify-content: flex-start;
     position: relative;
-    height: 100%;
+    height: calc(100% - 8px);
     box-sizing: border-box;
     background-repeat: no-repeat;
     /* background-color: white; */
     background-color: linear-gradient(0deg, rgba(196, 0, 255, 1) 0%, rgba(0, 104, 255, 1) 100%);
-
     overflow: hidden;
-
     transition: background-image .4s;
 }
 
 .action_btn {
     display: flex;
     cursor: pointer;
-    width: 4vw;
-    height: 4vw;
+    width: 2vw;
+    height: 2vw;
     border-radius: 3vw;
     justify-content: center;
     align-items: center;
@@ -55,7 +53,9 @@ body {
     background-color: rgba(255, 255, 255, 0);
     box-sizing: border-box;
     transition: background-color 1s, border .2s linear;
-    font-size: 5vh;
+    font-size: 4vh;
+    font-family: arial;
+    font-weight: 100;
     transform: rotate(0deg);
 
     transition: transform .5s;
@@ -303,21 +303,27 @@ body {
         /* align-items:center; */
         align-self: stretch;
         transition: flex .7s linear;
-        box-shadow: inset 0vw 0vw 0vw .1vh rgb(0, 0, 0);
+        border: dotted 3px black;
+        border-radius: 25px;
+        box-sizing: border-box;
+        margin: 0 4px 0px 4px;
+        // box-shadow: inset 0vw 0vw 1vw -2.5vh rgb(0, 0, 0);
         background-size: 100%;
         background-position: bottom;
     }
 
+    .card:hover .action_panel_btn {
+        // background-color: rgba(0, 0, 0, 0.511);
+        // color: white;
+        // border: solid 5px black;
+        font-size: 10vh;
+        transition: font-size .2s ease;
+    } 
+
     .action_panel_btn {
         position: absolute;
-        left: calc(50% - 2vw);
-        top: 20px;
-    }
-
-    .action_panel_btn:hover {
-        border: solid 5px black;
-        background-color: rgba(251, 0, 255, 0.511);
-        color: white;
+        left: calc(50% - 1vw);
+        top: 40px;
     }
 
     .card_infos_container {

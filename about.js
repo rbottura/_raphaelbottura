@@ -24,7 +24,7 @@ window.addEventListener('load', function () {
     // Check if the device is a smartphone
     let isSmartphone = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    animateSprites()
+    // animateSprites()
 });
 
 function showPencil(){

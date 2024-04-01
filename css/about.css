@@ -8,44 +8,9 @@ p {
     font-family: Minipax;
 }
 
-video {
-    width: 100vw;
-}
-
-#video-container {
-    display: block;
-    position: relative;
-    clear: both;
-}
-
 .ext_link {
     color: black;
     text-decoration: underline;
-}
-
-.showbox {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-#sprites_showbox>img {
-    transition: background-color .2s, transform .2s;
-}
-
-#gamepad_showbox1 {
-    width: 100%;
-    flex-flow: row wrap;
-    overflow-x: hidden;
-}
-
-.gp_posters_1 {
-    transition: flex-grow 2s;
-}
-
-.img_gpPosters_1 {
-    width: 100%;
 }
 
 .noBreakPara {
@@ -64,11 +29,31 @@ video {
     padding: 10px 20px;
 }
 
+ul {
+    font-family: Minipax;
+    list-style-type: none;
+    /* list-style-image: url(../img/sprite_\(5\).png); */
+    list-style-position: inside;
+    /* line-height: 120%; */
+}
+
+li {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+li:before {
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    content: " → ";
+    padding-right: 5px;
+}
+
 @media (max-width: 768px) {
 
     /* Styles for small screens */
     .main_page_text_infos {
-        font-size: 26px;
+        font-size: 20px;
     }
 
     #sprites_showbox>img {

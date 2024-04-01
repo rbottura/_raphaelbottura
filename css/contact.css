@@ -9,31 +9,43 @@ p {
 
 .contact_infos {
     display: block;
-    width: 100%;
+    width: 36%;
     margin-top: 60px;
+    margin-left: calc(50vw - 18%);
+    border: dotted 3px black;
+    border-radius: 25px;
+    padding: 15px;
 }
 
-.addr {
-    display: block;
-    color: white;
-    background-color: black;
+ul {
+    font-family: Minipax;
+    list-style-type: none;
+    /* list-style-image: url(../img/sprite_\(5\).png); */
+    list-style-position: inside;
+    /* line-height: 120%; */
+    margin: 0;
+}
+
+li {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+li:before {
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    content: " → ";
+    padding-right: 5px;
 }
 
 @media (max-width: 768px) {
     p {
         font-size: 22px;
     }
-
-    .addr {
-        padding: 15px;
-    }
 }
 
 @media (min-width: 769px) {
-    p {
-        font-size: 3vw;
-    }
-    .addr {
-        padding: 2.5vw;
+    * {
+        font-size: 2.2vw;
     }
 }
