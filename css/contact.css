@@ -9,10 +9,8 @@ p {
 
 .contact_infos {
     display: block;
-    width: 36%;
-    margin-top: 60px;
-    margin-left: calc(50vw - 18%);
     border: dotted 3px black;
+    box-sizing: border-box;
     border-radius: 25px;
     padding: 15px;
 }
@@ -42,10 +40,22 @@ li:before {
     p {
         font-size: 22px;
     }
+
+    .contact_infos {
+        width: 80%;
+        margin-top: 60px;
+        margin-left: calc(50vw - 40%);
+    }
 }
 
 @media (min-width: 769px) {
     * {
         font-size: 2.2vw;
+    }
+
+    .contact_infos {
+        width: 36%;
+        margin-top: 60px;
+        margin-left: calc(50vw - 18%);
     }
 }
