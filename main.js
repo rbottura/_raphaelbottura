@@ -1,5 +1,11 @@
 window.addEventListener('load', () => {
 
+
+    document.querySelector("#soonWall").addEventListener('click', (e) => {
+        document.querySelector("#soonWall").remove()
+        // e.target.remove()
+    })
+
     // Get the User-Agent header value
     const userAgent = navigator.userAgent;
 
@@ -12,7 +18,7 @@ window.addEventListener('load', () => {
     let isTablet = tabletRegex.test(userAgent) && !isSmartphone; // Avoid false positives with tablets having 'Android' or 'iPad' in their user agent.
 
     // console.log(window.innerWidth)
-    if(window.innerWidth > 769 && isSmartphone){
+    if (window.innerWidth > 769 && isSmartphone) {
         isSmartphone = !isSmartphone
     }
     // if(wind)
@@ -113,7 +119,7 @@ window.addEventListener('load', () => {
                 content_container.style.width = 'calc(100vw - 8px)'
                 infos.style.backdropFilter = 'none'
             } else {
-                content_container.style.width = 'calc(100vw - 14.6vw)'
+                // content_container.style.width = 'calc(100vw - 14.6vw)'
             }
             for (let i = 1; i < infos.children.length; i++) {
                 infos.children[i].style.display = 'none'
@@ -146,7 +152,7 @@ window.addEventListener('load', () => {
 
     let imgs = document.querySelectorAll('img')
     imgs.forEach(elem => {
-        if(!elem.classList.contains('link_icon')){
+        if (!elem.classList.contains('link_icon')) {
             elem.classList.add('imageViews')
             elem.addEventListener('click', (e) => {
                 showImgFullscreen(e.target)
@@ -154,7 +160,7 @@ window.addEventListener('load', () => {
         }
     })
     showImgFullscreen()
-    function showImgFullscreen(image){
+    function showImgFullscreen(image) {
         // console.log(image)
         // console.log(image.naturalHeight / image.naturalWidth)
         // console.log(imgs)
@@ -176,8 +182,8 @@ window.addEventListener('load', () => {
         })
 
         let bigImage = document.createElement('img')
-        if(image){
-            if(image.naturalHeight / image.naturalWidth > 1){
+        if (image) {
+            if (image.naturalHeight / image.naturalWidth > 1) {
                 bigImage.style.height = '92%'
             } else {
                 bigImage.style.width = '86%'

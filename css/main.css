@@ -7,6 +7,22 @@ body {
   flex-flow: column;
 }
 
+#soonWall {
+  display: flex;
+  position: absolute;
+  z-index: 150;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+#soonWall p {
+  font-size: 150px;
+}
+
 #main_container {
   display: flex;
   position: relative;
@@ -65,6 +81,7 @@ body {
   background-color: rgb(0, 0, 0);
   color: white;
   height: calc(100% - 6vw);
+  border-radius: 8px;
 }
 
 .activ_panel_btn {
@@ -305,7 +322,6 @@ body {
     flex-direction: row;
     margin: 0.8vw;
     margin-top: -17px;
-    width: calc(100% - 1.6vw);
   }
   .grid_content {
     display: grid;
