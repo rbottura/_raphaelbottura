@@ -20,7 +20,10 @@ body {
   cursor: pointer;
 }
 #soonWall p {
-  font-size: 150px;
+  font-size: 10vh;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
 }
 
 #main_container {
