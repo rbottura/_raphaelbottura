@@ -290,7 +290,7 @@ body {
     background-position: bottom;
   }
   .card:hover .action_panel_btn {
-    font-size: 10vh;
+    font-size: 7vh;
     transition: font-size 0.2s ease;
   }
   .action_panel_btn {
