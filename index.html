@@ -4,253 +4,224 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/head.css">
-    <link rel="stylesheet" href="./css/main.css">
-    <script src="./main.js"></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>raphaelbottura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Domine&family=Libre+Baskerville&family=Modak&family=PT+Serif&family=Raleway+Dots&family=Space+Grotesk:wght@400;500&display=swap"
-        rel="stylesheet">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Prata&family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/style.css" />
 
-<body>
-
-    <!-- <div id="panneauChantier_wrapper">
-    <div id="panneauChantier">En cours de construction</div>
-    </div> -->
+    <script src="./libraries/p5.min.js"></script>
+  </head>
+  <body>
     <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <div id="header_container">
-        <div class="btns_head active_head" id="btn_mainPage"><a href="index.html">-main-</a></div>
-        <div class="btns_head" id="btn_contact"><a href="contact.html">-contact-</a></div>
-        <div class="btns_head" id="btn_tools"><a href="about.html">-about-</a></div>
-        <!-- <div class="btns_head" id="btn_tools"><a href="tools.html">-tools-</a></div> -->
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <header>
+      <div id="headerHandle">
+        <p>➧</p>
+      </div>
+      <h2 id="nameTitle">My name is Raphael Bottura <br /></h2>
+      <h3>I am a graphic designer</h3>
+    </header>
+    <div id="persoInfoContainer">
+      <ul>
+        <li class="listInfos">
+          2023 / 2025 - Junior Developper for
+          <a target="_blank" href="https://epe.esad-gv.fr/">EPE project</a>
+          (part time)
+        </li>
+        <li class="listInfos">
+          2023 - <strong>Master Degree</strong> in Graphic Design at ESAD
+          Valence
+        </li>
+        <li class="listInfos">
+          2022 - <strong>Internship</strong> with
+          <a target="_blank" href="https://ksawerykomputery.com/about"
+            >Ksawery Kirklewski</a
+          >
+          in Gdansk, Poland
+        </li>
+        <li class="listInfos">
+          2021 - <strong>Bachelor Degree</strong> in Graphic Design at ESAD
+          Valence
+        </li>
+        <li class="listInfos" id="supermarketPoint">
+          2019 / 2023 - Supermarket employe
+        </li>
+      </ul>
+      <p>Open to jobs and commissions</p>
+      <p>
+        Deep diving digitals environments and experimenting with them is my way
+        of digging out suprising graphics.
+      </p>
+      <p>
+        I mainly use Javascript for my works (with p5.js) but I am always
+        looking forward to learn new ways.
+      </p>
+
+      <!-- <div class="linksPerso"><a href="">Folio</a></div> -->
+      <div class="linksPerso">
+        <a target="_blank" href="./assets/cv2024_RB.pdf">CV (FR)</a>
+        <a target="_blank" href="./assets/cvRB_2024_eng.pdf">CV (EN)</a>
+      </div>
+      <div class="linksPerso">
+        Insta :
+        <a target="_blank" href="https://www.instagram.com/_br.01/">_br.01 </a>
+      </div>
+      <div id="closeButtonContainer">
+        <div id="closeInfosButton">✖</div>
+      </div>
     </div>
 
-    <div id="main_wrapper">
-        <div id="soonWall">
-            <p>NEW SITE SOON</p>
+    <div id="projectDetailsContainer">
+      <div class="projectContainer" id="ColorKineType-page">
+        <p>
+          <strong>ColorKineType</strong> is a web application. Programmed as
+          part of my Master's course, it allows text data to be processed in
+          batches of textured and animated points, to which physical behaviours
+          of attraction, elasticity, friction, etc. are assigned.
+        </p>
+        <a target="_blank" class="appLink" href="https://colorkinetype.com">Try it yourself ?</a>
+        <img src="./medias/colorkinetype/input_layer.png" alt="" />
+        <img src="./medias/colorkinetype/render_layer.png" alt="" />
+        <img src="./medias/colorkinetype/render_image.png" alt="" />
+        <div class="pageSpaceBottom"></div>
+      </div>
+      <div class="projectContainer" id="Bonjour-page">
+        <p>
+          <strong>Bonjour</strong> was the title of our master degree graduation
+          projects for our school (ESAD Valence Grenoble). I used ColorKineType
+          to produce the 3 different "BONJOUR" for the communication printed
+          medias and some animations for instagram
+        </p>
+        <img src="./medias/bonjour/poster.png" alt="" />
+        <video muted autoplay loop src="./medias/bonjour/instaBjr2.mp4"></video>
+        <!-- <img src="" alt=""> -->
+        <img src="./medias/bonjour/" alt="" />
+        <div class="pageSpaceBottom"></div>
+      </div>
+      <div class="projectContainer" id="Sketch2Print-page">
+        <p>
+          <strong>Sketch-2-Print</strong> is a web application. It lets you view
+          and manipulate a wide variety of graphic content (video stream, 3D
+          model, connectivity to peripherals, etc.) in a layout document that
+          can be exported directly for printing.
+        </p>
+        <img src="./medias/sketch2print/sketch2print_screen2_30.webp" alt="" />
+        <img src="./medias/sketch2print/s2p_1.webp" alt="" />
+        <img src="./medias/sketch2print/s2p_2.webp" alt="" />
+        <div class="pageSpaceBottom"></div>
+      </div>
+      <div class="projectContainer" id="FlowersFromMars-page">
+        <p>
+          <strong>Flowers From Mars</strong> is a concept I'm developing around
+          the imagery of unknown biological life forms on Earth. These 3
+          "flowers" are made from a pattern I drew and manipulated with an Xbox
+          controller on a web canvas, also a web application I'm developing.
+        </p>
+        <img src="./medias/flowersfrommars/plancheFlower.png" alt="" />
+        <video
+          muted
+          autoplay
+          loop
+          src="./medias/flowersfrommars/flower.mp4"
+        ></video>
+        <img src="./medias/flowersfrommars/2.webp" alt="" />
+        <div class="pageSpaceBottom"></div>
+      </div>
+      <div class="projectContainer" id="ProjetEclate-page">
+        <p>
+          <strong>Projet Éclaté</strong> is an experimental project. Extracted from experiments
+          with p5.js and a 17-piece 3D model of a criterium, 6 of these pieces
+          are manipulated to create what might be described as a vessel, a kind
+          of air or space transport vehicle. And with the touch of a button,
+          regenerate a whole new shape, a whole new unique design.
+        </p>
+        <img src="./medias/projeteclate/pencil_explo.png" alt="" />
+        <img src="./medias/projeteclate/pencil.png" alt="" />
+        <img src="./medias/projeteclate/planes.png" alt="" />
+        <div style="padding: 56.25% 0 0 0; position: relative">
+          <iframe
+            src="https://player.vimeo.com/video/949288976?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            "
+            title="Space Criterium - Sound by Arkadiusz Krupiński"
+          >
+          </iframe>
+          <script src="https://player.vimeo.com/api/player.js"></script>
         </div>
-        <div id="header_gap"></div>
+        <div class="pageSpaceBottom"></div>
+      </div>
+      <div class="projectContainer" id="GridSketches-page">
+        <p>
+          <strong>Grid Sketches</strong> are images and videos outputed from
+          exploring a gridded interface to discretize images or play around with
+          the cells and some interactivity.
+        </p>
+        <img src="./medias/gridsketches/chaise.webp" alt="" />
+        <img src="./medias/gridsketches/chaiseExpo.webp" alt="" />
+        <video
+          muted
+          autoplay
+          loop
+          src="./medias/gridsketches/coiffure2.mp4"
+        ></video>
+        <div class="pageSpaceBottom"></div>
+      </div>
 
-        <div id="main_container">
-            <div name="0" id="card1" class="card card1">
-                <div class="action_btn action_panel_btn">
-                    ⟷
-                </div>
-                <div class="card_infos_container">
-                    <h2 class="proj_title">Projet Éclaté</h2>
-                    <h3 class="mainTag">Web Animation</h3>
-                    <p class="date">2022</p>
-                    <p class="tags_container"><span class="tags">Web</span><span class="tags">Video</span><span
-                            class="tags">3D</span><span class="tags">Music</span><span
-                            class="tags">Interactiv</span><span class="tags">Animated</span></p>
-                </div>
-                <div class="card_content_container">
-                    <div class="grid_content">
-
-                        <div class="explication_para">
-                            <p>Projet Éclaté est un projet expérimental. Extrait d'expérimentations avec p5.js et un modèle 3D de critérium de 17 pièces, 6 de ces pièces sont manipuler pour faire apparaître ce qu'on pourrait qualifier de vaisseau, une sorte de véhicule de transport aérien ou spatial. Et avec la simple pression d'un bouton, regénérer une toute nouvelle forme, un tout nouveau design unique.</p>
-                        </div>
-
-                        <div class="big_image">
-                            <video muted autoplay loop controls src="./videos/Garage1.webm" >
-                        </div>
-
-                        <div class="small_image small_image1">
-                            <img src="./img/medias_pjEclt/pencil.png" alt="">
-                        </div>
-
-                        <div class="small_image small_image2">
-                            <img src="./img/medias_pjEclt/pencil_explo.png" alt="">
-                        </div>
-
-                        <div class="small_image small_image3">
-                            <img src="./img/medias_pjEclt/planes.png" alt="">
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <div name="1" id="card2" class="card">
-                <div class="action_btn action_panel_btn">
-                    ⟷
-                </div>
-                <div class="card_infos_container">
-                    <h2 class="proj_title">Sketch-2-print</h2>
-                    <h3 class="mainTag">Web App <span class="span_link"><a target="_blank" class="link_to_site" href="https://sketch2print.netlify.app/"><img class="link_icon" src="./img/external_link.png" alt=""></a></span></h3>
-                    <p class="date">2023</p>
-                    <p class="tags_container"><span class="tags">Web</span><span class="tags">Web2Print</span><span
-                            class="tags">Print</span><span class="tags">Gamepad</span><span
-                            class="tags">Interactiv</span><span class="tags">Tool</span></p>
-                </div>
-                <div class="card_content_container">
-                    <div class="grid_content">
-
-                        <div class="explication_para">
-                            <p>Sketch-2-Print est une application web. Elle permet de visualiser et manipuler du contenu
-                                graphique très varié (stream vidéo, modèle 3D, connectivité à des périphériques, etc.)
-                                dans un document de mise en page directement exportable pour l’impression. <a target="_blank" class="link_description" href="https://sketch2print.netlify.app/">-> site <- </a></p>
-                        </div>
-
-                        <div class="big_image">
-                            <img src="./img/medias_s2p/sketch2print_screen2_30.webp" alt="">
-                        </div>
-
-                        <div class="small_image small_image1">
-                            <img src="./img/medias_s2p/s2p_2.webp" alt="">
-                        </div>
-
-                        <div class="small_image small_image2">
-                            <img src="./img/medias_s2p/s2p_1.webp" alt="">
-                        </div>
-
-                        <div class="small_image small_image3">
-                            <img src="./img/medias_s2p/q.webp" alt="">
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <div name="2" id="card3" class="card">
-                <div class="action_btn action_panel_btn">
-                    ⟷
-                </div>
-                <div class="card_infos_container">
-                    <h2 class="proj_title">Color-Kine-Type</h2>
-                    <h3 class="mainTag">Web App <span class="span_link"><a target="_blank" class="link_to_site" href="https://ColorKineType.com/"><img class="link_icon" src="./img/external_link.png" alt=""></a></span></h3>
-                    <p class="date">2023</p>
-                    <p class="tags_container"><span class="tags">Web</span><span class="tags">Animated</span><span
-                            class="tags">TypeDesign</span><span class="tags">Tool</span><span
-                            class="tags">Interactiv</span></p>
-                </div>
-                <div class="card_content_container">
-
-                    <div class="grid_content">
-
-                        <div class="explication_para">
-                            <p>ColorKineType est une application web. Programmé dans le cadre de mon cursus de master, elle permet un traitement de données textes en lots de points texturés et animés, auquel sont attribués des comportements physiques d'attractions, d'élasticité, de friction, etc. <a class="link_description" target="_blank" href="https://colorkinetype.com/">-> site <- </a></p>
-                        </div>
-
-                        <div class="big_image">
-                            <!-- <img src="./img/medias_pjEclt/" alt=""> -->
-                            <video muted autoplay controls loop src="./videos/Ckt_Compil1-1.webm"></video>
-                        </div>
-
-                        <div class="small_image small_image1">
-                            <img src="./img/medias_ckt/input_layer.png" alt="">
-                        </div>
-
-                        <div class="small_image small_image2">
-                            <img src="./img/medias_ckt/render_layer.png" alt="">
-                        </div>
-
-                        <div class="small_image small_image3">
-                            <img src="./img/medias_ckt/render_image.png" alt="">
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <div name="3" id="card4" class="card">
-                <div class="action_btn action_panel_btn">
-                    ⟷
-                </div>
-                <div class="card_infos_container">
-                    <h2 class="proj_title">Flowers From MARS</h2>
-                    <h3 class="mainTag">Flowers</h3>
-                    <p class="date">2023</p>
-                    <p class="tags_container"><span class="tags">Web</span><span class="tags">Animated</span><span
-                            class="tags">Print</span></p>
-                </div>
-                <div class="card_content_container">
-
-                    <div class="grid_content">
-
-                        <div class="explication_para">
-                            <p>Flowers From Mars est un concept que je développe autour de l'imagerie de formes de vie biologiques inconnues sur Terre. Ces 3 "fleurs" sont faites à partir d'un motif que j'ai dessiné et manipulé avec une manette de Xbox sur un canevas web, également une application web que je suis en train de développer.</p>
-                        </div>
-
-                        <div class="big_image flower_big_image">
-                            <img src="./img/medias_FFM/planche.webp" alt="">
-                        </div>
-
-                        <div class="small_image small_image1 flower_sm_image">
-                            <img src="./img/medias_FFM/1.webp" alt="">
-                        </div>
-
-                        <div class="small_image small_image2 flower_sm_image">
-                            <img src="./img/medias_FFM/3.webp" alt="">
-                        </div>
-
-                        <div class="small_image small_image3 flower_sm_image">
-                            <img src="./img/medias_FFM/2.webp" alt="">
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <!-- <div name="4" id="card5" class="card">
-                <div class="action_btn action_panel_btn">
-                    +
-                </div>
-                <div class="card_infos_container">
-                    <h2 class="proj_title">Others</h2>
-                    <h3 class="mainTag">various</h3>
-                    <p class="date">2018 - 2023</p>
-                    <p class="tags_container"><span class="tags">Web</span><span class="tags">Animated</span><span
-                            class="tags">TypeDesign</span><span class="tags">Tool</span><span class="tags">Object
-                            design</span></p>
-                </div>
-                <div class="card_content_container">
-
-                    <div class="grid_content">
-
-                        <div class="explication_para">
-                            <p>Other.</p>
-                        </div>
-
-                        <div class="big_image">
-                            <img src="./img/medias_pjEclt/" alt="">
-                        </div>
-
-                        <div class="small_image small_image1">
-                            <img src="./img/medias_pjEclt/" alt="">
-                        </div>
-
-                        <div class="small_image small_image2">
-                            <img src="./img/medias_pjEclt/" alt="">
-                        </div>
-
-                        <div class="small_image small_image3">
-                            <img src="./img/medias_pjEclt/" alt="">
-                        </div>
-
-                    </div>
-
-                </div>
-            </div> -->
-            <div id="footer">
-                <p>see you</p>
-
-            </div>
-        </div>
+      <div class="projectContainer" id="Others-page"></div>
+    </div>
+    <div id="bckCanvasContainer"></div>
+    <div id="displayPageButtonContainer">
+      <h2 id="displayPageButton">ABOUT PROJECT</h2>
     </div>
 
-</body>
+    <main>
+      <div id="projectSelectionContainer">
+        <div id="projectInfos">
+          <p class="tags"></p>
+          <p class="prjDate"></p>
+          <p class="license"></p>
+          <!-- <a target="_blank" class="githubLink" href="https://github.com/rbottura/"><img src="./img/github-mark/github-mark.svg" alt=""></a> -->
+        </div>
+        <h2 class="projectTitle">ColorKineType</h2>
 
+        <h2 class="projectTitle">Bonjour</h2>
+
+        <h2 class="projectTitle">Sketch-2-Print</h2>
+
+        <h2 class="projectTitle">Flowers From Mars</h2>
+
+        <h2 class="projectTitle">Projet Éclaté</h2>
+
+        <h2 class="projectTitle">Grid Sketches</h2>
+
+        <h2 class="projectTitle">Others</h2>
+      </div>
+
+      <!-- video Appear Villacanas -->
+      <!-- <a href="https://vimeo.com/857095741?share=copy"></a> -->
+    </main>
+
+    <script src="./js/sketch.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
 </html>
