@@ -1,15 +1,16 @@
-let persoInfoShowing = true
+const WiW = window.innerWidth, WiH = window.innerHeight
+let persoInfoShowing = true, cnvW = WiW, cnvH 
+let phoneDisp = isMobileDevice()
 
 function togglePersoInfos() {
     console.log("function show infos")
     const container = document.querySelector('#persoInfoContainer');
-
+    cnvH = isMobileDevice() ? 776 : WiH 
     if (persoInfoShowing) {
         container.style[isMobileDevice() ? 'top' : 'bottom'] = '100vh';
     } else {
         container.style[isMobileDevice() ? 'top' : 'bottom'] = '0';
     }
-
     persoInfoShowing = !persoInfoShowing;
 }
 
@@ -21,12 +22,9 @@ document.querySelectorAll('#nameTitle, #closeInfosButton').forEach(elem => {
     });
 })
 
+
 function isMobileDevice() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
-function bckToBlack() {
-    document.body.style.backgroundColor = "black"
 }
 
 class prjInfos {

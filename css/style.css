@@ -23,9 +23,7 @@ body {
   display: block;
   position: fixed;
   z-index: 1;
-  top: 55px;
   width: 100%;
-  height: 100%;
   background-color: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(10px) grayscale(100%);
           backdrop-filter: blur(10px) grayscale(100%);
@@ -49,7 +47,6 @@ header {
   position: fixed;
   z-index: 4;
   background-color: white;
-  height: 55px;
 }
 header h2 {
   font-family: Arial, Helvetica, sans-serif;
@@ -76,7 +73,7 @@ header h3 {
   justify-content: left;
 }
 #projectSelectionContainer h2 {
-  font-family: garamond;
+  font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
   padding: 0 20px;
   margin: 3px 6px;
@@ -142,6 +139,10 @@ video {
 }
 
 @media (min-width: 769px) {
+  #bckCanvasContainer {
+    top: 55px;
+    height: calc(100% - 55px);
+  }
   #persoInfoContainer {
     padding-left: 20px;
     bottom: 100vh;
@@ -183,6 +184,7 @@ video {
     cursor: pointer;
   }
   header {
+    height: 55px;
     box-shadow: 0 -5px 20px 0px rgb(211, 211, 213);
   }
   header #headerHandle {
@@ -272,6 +274,12 @@ video {
   }
 }
 @media (max-width: 768px) {
+  #bckCanvasContainer {
+    height: calc(100vh - 75px);
+  }
+  #projectInfos {
+    display: none;
+  }
   #persoInfoContainer {
     top: 100vh;
     border-top: solid black 5px;
@@ -294,16 +302,62 @@ video {
     margin-top: 40px;
   }
   header {
+    height: 75px;
     box-shadow: 0 5px 20px 0px rgb(211, 211, 213);
     bottom: 0;
   }
   header #headerHandle {
+    display: flex;
+    justify-content: center;
+  }
+  header #headerHandle p {
+    width: 21px;
+    margin: 0;
     transform: rotate(-90deg);
   }
-  #projectSelectionContainer {
-    padding-top: 45px;
+  .projectContainer {
+    display: none;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 20px;
   }
-  #projectSelectionContainer h2 {
-    font-size: 28pt;
+  .projectContainer p {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 14pt;
+  }
+  #displayPageButtonContainer {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    bottom: 95px;
+    justify-content: center;
+    align-items: start;
+  }
+  #displayPageButtonContainer #displayPageButton {
+    display: flex;
+    font-family: garamond;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    font-size: 12pt;
+    padding: 5px 20px;
+    margin-top: 30px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 0 20px -5px rgb(210, 210, 210);
+  }
+  #projectSelectionContainer {
+    padding-top: 125px;
+    transition: left 0.4s;
+  }
+  #projectSelectionContainer .projectTitle {
+    width: calc(100% - 6px);
+    font-size: 24pt;
+    background-color: rgba(46, 46, 46, 0.1);
+  }
+  #projectSelectionContainer .inactTitle {
+    background-color: #009d8a;
   }
 }/*# sourceMappingURL=style.css.map */

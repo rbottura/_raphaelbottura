@@ -1,5 +1,3 @@
-const WiW = window.innerWidth, WiH = window.innerHeight
-
 const listProject = ['ColorKineType', 'Bonjour', 'Sketch-2-Print', 'FlowersFromMars', 'ProjetEclate', 'GridSketches', 'Others']
 const nbrItems = listProject.length
 const TitlesDomElems = document.querySelectorAll('.projectTitle')
@@ -53,7 +51,7 @@ const s2 = p => {
       p.rotateY(this.rotValEase)
       p.scale(this.scaleEase)
       // p.texture(this.img)
-      p.specularMaterial(0, 0, 255);
+      p.specularMaterial(50, 20, 255);
       p.shininess(1)
       p.model(this.obj)
       p.pop()
@@ -62,7 +60,6 @@ const s2 = p => {
     }
   }
 
-  let cnvW = WiW, cnvH = WiH
   let cnv, font
   for (let i = 0; i < nbrItems; i++) {
     let angle = p.TWO_PI / nbrItems * i;
@@ -119,10 +116,12 @@ const s2 = p => {
   p.draw = function () {
     p.background(255, 0)
     // p.lights()
-    p.pointLight(255, 255, 255, 30, -40, 30);
-    let c = p.color(255, 0, 180);
-    p.directionalLight(c, 1, 1, 0);
 
+    p.pointLight(255, 255, 255, 0, 50, 1000);
+    
+    let c = p.color(255, 80, 180);
+    p.directionalLight(c, 1, -1, 0);
+  
     // Draw spheres at each point
     p.push()
     rotEase = easing(rotEase, rotVal, .1)
@@ -143,6 +142,7 @@ function easing(from, to, ease) {
 
 function activateProject(title) {
   let state = title.classList.contains('activeTitle')
+  
   if (!state) {
     TitlesDomElems.forEach(elem => {
       elem.classList.remove('activeTitle')
@@ -157,14 +157,25 @@ function activateProject(title) {
     })
 
     ProjectsDomElems[indexSelectedProject].style.display = 'flex'
-
-    navigationUpdate(false)
+    
+    if(phoneDisp){
+      navigationUpdate(false)
+      phoneNavigation(false)
+    } else {
+      navigationUpdate(false)
+    }
+    
     updateProjectInfos(listPrjInfos[indexSelectedProject])
   }
 }
 
 document.querySelector('#displayPageButton').addEventListener('click', (e) => {
-  navigationUpdate(true)
+  if(phoneDisp){
+    navigationUpdate(true)
+    phoneNavigation(true)
+  } else {
+    navigationUpdate(true)
+  }
 })
 
 function navigationUpdate(show) {
@@ -180,3 +191,22 @@ function navigationUpdate(show) {
   }
 }
 
+function phoneNavigation(show){
+  let prjNav = document.querySelector('#projectSelectionContainer')
+  if (show) {
+    prjNav.style.left = "-370px";
+    TitlesDomElems.forEach(elem => {
+      if(!elem.classList.contains('activeTitle')){
+        elem.classList.add('inactTitle')
+      }
+    })
+
+  } else {
+    prjNav.style.left = "0px";
+    TitlesDomElems.forEach(elem => {
+      if(!elem.classList.contains('activeTitle')){
+        elem.classList.remove('inactTitle')
+      }
+    })
+  }
+}
