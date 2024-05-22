@@ -350,6 +350,7 @@ video {
   }
   #projectSelectionContainer {
     padding-top: 125px;
+    width: calc(100vw - 46px);
     transition: left 0.4s;
   }
   #projectSelectionContainer .projectTitle {

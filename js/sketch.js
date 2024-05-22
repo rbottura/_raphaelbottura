@@ -194,7 +194,7 @@ function navigationUpdate(show) {
 function phoneNavigation(show){
   let prjNav = document.querySelector('#projectSelectionContainer')
   if (show) {
-    prjNav.style.left = "-95vw";
+    prjNav.style.left = "-90vw";
     TitlesDomElems.forEach(elem => {
       if(!elem.classList.contains('activeTitle')){
         elem.classList.add('inactTitle')
