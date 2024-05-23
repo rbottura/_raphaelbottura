@@ -118,7 +118,7 @@ const s2 = p => {
   p.draw = function () {
     p.background(255, 0)
     p.camera(0, 0, 2000);
-    p.perspective(p.PI/12, cnvW/cnvH + .3);
+    p.perspective(p.PI/12, cnvW/cnvH + .2);
     // p.lights()
 
     p.pointLight(255, 255, 255, 0, 50, 1000);
