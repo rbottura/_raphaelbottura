@@ -1,11 +1,12 @@
 const WiW = window.innerWidth, WiH = window.innerHeight
-let persoInfoShowing = true, cnvW = WiW, cnvH 
+const scaleCanvas = 0.5 
+let persoInfoShowing = true, cnvW = WiW * scaleCanvas, cnvH 
 let phoneDisp = isMobileDevice()
 
 function togglePersoInfos() {
     console.log("function show infos")
     const container = document.querySelector('#persoInfoContainer');
-    cnvH = isMobileDevice() ? 776 : WiH 
+    cnvH = isMobileDevice() ? 776*scaleCanvas : WiH*scaleCanvas 
     if (persoInfoShowing) {
         container.style[isMobileDevice() ? 'top' : 'bottom'] = '100vh';
     } else {

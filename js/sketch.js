@@ -50,7 +50,7 @@ const s2 = p => {
       p.rotateZ(p.PI)
       p.rotateY(this.rotValEase)
       p.scale(this.scaleEase)
-      // p.texture(this.img)
+      
       p.specularMaterial(50, 20, 255);
       p.shininess(1)
       p.model(this.obj)
@@ -98,35 +98,39 @@ const s2 = p => {
 
     for (let i = 0; i < nbrItems; i++) {
       let obj = p.loadModel('./assets/3D/' + listProject[i] + '.obj', true)
-      let img = p.loadImage('./img/texture/blank.png')
-      let newItem = new Item(points[i].x, points[i].y, points[i].z, .5, 0, img, obj, i)
+      // let img = p.loadImage('./img/texture/blank.png')
+      let newItem = new Item(points[i].x, points[i].y, points[i].z, .5, 0, "", obj, i)
       listItems.push(newItem)
     }
   }
 
   p.setup = function () {
-    cnv = p.createCanvas(cnvW, cnvH - 55, p.WEBGL);
+    cnv = p.createCanvas(cnvW, cnvH, p.WEBGL);
     p.angleMode(p.RADIANS)
+    document.querySelector('canvas').style.width = "100%"
+    document.querySelector('canvas').style.height = "100%"
   };
-
-  let rotArr = Array.from({length: 7}, (v, i) => (3 - i * (10.3 / 6)).toFixed(2)).map(Number);
+  
+  let rotArr = Array.from({ length: 7 }, (v, i) => (3 - i * (10.3 / 6)).toFixed(2)).map(Number);
   console.log(rotArr)
   let rotEase = 0, rotVal = 3
-
+  
   p.draw = function () {
     p.background(255, 0)
+    p.camera(0, 0, 2000);
+    p.perspective(p.PI/12, cnvW/cnvH + .3);
     // p.lights()
 
     p.pointLight(255, 255, 255, 0, 50, 1000);
-    
+
     let c = p.color(255, 80, 180);
     p.directionalLight(c, 1, -1, 0);
-  
+
     // Draw spheres at each point
     p.push()
     rotEase = easing(rotEase, rotVal, .1)
     p.rotateY(-p.PI / 6 * rotEase)
-    
+
     for (let i = 0; i < listItems.length; i++) {
       listItems[i].show()
     }
@@ -142,7 +146,7 @@ function easing(from, to, ease) {
 
 function activateProject(title) {
   let state = title.classList.contains('activeTitle')
-  
+
   if (!state) {
     TitlesDomElems.forEach(elem => {
       elem.classList.remove('activeTitle')
@@ -157,20 +161,20 @@ function activateProject(title) {
     })
 
     ProjectsDomElems[indexSelectedProject].style.display = 'flex'
-    
-    if(phoneDisp){
+
+    if (phoneDisp) {
       navigationUpdate(false)
       phoneNavigation(false)
     } else {
       navigationUpdate(false)
     }
-    
+
     updateProjectInfos(listPrjInfos[indexSelectedProject])
   }
 }
 
 document.querySelector('#displayPageButton').addEventListener('click', (e) => {
-  if(phoneDisp){
+  if (phoneDisp) {
     navigationUpdate(true)
     phoneNavigation(true)
   } else {
@@ -191,12 +195,12 @@ function navigationUpdate(show) {
   }
 }
 
-function phoneNavigation(show){
+function phoneNavigation(show) {
   let prjNav = document.querySelector('#projectSelectionContainer')
   if (show) {
     prjNav.style.left = "-95vw";
     TitlesDomElems.forEach(elem => {
-      if(!elem.classList.contains('activeTitle')){
+      if (!elem.classList.contains('activeTitle')) {
         elem.classList.add('inactTitle')
       }
     })
@@ -204,7 +208,7 @@ function phoneNavigation(show){
   } else {
     prjNav.style.left = "0px";
     TitlesDomElems.forEach(elem => {
-      if(!elem.classList.contains('activeTitle')){
+      if (!elem.classList.contains('activeTitle')) {
         elem.classList.remove('inactTitle')
       }
     })
