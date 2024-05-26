@@ -43,7 +43,7 @@ let prj_Sketch2print = new prjInfos('tool', '2022 - 2023', 'MIT license', 'https
 let prj_FlowersFromMars = new prjInfos('illustration', '2023', 'no license', '')
 let prj_ProjetEclate = new prjInfos('p5js 3D Music', '2022', 'no license', '')
 let prj_GridSketches = new prjInfos('tool', '2024', 'MIT license', '')
-let prj_Others = new prjInfos('video', '2024', 'MIT license', '')
+let prj_Others = new prjInfos('video', 'various years', 'MIT license', '')
 
 const listPrjInfos = [
     prj_ColorKineType,
