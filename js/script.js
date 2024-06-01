@@ -42,7 +42,7 @@ let prj_Bonjour = new prjInfos('exhibition', '2023', 'no license', '')
 let prj_Sketch2print = new prjInfos('tool', '2022 - 2023', 'MIT license', 'https://sketch2print.netlify.app')
 let prj_FlowersFromMars = new prjInfos('illustration', '2023', 'no license', '')
 let prj_ProjetEclate = new prjInfos('p5js 3D Music', '2022', 'no license', '')
-let prj_GridSketches = new prjInfos('tool', '2024', 'MIT license', '')
+let prj_GridSketches = new prjInfos('tool', '2024', 'MIT license', 'https://github.com/rbottura/grid_sketch')
 let prj_Others = new prjInfos('video', 'various years', 'MIT license', '')
 
 const listPrjInfos = [
@@ -70,7 +70,7 @@ function updateProjectInfos(prj) {
 
 
 document.querySelectorAll('img').forEach(elem => {
-    if (!elem.classList.contains('link_icon')) {
+    if (!elem.classList.contains('noZoom')) {
         elem.classList.add('imageViews')
         elem.addEventListener('click', (e) => {
             showImgFullscreen(e.target)
