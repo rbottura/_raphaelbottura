@@ -50,16 +50,25 @@ const s2 = p => {
       p.rotateZ(p.PI)
       p.rotateY(this.rotValEase)
       p.scale(this.scaleEase)
-      
-      p.specularMaterial(50, 20, 255);
-      p.shininess(1)
-      p.model(this.obj)
+
+      // p.stroke('black')
+      // p.strokeWeight(2)
+
+      // p.specularMaterial(50, 20, 255);
+      // p.ambientMaterial(255)
+      // p.shininess(1)
+      p.textFont(font)
+      p.fill('black')
+      p.scale(-1)
+      p.textSize(32)
+      p.text('REFORGED', 0, 0)
+      // p.model(this.obj)
       p.pop()
 
       p.pop()
     }
   }
-
+  
   let cnv, font
   for (let i = 0; i < nbrItems; i++) {
     let angle = p.TWO_PI / nbrItems * i;
@@ -93,12 +102,18 @@ const s2 = p => {
     return arr.indexOf(elem)
   }
 
-  p.preload = function () {
-    font = p.loadFont('./assets/LibreBaskerville-Regular.ttf')
+  let ditherTexture, ditherShader
 
+  p.preload = function () {
+    // font = p.loadFont('./assets/fonts/LibreBaskerville-Regular.ttf')
+    font = p.loadFont('./assets/fonts/IBMPlexMono-Regular.ttf')
+
+    // ditherTexture = p.loadImage('./img/blue_noise.png')
+    // ditherShader = p.loadShader("./assets/3D/dither.vert", "./assets/3D/dither.frag");
+    
     for (let i = 0; i < nbrItems; i++) {
       let obj = p.loadModel('./assets/3D/' + listProject[i] + '.obj', true)
-      // let img = p.loadImage('./img/texture/blank.png')
+      
       let newItem = new Item(points[i].x, points[i].y, points[i].z, .5, 0, "", obj, i)
       listItems.push(newItem)
     }
@@ -107,24 +122,25 @@ const s2 = p => {
   p.setup = function () {
     cnv = p.createCanvas(cnvW, cnvH, p.WEBGL);
     p.angleMode(p.RADIANS)
+    p.noSmooth();
     document.querySelector('canvas').style.width = "100%"
     document.querySelector('canvas').style.height = "100%"
   };
-  
+
   let rotArr = Array.from({ length: 7 }, (v, i) => (3 - i * (10.3 / 6)).toFixed(2)).map(Number);
   console.log(rotArr)
   let rotEase = 0, rotVal = 3
-  
+
   p.draw = function () {
     p.background(255, 0)
     p.camera(0, 0, 2000);
-    p.perspective(p.PI/12, cnvW/cnvH + .2);
+    p.perspective(p.PI / 12, cnvW / cnvH + .2);
     // p.lights()
 
-    p.pointLight(255, 255, 255, 0, 50, 1000);
+    // p.pointLight(255, 220, 255, 0, 50, 1000);
 
-    let c = p.color(255, 80, 180);
-    p.directionalLight(c, 1, -1, 0);
+    let c = p.color(255, 220, 180);
+    // p.directionalLight(c, 1, -1, 0);
 
     // Draw spheres at each point
     p.push()

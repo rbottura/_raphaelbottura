@@ -1,5 +1,5 @@
 const WiW = window.innerWidth, WiH = window.innerHeight
-const scaleCanvas = 0.5 
+const scaleCanvas = 0.25
 let persoInfoShowing = true, cnvW = WiW * scaleCanvas, cnvH 
 let phoneDisp = isMobileDevice()
 
