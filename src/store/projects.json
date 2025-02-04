@@ -1,5 +1,19 @@
 [
     {
+        "title": "Matrix",
+        "type": "creative",
+        "tags": [
+            "p5js",
+            "js",
+            "3D",
+            "generative",
+            "interactive"
+        ],
+        "description": "A web app mounted with p5 for a project released in March",
+        "link": "https://bec2025.netlify.app/",
+        "images": []
+    },
+    {
         "title": "p5-RCS",
         "type": "it",
         "tags": [
@@ -8,7 +22,7 @@
             "ES6",
             "rastering"
         ],
-        "description": "js lib and python scripts to process images rgb for cmyk usages",
+        "description": "JS library and python scripts to process images rgb for cmyk usages",
         "link": "https://gitlab.com/esad-gv1/epe/p5-RCS",
         "images": []
     },
