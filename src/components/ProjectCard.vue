@@ -1,7 +1,5 @@
 <template>
-    <v-card class="card-class rounded-lg" elevation="12" max-width="300px"
-    :image="projectImage"    
-    height="460px">
+    <v-card class="card-class rounded-lg" elevation="12" max-width="300px" :image="projectImage" height="460px">
         <v-card-title>{{ project.title }}</v-card-title>
         <v-card-item class="divider-wrapper">
             <v-divider></v-divider>
@@ -53,8 +51,8 @@
         </v-tabs>
 
         <!-- Image Overlay -->
-        <v-overlay v-model="dialog" close-on-content-click width="100%" max-height="100vh" class="overlay-container">
-            <img :src="`/medias/${selectedImage}`" class="img-overlay"></img>
+        <v-overlay v-model="dialog" close-on-content-click class="d-flex align-center justify-center">
+            <img :src="`/medias/${selectedImage}`" class="overlay-img"></img>
         </v-overlay>
     </v-card>
 </template>
@@ -144,7 +142,22 @@ export default {
     width: 100%;
 }
 
-.img-overlay {
+.overlay-card {
+    max-width: 90vw;
+    /* Ensures it never overflows the viewport width */
+    max-height: 90vh;
+    /* Ensures it never overflows the viewport height */
     display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    /* No unwanted background */
+}
+
+.overlay-img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    /* Ensures the whole image fits */
 }
 </style>
