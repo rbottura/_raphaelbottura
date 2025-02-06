@@ -20,9 +20,9 @@
           </v-btn>
           <v-btn to="/projects">Explore</v-btn>
           <v-btn to="/contact">Contact</v-btn>
-          
+
           <v-btn icon="mdi-magnify"></v-btn>
-          
+
           <v-btn icon="mdi-dots-vertical"></v-btn>
         </template>
       </v-app-bar>

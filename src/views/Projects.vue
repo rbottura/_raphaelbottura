@@ -22,8 +22,10 @@ const projects = computed(() => projectStore.projects);
     flex-wrap: wrap;
     justify-content: center;
     gap: 3rem;
-    padding: 1rem;
-    margin: 5rem 0rem;
+    padding: 5rem 1rem;
+    margin-top: 48px;
+    background-image: url(./assets/img/test_bg_img.png) !important;
+    background-size: cover;
 }
 
 .project-card-wrapper {
@@ -31,6 +33,11 @@ const projects = computed(() => projectStore.projects);
 
     width: 300px;
     /* Maintain 2:3 ratio, max height 100vh */
-    height: 450px;
+    height: 460px;
+}
+</style>
+<style>
+.v-card__image {
+    /* background-image: url('./assets/img/galaxy.jpg'); */
 }
 </style>

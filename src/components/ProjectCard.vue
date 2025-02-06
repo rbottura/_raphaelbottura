@@ -1,20 +1,25 @@
 <template>
     <v-card class="card-class rounded-lg" elevation="12" max-width="300px" :image="projectImage" height="460px">
-        <v-card-title>{{ project.title }}</v-card-title>
+        <v-badge dot :color="getBadgeColor(project)" inline>
+            <v-card-title>{{ project.title }}</v-card-title>
+        </v-badge>
+
         <v-card-item class="divider-wrapper">
             <v-divider></v-divider>
         </v-card-item>
+
         <v-card-item class="tags-wrapper">
             <v-chip v-for="(tag, index) in project.tags" :key="index" class="ma-1 tags-class" size="x-small">
                 {{ tag }}
             </v-chip>
         </v-card-item>
+
         <v-card-subtitle>
         </v-card-subtitle>
-        <v-card-text>
 
+        <v-card-text>
             <v-tabs-window v-model="tab" class="fixed-tab-window">
-                <v-tabs-window-item value="one">
+                <v-tabs-window-item value="one" class="description-tab-container">
                     <p class="description-class">
                         {{ project.description }}
                     </p>
@@ -26,7 +31,7 @@
                     </v-card-actions>
                 </v-tabs-window-item>
 
-                <v-tabs-window-item class="carou-item2-class" value="two">
+                <v-tabs-window-item class="images-tab-container" value="two">
                     <v-carousel hide-delimiters height="286px">
                         <template v-slot:prev="{ props }">
                             <v-btn size="x-small" @click="props.onClick" class="mdi mdi-chevron-left carou-btn"></v-btn>
@@ -70,6 +75,30 @@ export default {
         openImage(image) {
             this.selectedImage = image;
             this.dialog = true;
+        },
+        getBadgeColor(project) {
+            const today = new Date();
+            const startDate = new Date(project.beginDate);
+
+            const endDate = project.endDate ? new Date(project.endDate) : null;
+
+            const elapsedT = Math.abs(Math.floor(((startDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)))) > 180
+            // console.log(((startDate.getTime() - today.getTime())/(1000 * 60 * 60 * 24) > 60))
+
+            // Sleeping projects (hasn't started yet)
+            if (elapsedT && !endDate) {
+                return 'grey';
+            }
+
+            // Ended projects
+            if (endDate && endDate < today) {
+                return 'rgba(3,180,255,.6)';
+            }
+
+            // Active projects (no end date or future end date, and already started)
+            if (startDate <= today) {
+                return 'rgba(0,200,0,.6)';
+            }
         }
     },
     computed: {
@@ -91,8 +120,6 @@ export default {
 }
 
 .card-class {
-    height: 450px;
-    width: 300px;
     border: solid rgba(0, 0, 0, 0.192) 2px;
 }
 
@@ -115,13 +142,22 @@ export default {
     overflow: hidden;
 }
 
+.v-card-text {
+    border: rgb(206, 206, 206, .2) 3px double;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 0 !important;
+}
+
 .v-carousel-item {
     cursor: pointer;
 }
 
-.v-card-text {
-    border: rgb(206, 206, 206) 1px solid;
-    margin: 5px;
+.description-tab-container {
+    padding: 1rem;
+}
+
+.images-tab-container {
     border-radius: 5px;
 }
 
@@ -159,5 +195,17 @@ export default {
     max-height: 90%;
     object-fit: contain;
     /* Ensures the whole image fits */
+}
+</style>
+<style>
+.v-badge {
+    width: 100%;
+}
+
+.v-badge--inline .v-badge__wrapper {
+    width: 100%;
+    justify-content: space-between !important;
+    margin: 0px !important;
+    padding: 0px 10px 0px 0px;
 }
 </style>
