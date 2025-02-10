@@ -9,9 +9,9 @@ import { aliases, md } from 'vuetify/iconsets/md'
 const myCustomLightTheme = {
     dark: false,
     colors: {
-        background: '#FFFFFF',
+        background: 'hsl(0, 0%, 98%)',
         'background-opacity': 0,
-        surface: '#FFFFFF',
+        surface: '#ffffffff',
         'surface-bright': '#FFFFFF',
         'surface-light': '#EEEEEE',
         'surface-variant': '#424242',
@@ -48,7 +48,7 @@ const myCustomLightTheme = {
 const myCustomDarkTheme = {
     dark: true,
     colors: {
-        background: '#010409',
+        background: '#18171c',
         surface: '#0d1117',
         'surface-bright': '#0d1117',
         'surface-light': '#151b23',
@@ -64,7 +64,7 @@ const myCustomDarkTheme = {
         warning: '#FB8C00',
     },
     variables: {
-        'border-color': '#000000',
+        'border-color': '#d4d4d4',
         'border-opacity': 0.12,
         'high-emphasis-opacity': 0.87,
         'medium-emphasis-opacity': 0.60,
@@ -97,7 +97,7 @@ export default createVuetify({
         mobileBreakpoint: 'sm'
     },
     theme: {
-        defaultTheme: 'light',
+        defaultTheme: 'myCustomLightTheme',
         themes: {
             myCustomLightTheme,
             myCustomDarkTheme,

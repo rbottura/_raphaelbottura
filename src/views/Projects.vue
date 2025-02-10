@@ -24,8 +24,8 @@ const projects = computed(() => projectStore.projects);
     gap: 3rem;
     padding: 5rem 1rem;
     margin-top: 48px;
-    background-image: url(./assets/img/test_bg_img.png) !important;
-    background-size: cover;
+    /* background-color: var(--v-theme-background); */
+    /* background-blend-mode: hard-light; */
 }
 
 .project-card-wrapper {
@@ -37,7 +37,4 @@ const projects = computed(() => projectStore.projects);
 }
 </style>
 <style>
-.v-card__image {
-    /* background-image: url('./assets/img/galaxy.jpg'); */
-}
 </style>

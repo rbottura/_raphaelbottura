@@ -1,0 +1,57 @@
+<svg width="300" height="400" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="300" height="400" fill="#f9f9f9" />
+
+  <!-- Title -->
+  <text x="150" y="30" text-anchor="middle" font-size="16" fill="#333" font-family="Arial, sans-serif">
+    Collab Tool Overview
+  </text>
+
+  <!-- Frontend Box -->
+  <rect x="50" y="50" width="200" height="60" fill="#4CAF50" rx="8" ry="8" />
+  <text x="150" y="85" text-anchor="middle" font-size="14" fill="#fff" font-family="Arial, sans-serif">
+    Frontend (Vue/Vite)
+  </text>
+
+  <!-- Arrow from Frontend to Backend -->
+  <line x1="150" y1="110" x2="150" y2="140" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Backend Box -->
+  <rect x="50" y="140" width="200" height="60" fill="#2196F3" rx="8" ry="8" />
+  <text x="150" y="175" text-anchor="middle" font-size="14" fill="#fff" font-family="Arial, sans-serif">
+    Backend (Node.js)
+  </text>
+  
+  <!-- Arrow from Backend to Storage -->
+  <line x1="150" y1="200" x2="150" y2="230" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Storage Box -->
+  <rect x="50" y="230" width="200" height="60" fill="#FF9800" rx="8" ry="8" />
+  <text x="150" y="265" text-anchor="middle" font-size="14" fill="#fff" font-family="Arial, sans-serif">
+    Storage (DB, S3)
+  </text>
+
+  <!-- Version Control (side loop) -->
+  <!-- Left-side arrow from Backend to Frontend -->
+  <line x1="50" y1="170" x2="20" y2="170" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="20" y1="170" x2="20" y2="80" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="20" y1="80" x2="50" y2="80" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="10" y="150" font-size="10" fill="#333" font-family="Arial, sans-serif" transform="rotate(-90,20,150)">
+    Version Control
+  </text>
+  
+  <!-- Real-Time Collaboration (side loop on right) -->
+  <line x1="250" y1="80" x2="280" y2="80" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="280" y1="80" x2="280" y2="170" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="280" y1="170" x2="250" y2="170" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="290" y="125" font-size="10" fill="#333" font-family="Arial, sans-serif" transform="rotate(90,280,125)">
+    Real-Time Sync
+  </text>
+
+  <!-- Define arrow marker -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+    </marker>
+  </defs>
+</svg>

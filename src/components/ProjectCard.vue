@@ -1,15 +1,15 @@
 <template>
-    <v-card class="card-class rounded-lg" elevation="12" max-width="300px" :image="projectImage" height="460px">
-        <v-badge dot :color="getBadgeColor(project)" inline>
-            <v-card-title>{{ project.title }}</v-card-title>
-        </v-badge>
+    <v-card :class="cardClass" class="rounded-lg" elevation="4" max-width="300px" :style="cardStyle" height="460px">
 
-        <v-card-item class="divider-wrapper">
-            <v-divider></v-divider>
-        </v-card-item>
+        <v-card-title class="vcard-item">
+            <v-badge dot :color="getBadgeColor(project)" inline>
+                {{ project.title }}
+            </v-badge>
+        </v-card-title>
 
-        <v-card-item class="tags-wrapper">
-            <v-chip v-for="(tag, index) in project.tags" :key="index" class="ma-1 tags-class" size="x-small">
+        <v-card-item class="tags-wrapper vcard-item">
+            <v-chip v-for="(tag, index) in project.tags" :key="index" class="tags-class" variant="elevated"
+                size="small">
                 {{ tag }}
             </v-chip>
         </v-card-item>
@@ -17,22 +17,26 @@
         <v-card-subtitle>
         </v-card-subtitle>
 
-        <v-card-text>
+        <v-card-text class="vcard-item">
             <v-tabs-window v-model="tab" class="fixed-tab-window">
                 <v-tabs-window-item value="one" class="description-tab-container">
                     <p class="description-class">
                         {{ project.description }}
+                        <v-card-actions class="links-wrapper">
+                            <v-btn class="small-btn" variant="elevated" v-if="project.link" :href="project.link"
+                                target="_blank" append-icon="mdi-open-in-new">
+                                visit live app
+                            </v-btn>
+                            <v-btn class="small-btn" variant="elevated" v-if="project.repo" :href="project.repo"
+                                target="_blank" append-icon="mdi-open-in-new">
+                                Go to public Repo
+                            </v-btn>
+                        </v-card-actions>
                     </p>
-                    <v-card-actions>
-                        <v-btn class="small-btn" v-if="project.link" :href="project.link" target="_blank"
-                            append-icon="mdi-open-in-new">
-                            visit live app
-                        </v-btn>
-                    </v-card-actions>
                 </v-tabs-window-item>
 
                 <v-tabs-window-item class="images-tab-container" value="two">
-                    <v-carousel hide-delimiters height="286px">
+                    <v-carousel hide-delimiters height="308px">
                         <template v-slot:prev="{ props }">
                             <v-btn size="x-small" @click="props.onClick" class="mdi mdi-chevron-left carou-btn"></v-btn>
                         </template>
@@ -50,7 +54,7 @@
             </v-tabs-window>
         </v-card-text>
 
-        <v-tabs color="customBlue" v-model="tab" align-tabs="center" density="compact">
+        <v-tabs class="vcard-item" color="customBlue" v-model="tab" align-tabs="center" density="compact">
             <v-tab class="small-btn" value="one">Description</v-tab>
             <v-tab class="small-btn" value="two">Images</v-tab>
         </v-tabs>
@@ -59,6 +63,10 @@
         <v-overlay v-model="dialog" close-on-content-click class="d-flex align-center justify-center">
             <img :src="`/medias/${selectedImage}`" class="overlay-img"></img>
         </v-overlay>
+
+        <v-card-item id="card-img-overlay" :style="relativeCardImage">
+
+        </v-card-item>
     </v-card>
 </template>
 
@@ -92,60 +100,118 @@ export default {
 
             // Ended projects
             if (endDate && endDate < today) {
-                return 'rgba(3,180,255,.6)';
+                return 'rgba(3,180,255,1)';
             }
 
             // Active projects (no end date or future end date, and already started)
             if (startDate <= today) {
-                return 'rgba(0,200,0,.6)';
+                return 'rgba(0,200,0,1)';
             }
         }
     },
     computed: {
-        projectImage() {
+        cardTexture() {
             if (this.project.type === 'creative') {
-                return './assets/img/prism_25.png'; // Default image for creative projects
+                return './assets/img/shiny2_30.png'; // Default image for creative projects
             } else if (this.project.type === 'it') {
                 return './assets/img/it_prism.png'; // Default image for IT projects
             }
             return this.project.images?.[0] || '/medias/default-placeholder.jpg'; // Fallback image
+        },
+        cardClass() {
+            return {
+                'creative-project': this.project.type === 'creative',
+                'it-project': this.project.type === 'it',
+            };
+        },
+        cardStyle() {
+            // Example: Using cardIndex to choose a relative image (e.g. card1-bck-img.png)
+            // Adjust the path as needed based on your assets structure.
+            const relativeImage = `./medias/${this.project.title}/bg-img.png`
+
+            return {
+                /* Note: The first URL is drawn on top. Order them as needed. */
+                backgroundImage: `url(${this.cardTexture})`,
+                // backgroundImage: `url(${this.cardTexture}), url(${relativeImage})`,
+                // backgroundBlendMode: 'darken',
+                backgroundSize: '150%',
+                backgroundPosition: 'center',
+                // backgroundRepeat: 'repeat',
+                // borderImage: `url(${relativeImage})`
+            };
+        },
+        relativeCardImage() {
+            const relativeImage = `./medias/${this.project.title}/bg-img.png`
+            return {
+                backgroundImage: `url(${relativeImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            };
         }
     }
 }
 </script>
 
 <style scoped>
-::v-deep(.v-chip) {
+#card-img-overlay {
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .15;
+    mix-blend-mode: darken;
+    filter: contrast(2) brightness(1.5);
+}
+
+.vcard-item {
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+
+.vcard-item:not(:nth-child(2)) {
+    width: 100%;
+    border-top: 2px solid var(--border-card);
+    box-sizing: content-box;
+}
+
+.v-chip {
     margin: 2px;
-}
-
-.card-class {
-    border: solid rgba(0, 0, 0, 0.192) 2px;
-}
-
-::v-deep(.v-card-title) {
-    padding: 6px 6px 2px 16px;
-}
-
-.divider-wrapper {
-    padding: 2px 5px 2px 5px;
+    backdrop-filter: invert(20%);
+    opacity: .7;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-size: 16px; */
+    font-weight: bold;
+    text-transform: uppercase;
+    height: 80% !important;
 }
 
 .tags-wrapper {
-    display: block;
     height: 57px;
-    padding: 2px 6px 2px 5px;
+    padding: 2px;
+}
+
+.tags-wrapper * {
+    align-self: flex-start;
 }
 
 .fixed-tab-window {
-    height: 280px;
+    height: 308px;
     overflow: hidden;
 }
 
+.fixed-tab-window p {
+    padding: 8px !important;
+}
+
+.fixed-tab-window *:not(p, a) {
+    padding: 0 !important;
+}
+
 .v-card-text {
-    border: rgb(206, 206, 206, .2) 3px double;
-    margin: 5px;
-    border-radius: 5px;
     padding: 0 !important;
 }
 
@@ -168,14 +234,13 @@ export default {
 
 .description-class {
     font-family: roboto;
-    font-size: large;
-    font-weight: light;
+    font-size: 22px;
 }
 
 .v-tabs {
-    bottom: 0px;
+    /* bottom: 8px; */
     position: absolute;
-    width: 100%;
+    width: calc(100% - 16px);
 }
 
 .overlay-card {
@@ -196,7 +261,16 @@ export default {
     object-fit: contain;
     /* Ensures the whole image fits */
 }
+
+.links-wrapper {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    flex-wrap: wrap;
+    bottom: 8px;
+}
 </style>
+
 <style>
 .v-badge {
     width: 100%;

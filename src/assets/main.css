@@ -11,6 +11,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    --border-card: rgba(255, 255, 255, 1);
 }
 
 a {
@@ -49,16 +50,18 @@ button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
 }
 
-.v-card::after {
-    background-image: url('assets/img/galaxy.jpg');
-    background-size: cover;
-
-    filter: blur(5px);
+.v-card {
+    /* padding: 8px; */
+    border: 2px solid var(--border-card);
 }
 
-.v-overlay__content {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+.v-card-title {
+    padding: 6px 6px 2px 8px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 0px;
+}
+
+.v-card-actions {
+    min-height: 0px;
 }

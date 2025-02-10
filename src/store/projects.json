@@ -5,7 +5,10 @@
     "tags": ["p5js", "js", "3D", "generative", "interactive"],
     "description": "A web app mounted with p5 for a project released in March",
     "link": "https://bec2025.netlify.app/",
-    "images": [],
+    "repo": "",
+    "images": [
+      "./Matrix/bg-img.png"
+    ],
     "beginDate": "2024 11",
     "endDate": "2025 03"
   },
@@ -14,7 +17,8 @@
     "type": "it",
     "tags": ["p5js", "js", "ES6", "rastering"],
     "description": "JS library and python scripts to process images rgb for cmyk usages",
-    "link": "https://gitlab.com/esad-gv1/epe/p5-RCS",
+    "link": "https://p5-rcs-0e6526.gitlab.io/",
+    "repo": "https://gitlab.com/esad-gv1/epe/p5-RCS",
     "images": [],
     "beginDate": "2024 11",
     "endDate": ""
@@ -24,7 +28,8 @@
     "type": "it",
     "tags": ["web2print", "vuejs", "js", "pagedjs", "md", "epe"],
     "description": "A markdown editor with a paginated previewer for web2print cases",
-    "link": "https://gitlab.com/esad-gv1/epe/markdown-editors/paged-markdown-editor",
+    "link": "https://paged-markdown-editor-8149d2.gitlab.io/",
+    "repo": "https://gitlab.com/esad-gv1/epe/markdown-editors/paged-markdown-editor",
     "images": [],
     "beginDate": "2025 01",
     "endDate": ""
@@ -37,13 +42,12 @@
       "matter.js",
       "openCV",
       "typography",
-      "animated",
-      "interactive",
       "webapp",
       "MIT"
     ],
     "description": "A web application that processes text data into textured and animated points with physical behaviors.",
     "link": "https://colorkinetype.com",
+    "repo": "https://github.com/rbottura/ColorKineType_v2",
     "images": [
       "./colorkinetype/input_layer.png",
       "./colorkinetype/render_layer.png",
@@ -75,23 +79,24 @@
     "endDate": ""
   },
   {
-    "title": "Flowers From Mars",
+    "title": "Flowers_From_Mars",
     "type": "creative",
     "tags": ["p5.js", "gamepad", "illustrations", "riso"],
     "description": "A concept exploring unknown biological life forms, manipulated with an Xbox controller on a web canvas.",
     "images": [
-      "./flowersfrommars/plancheFlower.png",
-      "./flowersfrommars/planche.webp",
-      "./flowersfrommars/2.webp"
+      "./Flowers_From_Mars/plancheFlower.png",
+      "./Flowers_From_Mars/planche.webp",
+      "./Flowers_From_Mars/2.webp"
     ],
     "beginDate": "2023 04",
     "endDate": "2023 05"
   },
   {
-    "title": "Projet Éclaté",
+    "title": "Projet_Éclaté",
     "type": "creative",
     "tags": ["p5.js", "3D", "blender", "animated", "sound synch", "video"],
     "description": "An experimental project manipulating 3D pieces to generate unique vessel-like designs.",
+    "link": "https://vimeo.com/",
     "images": [
       "./projeteclate/pencil_explo.png",
       "./projeteclate/pencil.png",
@@ -101,10 +106,11 @@
     "endDate": "2022 07"
   },
   {
-    "title": "Grid Sketches",
+    "title": "Grid_Sketches",
     "type": "creative",
     "tags": ["p5.js", "rastering", "animated", "generated"],
     "description": "Generated images and videos exploring a gridded interface to discretize images.",
+    "repo": "https://github.com/rbottura/grid_sketch",
     "images": ["./gridsketches/chaise.webp", "./gridsketches/chaiseExpo.webp"],
     "beginDate": "2023 11",
     "endDate": "2024 06"
