@@ -127,16 +127,16 @@ export default {
         cardStyle() {
             // Example: Using cardIndex to choose a relative image (e.g. card1-bck-img.png)
             // Adjust the path as needed based on your assets structure.
-            const relativeImage = `./medias/${this.project.title}/bg-img.png`
+            // const relativeImage = `./medias/${this.project.title}/bg-img.png`
 
             return {
                 /* Note: The first URL is drawn on top. Order them as needed. */
                 backgroundImage: `url(${this.cardTexture})`,
                 // backgroundImage: `url(${this.cardTexture}), url(${relativeImage})`,
                 // backgroundBlendMode: 'darken',
-                backgroundSize: '150%',
-                backgroundPosition: 'center',
-                // backgroundRepeat: 'repeat',
+                backgroundSize: '100%',
+                backgroundPosition: 'top left',
+                backgroundRepeat: 'repeat',
                 // borderImage: `url(${relativeImage})`
             };
         },
@@ -162,9 +162,9 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: .15;
+    opacity: .3;
     mix-blend-mode: darken;
-    filter: contrast(2) brightness(1.5);
+    filter: contrast(2) saturate(1.2) brightness(1.8);
 }
 
 .vcard-item {
@@ -235,6 +235,8 @@ export default {
 .description-class {
     font-family: roboto;
     font-size: 22px;
+    font-weight: 800;
+    line-height: normal;
 }
 
 .v-tabs {
