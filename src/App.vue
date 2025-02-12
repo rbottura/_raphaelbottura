@@ -11,7 +11,7 @@
       </template>
 
       <template v-else>
-        <v-app-bar elevation="1" density="compact">
+        <v-app-bar flat density="compact">
           <v-app-bar-title to="/">
             <a href="/">🧙‍♂️</a>
           </v-app-bar-title>
