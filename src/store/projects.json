@@ -6,9 +6,7 @@
     "description": "A web app mounted with p5 for a project released in March",
     "link": "https://bec2025.netlify.app/",
     "repo": "",
-    "images": [
-      "./Matrix/bg-img.png"
-    ],
+    "images": ["bg-img.png"],
     "beginDate": "2024 11",
     "endDate": "2025 03"
   },
@@ -19,7 +17,7 @@
     "description": "JS library and python scripts to process images rgb for cmyk usages",
     "link": "https://p5-rcs-0e6526.gitlab.io/",
     "repo": "https://gitlab.com/esad-gv1/epe/p5-RCS",
-    "images": [],
+    "images": ["test.png", "aff.png"],
     "beginDate": "2024 11",
     "endDate": ""
   },
@@ -30,29 +28,18 @@
     "description": "A markdown editor with a paginated previewer for web2print cases",
     "link": "https://paged-markdown-editor-8149d2.gitlab.io/",
     "repo": "https://gitlab.com/esad-gv1/epe/markdown-editors/paged-markdown-editor",
-    "images": [],
+    "images": ["ui.png", "ui2.png"],
     "beginDate": "2025 01",
     "endDate": ""
   },
   {
     "title": "ColorKineType",
     "type": "creative",
-    "tags": [
-      "p5.js",
-      "matter.js",
-      "openCV",
-      "typography",
-      "webapp",
-      "MIT"
-    ],
+    "tags": ["p5.js", "matter.js", "openCV", "typography", "webapp", "MIT"],
     "description": "A web application that processes text data into textured and animated points with physical behaviors.",
     "link": "https://colorkinetype.com",
     "repo": "https://github.com/rbottura/ColorKineType_v2",
-    "images": [
-      "./colorkinetype/input_layer.png",
-      "./colorkinetype/render_layer.png",
-      "./colorkinetype/render_image.png"
-    ],
+    "images": ["input_layer.png", "render_layer.png", "render_image.png"],
     "beginDate": "2022 05",
     "endDate": "2023 06"
   },
@@ -61,7 +48,16 @@
     "type": "creative",
     "tags": ["web2print", "exhibition", "animated"],
     "description": "Exhibition project using ColorKineType for communication printed media and animations for Instagram.",
-    "images": ["./bonjour/poster.png"],
+    "images": [
+      "bg-img.png",
+      "bonjour.png",
+      "bonjour_contraste_infos.png",
+      "bonjour_Maq.png",
+      "cartonTest.png",
+      "image_flyer_png.png",
+      "instaBjr2.mp4",
+      "poster.png"
+    ],
     "beginDate": "2023 11",
     "endDate": "2023 10"
   },
@@ -71,9 +67,9 @@
     "tags": ["p5.js", "pagedjs", "web2print", "interactive", "webapp"],
     "description": "A web application for manipulating graphic content in a layout document ready for printing.",
     "images": [
-      "./sketch2print/sketch2print_screen2_30.webp",
-      "./sketch2print/s2p_1.webp",
-      "./sketch2print/s2p_2.webp"
+      "sketch2print_screen2_30.webp",
+      "s2p_1.webp",
+      "s2p_2.webp"
     ],
     "beginDate": "2021 05",
     "endDate": ""
@@ -84,9 +80,9 @@
     "tags": ["p5.js", "gamepad", "illustrations", "riso"],
     "description": "A concept exploring unknown biological life forms, manipulated with an Xbox controller on a web canvas.",
     "images": [
-      "./Flowers_From_Mars/plancheFlower.png",
-      "./Flowers_From_Mars/planche.webp",
-      "./Flowers_From_Mars/2.webp"
+      "plancheFlower.png",
+      "planche.webp",
+      "2.webp"
     ],
     "beginDate": "2023 04",
     "endDate": "2023 05"
@@ -98,9 +94,9 @@
     "description": "An experimental project manipulating 3D pieces to generate unique vessel-like designs.",
     "link": "https://vimeo.com/",
     "images": [
-      "./projeteclate/pencil_explo.png",
-      "./projeteclate/pencil.png",
-      "./projeteclate/planes.png"
+      "pencil_explo.png",
+      "pencil.png",
+      "planes.png"
     ],
     "beginDate": "2022 06",
     "endDate": "2022 07"
@@ -111,7 +107,7 @@
     "tags": ["p5.js", "rastering", "animated", "generated"],
     "description": "Generated images and videos exploring a gridded interface to discretize images.",
     "repo": "https://github.com/rbottura/grid_sketch",
-    "images": ["./gridsketches/chaise.webp", "./gridsketches/chaiseExpo.webp"],
+    "images": ["chaise.webp", "chaiseExpo.webp"],
     "beginDate": "2023 11",
     "endDate": "2024 06"
   },
@@ -121,7 +117,7 @@
     "tags": ["all"],
     "description": "Various projects including animated 3D logos, interactive animations, and music videos.",
     "link": "https://vimeo.com/857095741",
-    "images": ["./others/plancheEclate.png", "./others/apear.gif"],
+    "images": ["plancheEclate.png", "apear.gif"],
     "beginDate": "2020 06",
     "endDate": "2023 07"
   }

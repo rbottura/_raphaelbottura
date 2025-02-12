@@ -9,8 +9,7 @@ import { aliases, md } from 'vuetify/iconsets/md'
 const myCustomLightTheme = {
     dark: false,
     colors: {
-        background: 'hsl(0, 0%, 98%)',
-        'background-opacity': 0,
+        background: 'hsl(0, 0%, 100%)',
         surface: '#ffffffff',
         'surface-bright': '#FFFFFF',
         'surface-light': '#EEEEEE',
@@ -48,11 +47,11 @@ const myCustomLightTheme = {
 const myCustomDarkTheme = {
     dark: true,
     colors: {
-        background: '#18171c',
+        background: '#151b23',
         surface: '#0d1117',
         'surface-bright': '#0d1117',
         'surface-light': '#151b23',
-        'surface-variant': '#424242',
+        'surface-variant': '#9b9393',
         'on-surface-variant': '#151b23',
         primary: '#FF4400',
         'primary-darken-1': '#1F5592',

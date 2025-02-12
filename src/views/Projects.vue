@@ -22,7 +22,7 @@ const projects = computed(() => projectStore.projects);
     flex-wrap: wrap;
     justify-content: center;
     gap: 3rem;
-    padding: 5rem 1rem;
+    /* padding: 5rem 1rem; */
     margin-top: 48px;
     /* background-color: var(--v-theme-background); */
     /* background-blend-mode: hard-light; */

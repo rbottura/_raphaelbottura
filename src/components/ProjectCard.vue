@@ -46,8 +46,8 @@
                                 class="mdi mdi-chevron-right carou-btn"></v-btn>
                         </template>
 
-                        <v-carousel-item v-for="(image, index) in project.images" :key="index" :src="`/medias/${image}`"
-                            cover @click="openImage(image)">
+                        <v-carousel-item v-for="(image, index) in project.images" :key="index" :src="`/medias/${project.title}/${image}`"
+                            cover @click="openImage(`${project.title}/${image}`)">
                         </v-carousel-item>
                     </v-carousel>
                 </v-tabs-window-item>
@@ -61,7 +61,7 @@
 
         <!-- Image Overlay -->
         <v-overlay v-model="dialog" close-on-content-click class="d-flex align-center justify-center">
-            <img :src="`/medias/${selectedImage}`" class="overlay-img"></img>
+            <img :src="`/medias/${selectedImage}`" class="overlay-card"></img>
         </v-overlay>
 
         <v-card-item id="card-img-overlay" :style="relativeCardImage">
@@ -112,7 +112,8 @@ export default {
     computed: {
         cardTexture() {
             if (this.project.type === 'creative') {
-                return './assets/img/shiny2_30.png'; // Default image for creative projects
+                // return './assets/img/shiny2_100_noise.png'; // Default image for creative projects
+                return './assets/img/shiny2_20_noise.png'; // Default image for creative projects
             } else if (this.project.type === 'it') {
                 return './assets/img/it_prism.png'; // Default image for IT projects
             }
@@ -174,8 +175,8 @@ export default {
 
 .vcard-item:not(:nth-child(2)) {
     width: 100%;
-    border-top: 2px solid var(--border-card);
-    box-sizing: content-box;
+    /* border-top: 2px solid var(--border-card); */
+    /* box-sizing: content-box; */
 }
 
 .v-chip {
@@ -255,13 +256,6 @@ export default {
     align-items: center;
     background-color: transparent;
     /* No unwanted background */
-}
-
-.overlay-img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-    /* Ensures the whole image fits */
 }
 
 .links-wrapper {
