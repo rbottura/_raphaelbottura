@@ -37,7 +37,7 @@ const myCustomLightTheme = {
         'activated-opacity': 0.12,
         'pressed-opacity': 0.12,
         'dragged-opacity': 0.08,
-        'theme-kbd': '#212529',
+        'theme-kbd': '#292121',
         'theme-on-kbd': '#FFFFFF',
         'theme-code': '#F5F5F5',
         'theme-on-code': '#000000',

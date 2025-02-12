@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <v-container id="main-app-container">
       <template v-if="isMobile">
         <v-bottom-navigation>
           <v-btn icon @click="toggleTheme">
@@ -12,8 +11,10 @@
       </template>
 
       <template v-else>
-        <v-app-bar flat rounded density="compact">
-          <v-app-bar-title>🧙‍♂️</v-app-bar-title>
+        <v-app-bar elevation="1" density="compact">
+          <v-app-bar-title to="/">
+            <a href="/">🧙‍♂️</a>
+          </v-app-bar-title>
 
           <template v-slot:append>
             <v-btn icon @click="toggleTheme">
@@ -24,9 +25,7 @@
           </template>
         </v-app-bar>
       </template>
-      <v-divider></v-divider>
       <router-view />
-      <v-divider></v-divider>
       <v-footer>
         <v-row justify="center" no-gutters>
           <v-col class="text-center mt-4" cols="12">
@@ -34,7 +33,6 @@
           </v-col>
         </v-row>
       </v-footer>
-    </v-container>
   </v-app>
 </template>
 
