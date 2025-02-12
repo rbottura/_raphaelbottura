@@ -52,7 +52,10 @@ const createProject = async () => {
     const tags = await askQuestion("Tags (comma-separated): ");
     const description = await askQuestion("Description: ");
     const link = await askQuestion("Project Link (or leave empty): ");
+    const repoLink = await askQuestion("Repo Link (or leave empty): ");
     const folderName = await askQuestion("Folder Name for Images: ");
+    const beginDate = await askQuestion("begin Date: ");
+    const endDate = await askQuestion("end Date: ");
 
     // Fetch image list
     const images = getImagesFromFolder(folderName);
@@ -64,7 +67,10 @@ const createProject = async () => {
         tags: tags.split(',').map(tag => tag.trim()),
         description,
         link: link || null,
-        images
+        repoLink: repoLink || null,
+        images,
+        beginDate,
+        endDate
     };
 
     // Get existing projects

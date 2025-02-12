@@ -1,5 +1,21 @@
 [
     {
+        "title": "YT_thumbnail",
+        "type": "creative",
+        "tags": [
+            "webapp",
+            "graphisme",
+            "youtube"
+        ],
+        "description": "A website to \"version-track\" my submissions for a youtube playlist design commission",
+        "link": "https://cafminia.netlify.app/",
+        "images": [
+          "caf_main.png"
+        ],
+        "beginDate": "2024 10",
+        "endDate": "2024 11"
+    },
+    {
         "title": "Cerebro",
         "type": "it",
         "tags": [
@@ -11,11 +27,13 @@
         "description": "p5js sketch to visualize my brain scans as tinted layers in a 3D space for immersion concept vue",
         "link": "https://editor.p5js.org/rbottura/sketches/QDTitB_fm",
         "images": [
-          "board.jpg",
-          "slice.png",
-          "slice2.png",
-          "slice3.png"
-        ]
+            "board.jpg",
+            "slice.png",
+            "slice2.png",
+            "slice3.png"
+        ],
+        "beginDate": "2024 11",
+        "endDate": "2025 01"
     },
     {
         "title": "Matrix",
@@ -80,7 +98,7 @@
         "title": "ColorKineType",
         "type": "creative",
         "tags": [
-            "p5.js",
+            "p5js",
             "matter.js",
             "openCV",
             "typography",
@@ -124,7 +142,7 @@
         "title": "Sketch-2-Print",
         "type": "creative",
         "tags": [
-            "p5.js",
+            "p5js",
             "pagedjs",
             "web2print",
             "interactive",
@@ -143,7 +161,7 @@
         "title": "Flowers_From_Mars",
         "type": "creative",
         "tags": [
-            "p5.js",
+            "p5js",
             "gamepad",
             "illustrations",
             "riso"
@@ -161,7 +179,7 @@
         "title": "Projet_Éclaté",
         "type": "creative",
         "tags": [
-            "p5.js",
+            "p5js",
             "3D",
             "blender",
             "animated",
@@ -182,7 +200,7 @@
         "title": "Grid_Sketches",
         "type": "creative",
         "tags": [
-            "p5.js",
+            "p5js",
             "rastering",
             "animated",
             "generated"
