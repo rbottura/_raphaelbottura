@@ -9,7 +9,7 @@ import { aliases, md } from 'vuetify/iconsets/md'
 const myCustomLightTheme = {
     dark: false,
     colors: {
-        background: 'hsl(0, 0%, 100%)',
+        background: 'hsl(0, 0%, 96%)',
         surface: '#ffffffff',
         'surface-bright': '#FFFFFF',
         'surface-light': '#EEEEEE',
