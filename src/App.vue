@@ -63,8 +63,4 @@ export default {
 .v-divider {
   margin: 5rem 1rem;
 }
-
-.v-footer {
-  margin-top: 50px;
-}
 </style>

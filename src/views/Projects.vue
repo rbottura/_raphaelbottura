@@ -1,10 +1,10 @@
 // components/Projects.vue
 <template>
-    <v-container class="project-deck board">
+    <div class="project-deck board">
         <div v-for="(project, index) in projects" :key="index" class="project-card-wrapper">
             <ProjectCard :project="project" />
         </div>
-    </v-container>
+    </div>
 </template>
 
 <script setup>

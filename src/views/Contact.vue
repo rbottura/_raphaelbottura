@@ -1,5 +1,5 @@
 <template>
-    <v-container class="board">
+    <div class="board">
         <v-card class="global-card-class mx-auto rounded-lg" elevation="4" subtitle="Developper - p5js fan" title="Raphael Bottura">
             <template v-slot:prepend>
                 <v-avatar size="64">
@@ -29,7 +29,7 @@
                 </v-list>
             </v-card-text>
         </v-card>
-    </v-container>
+    </div>
 </template>
 <script>
 export default {

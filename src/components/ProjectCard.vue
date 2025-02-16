@@ -22,17 +22,21 @@
                 <v-tabs-window-item value="one" class="description-tab-container">
                     <p class="description-class">
                         {{ project.description }}
-                        <v-card-actions class="links-wrapper">
-                            <v-btn class="small-btn" variant="elevated" v-if="project.link" :href="project.link"
-                                target="_blank" append-icon="mdi-open-in-new">
-                                visit live app
-                            </v-btn>
-                            <v-btn class="small-btn" variant="elevated" v-if="project.repo" :href="project.repo"
-                                target="_blank" append-icon="mdi-open-in-new">
-                                Go to public Repo
-                            </v-btn>
-                        </v-card-actions>
                     </p>
+                    <v-card-actions class="links-wrapper">
+                        <v-btn class="small-btn card-link-btn" rounded="0" variant="elevated" flat v-if="project.link" :href="project.link"
+                            target="_blank" append-icon="mdi-open-in-new">
+                            visit live app
+                        </v-btn>
+                        <v-btn class="small-btn card-link-btn" rounded="0" variant="elevated" flat v-if="project.repo" :href="project.repo"
+                            target="_blank" append-icon="mdi-open-in-new">
+                            Go to public Repo
+                        </v-btn>
+                        <v-btn class="small-btn card-link-btn" rounded="0" variant="elevated" flat v-if="project.video" :href="project.video"
+                            target="_blank" append-icon="mdi-open-in-new">
+                            Watch video
+                        </v-btn>
+                    </v-card-actions>
                 </v-tabs-window-item>
 
                 <v-tabs-window-item class="images-tab-container" value="two">
@@ -46,8 +50,9 @@
                                 class="mdi mdi-chevron-right carou-btn"></v-btn>
                         </template>
 
-                        <v-carousel-item v-for="(image, index) in project.images" :key="index" :src="`/medias/${project.title}/${image}`"
-                            cover @click="openImage(`${project.title}/${image}`)">
+                        <v-carousel-item v-for="(image, index) in project.images" :key="index"
+                            :src="`/medias/${project.title}/${image}`" cover
+                            @click="openImage(`${project.title}/${image}`)">
                         </v-carousel-item>
                     </v-carousel>
                 </v-tabs-window-item>
@@ -163,9 +168,19 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: .3;
+    opacity: .1;
     mix-blend-mode: darken;
-    filter: contrast(2) saturate(1.2) brightness(1.8);
+    filter: contrast(2) saturate(2) brightness(1.1);
+}
+
+.description-class {
+    font-family: roboto;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: normal;
+    margin: 10px 5px;
+    border-radius: 5px;
+    /* mix-blend-mode: exclusion; */
 }
 
 .vcard-item {
@@ -181,7 +196,6 @@ export default {
 
 .v-chip {
     margin: 2px;
-    backdrop-filter: invert(20%);
     opacity: .7;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     /* font-size: 16px; */
@@ -233,13 +247,6 @@ export default {
     opacity: 0.9;
 }
 
-.description-class {
-    font-family: roboto;
-    font-size: 22px;
-    font-weight: 800;
-    line-height: normal;
-}
-
 .v-tabs {
     /* bottom: 8px; */
     position: absolute;
@@ -265,6 +272,7 @@ export default {
     flex-wrap: wrap;
     bottom: 8px;
 }
+
 </style>
 
 <style>
