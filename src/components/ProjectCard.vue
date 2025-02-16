@@ -159,6 +159,7 @@ export default {
 </script>
 
 <style scoped>
+
 #card-img-overlay {
     display: block;
     pointer-events: none;

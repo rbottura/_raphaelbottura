@@ -51,6 +51,7 @@ const createProject = async () => {
     const type = await askQuestion("Project Type (creative/it): ");
     const tags = await askQuestion("Tags (comma-separated): ");
     const description = await askQuestion("Description: ");
+    const video = await askQuestion("Video Link ? (or leave empty): ");
     const link = await askQuestion("Project Link (or leave empty): ");
     const repoLink = await askQuestion("Repo Link (or leave empty): ");
     const folderName = await askQuestion("Folder Name for Images: ");
@@ -66,6 +67,7 @@ const createProject = async () => {
         type,
         tags: tags.split(',').map(tag => tag.trim()),
         description,
+        video: video || null,
         link: link || null,
         repoLink: repoLink || null,
         images,

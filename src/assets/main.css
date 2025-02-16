@@ -54,7 +54,7 @@ button:focus-visible {
     flex-wrap: wrap;
     justify-content: center;
     gap: 3rem;
-    margin: 10rem 20px;
+    margin: 4rem 20px;
 }
 
 .v-footer {
