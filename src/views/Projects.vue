@@ -1,6 +1,4 @@
-// components/Projects.vue
 <template>
-    <v-divider></v-divider>
     <div id="btn-toggle-wrapper">
         <v-btn-toggle v-model="activeFilter" density="compact" mandatory>
             <v-btn value="all">All</v-btn>
@@ -32,10 +30,6 @@ console.log(ref(projectStore.projects))
 
 </script>
 <style scoped>
-.v-divider {
-    margin: 3rem 3rem;
-}
-
 .project-card-wrapper {
     aspect-ratio: 2/3;
 

@@ -25,6 +25,7 @@
           </template>
         </v-app-bar>
       </template>
+      <v-divider></v-divider>
       <router-view />
       <v-footer>
         <v-row justify="center" no-gutters>
@@ -61,6 +62,6 @@ export default {
 </script>
 <style>
 .v-divider {
-  margin: 5rem 1rem;
+    margin: 3rem 3rem;
 }
 </style>
