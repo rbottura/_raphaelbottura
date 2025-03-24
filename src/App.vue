@@ -1,39 +1,39 @@
 <template>
   <v-app>
-      <template v-if="isMobile">
-        <v-bottom-navigation>
+    <template v-if="isMobile">
+      <v-bottom-navigation>
+        <v-btn icon @click="toggleTheme">
+          <v-icon class="mdi mdi-brightness-4"></v-icon>
+        </v-btn>
+        <v-btn to="/contact">Contact</v-btn>
+        <v-btn to="/projects">Explore</v-btn>
+      </v-bottom-navigation>
+    </template>
+
+    <template v-else>
+      <v-app-bar flat density="compact">
+        <v-app-bar-title to="/">
+          <a href="/">🧙‍♂️</a>
+        </v-app-bar-title>
+
+        <template v-slot:append>
           <v-btn icon @click="toggleTheme">
             <v-icon class="mdi mdi-brightness-4"></v-icon>
           </v-btn>
-          <v-btn to="/contact">Contact</v-btn>
           <v-btn to="/projects">Explore</v-btn>
-        </v-bottom-navigation>
-      </template>
-
-      <template v-else>
-        <v-app-bar flat density="compact">
-          <v-app-bar-title to="/">
-            <a href="/">🧙‍♂️</a>
-          </v-app-bar-title>
-
-          <template v-slot:append>
-            <v-btn icon @click="toggleTheme">
-              <v-icon class="mdi mdi-brightness-4"></v-icon>
-            </v-btn>
-            <v-btn to="/projects">Explore</v-btn>
-            <v-btn to="/contact">Contact</v-btn>
-          </template>
-        </v-app-bar>
-      </template>
-      <v-divider></v-divider>
-      <router-view />
-      <v-footer>
-        <v-row justify="center" no-gutters>
-          <v-col class="text-center mt-4" cols="12">
-            {{ new Date().getFullYear() }} — <strong>raphaelbottura.com</strong>
-          </v-col>
-        </v-row>
-      </v-footer>
+          <v-btn to="/contact">Contact</v-btn>
+        </template>
+      </v-app-bar>
+    </template>
+    <v-divider></v-divider>
+    <router-view />
+    <v-footer>
+      <v-row justify="center" no-gutters>
+        <v-col class="text-center mt-4" cols="12">
+          {{ new Date().getFullYear() }} — <strong>raphaelbottura.com</strong>
+        </v-col>
+      </v-row>
+    </v-footer>
   </v-app>
 </template>
 
@@ -62,6 +62,6 @@ export default {
 </script>
 <style>
 .v-divider {
-    margin: 3rem 3rem;
+  margin: 2rem 3rem;
 }
 </style>

@@ -20,7 +20,7 @@
     "endDate": "2025 01"
   },
   {
-    "title": "Matrix",
+    "title": "BEC_2025",
     "type": "creative",
     "tags": ["p5js", "js", "3D", "generative", "interactive"],
     "description": "A web app mounted with p5 for a project released in March 2025",
@@ -148,21 +148,5 @@
     "images": ["download.png", "run2.gif"],
     "beginDate": "2023 07",
     "endDate": "2023 08"
-  },
-  {
-    "title": "Others",
-    "type": "creative",
-    "tags": ["all"],
-    "description": "Various projects including animated 3D logos, interactive animations, and music videos.",
-    "link": "https://vimeo.com/857095741",
-    "images": [
-      "plancheEclate.png",
-      "apear.gif",
-      "vasa3.gif",
-      "run2.gif",
-      "bjr2.gif"
-    ],
-    "beginDate": "2020 06",
-    "endDate": "2023 07"
   }
 ]

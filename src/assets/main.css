@@ -38,13 +38,6 @@ button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
 }
 
-.v-card-title {
-    padding: 6px 6px 2px 8px;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 0px;
-}
-
 .v-card-actions {
     min-height: 0px;
 }
@@ -53,7 +46,7 @@ button:focus-visible {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 3rem;
+    gap: 1rem;
     margin: 4rem 20px;
 }
 

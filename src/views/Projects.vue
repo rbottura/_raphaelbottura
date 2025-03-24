@@ -30,12 +30,6 @@ console.log(ref(projectStore.projects))
 
 </script>
 <style scoped>
-.project-card-wrapper {
-    aspect-ratio: 2/3;
-
-    width: 300px;
-    height: 460px;
-}
 
 #btn-toggle-wrapper {
     display: flex;
@@ -44,4 +38,5 @@ console.log(ref(projectStore.projects))
     align-items: center;
 }
 </style>
-<style></style>
+<style>
+</style>

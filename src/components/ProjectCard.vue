@@ -1,13 +1,16 @@
 <template>
-    <v-skeleton-loader type="card">
-        <v-card :class="cardClass" class="rounded-lg" elevation="4" max-width="300px" :style="cardStyle" height="460px">
+    <!-- <v-skeleton-loader type="card"> -->
+    <v-card :class="cardClass" class="rounded-lg" elevation="4" width="100px" :style="cardStyle">
 
-            <v-card-title class="vcard-item">
-                <v-badge dot :color="getBadgeColor(project)" inline>
+        <v-card-title class="vcard-item">
+            <v-badge dot :color="getBadgeColor(project)" inline>
+                <div class="title-text-wrapper">
                     {{ project.title }}
-                </v-badge>
-            </v-card-title>
+                </div>
+            </v-badge>
+        </v-card-title>
 
+        <div class="card-core-items">
             <v-card-item class="tags-wrapper vcard-item">
                 <v-chip v-for="(tag, index) in project.tags" :key="index" class="tags-class" variant="elevated"
                     size="small">
@@ -72,11 +75,12 @@
                 <img :src="`/medias/${selectedImage}`" class="overlay-card"></img>
             </v-overlay>
 
-            <v-card-item id="card-img-overlay" :style="relativeCardImage">
+        </div>
+        <v-card-item id="card-img-overlay" :style="relativeCardImage">
 
-            </v-card-item>
-        </v-card>
-    </v-skeleton-loader>
+        </v-card-item>
+    </v-card>
+    <!-- </v-skeleton-loader> -->
 </template>
 
 <script>
@@ -141,7 +145,7 @@ export default {
 
             return {
                 /* Note: The first URL is drawn on top. Order them as needed. */
-                backgroundImage: `url(${this.cardTexture})`,
+                // backgroundImage: `url(${this.cardTexture})`,
                 // backgroundImage: `url(${this.cardTexture}), url(${relativeImage})`,
                 // backgroundBlendMode: 'darken',
                 backgroundSize: '100%',
@@ -163,18 +167,50 @@ export default {
 </script>
 
 <style scoped>
+.v-card {
+    display: block;
+    /* border: rgb(103, 103, 103) 2px solid; */
+    aspect-ratio: 2/3;
+}
+
 #card-img-overlay {
     display: block;
     pointer-events: none;
     position: absolute;
     z-index: -1;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
     width: 100%;
     height: 100%;
-    opacity: .1;
-    mix-blend-mode: darken;
-    filter: contrast(2) saturate(2) brightness(1.1);
+    opacity: 1;
+    filter: grayscale(0) contrast(1.4) saturate(1);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    /* padding: -5px; */
+}
+
+#card-img-overlay:hover {
+    filter: blur(5px) saturate(1.4);
+}
+
+.v-card-title {
+    padding: 0px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 0px;
+
+    background-color: rgb(41, 41, 41);
+    color: white;
+    text-overflow: ellipsis;
+}
+
+.title-text-wrapper {
+    width: 80px;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    overflow: hidden;
 }
 
 .description-class {
@@ -184,7 +220,11 @@ export default {
     line-height: normal;
     margin: 10px 5px;
     border-radius: 5px;
-    /* mix-blend-mode: exclusion; */
+    opacity: 1;
+}
+
+.card-core-items {
+    display: none;
 }
 
 .vcard-item {
@@ -194,8 +234,6 @@ export default {
 
 .vcard-item:not(:nth-child(2)) {
     width: 100%;
-    /* border-top: 2px solid var(--border-card); */
-    /* box-sizing: content-box; */
 }
 
 .v-chip {
@@ -218,7 +256,6 @@ export default {
 }
 
 .fixed-tab-window {
-    height: 308px;
     overflow: hidden;
 }
 
@@ -277,16 +314,5 @@ export default {
     bottom: 8px;
 }
 </style>
-
 <style>
-.v-badge {
-    width: 100%;
-}
-
-.v-badge--inline .v-badge__wrapper {
-    width: 100%;
-    justify-content: space-between !important;
-    margin: 0px !important;
-    padding: 0px 10px 0px 0px;
-}
 </style>
