@@ -25,8 +25,10 @@
         </template>
       </v-app-bar>
     </template>
-    <v-divider></v-divider>
+
+    <!-- <v-divider></v-divider> -->
     <router-view />
+
     <v-footer>
       <v-row justify="center" no-gutters>
         <v-col class="text-center mt-4" cols="12">

@@ -42,14 +42,18 @@ button:focus-visible {
     min-height: 0px;
 }
 
-.board {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin: 4rem 20px;
-}
-
 .v-footer {
     padding-bottom: 56px;
+}
+
+.v-badge {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    padding: 4px 0px;
+}
+
+.v-badge__wrapper {
+    width: 100%;
+    justify-content: space-between;
 }

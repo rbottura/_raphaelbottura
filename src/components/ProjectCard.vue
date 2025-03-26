@@ -1,16 +1,14 @@
 <template>
     <!-- <v-skeleton-loader type="card"> -->
-    <v-card :class="cardClass" class="rounded-lg" elevation="4" width="100px" :style="cardStyle">
+    <v-card :class="['rounded-lg', { 'spotlight-card': isSpotlight }]" elevation="4" :style="cardStyle">
 
         <v-card-title class="vcard-item">
-            <v-badge dot :color="getBadgeColor(project)" inline>
-                <div class="title-text-wrapper">
-                    {{ project.title }}
-                </div>
-            </v-badge>
+            <div class="title-text-container">
+                {{ project.title }}
+            </div>
         </v-card-title>
 
-        <div class="card-core-items">
+        <div class="card-core-items" v-if="isSpotlight">
             <v-card-item class="tags-wrapper vcard-item">
                 <v-chip v-for="(tag, index) in project.tags" :key="index" class="tags-class" variant="elevated"
                     size="small">
@@ -66,8 +64,8 @@
             </v-card-text>
 
             <v-tabs class="vcard-item" color="customBlue" v-model="tab" align-tabs="center" density="compact">
-                <v-tab class="small-btn" value="one">Description</v-tab>
-                <v-tab class="small-btn" value="two">Images</v-tab>
+                <v-tab variant="flat" class="small-btn" value="one">Description</v-tab>
+                <v-tab variant="flat" class="small-btn" value="two">Images</v-tab>
             </v-tabs>
 
             <!-- Image Overlay -->
@@ -76,8 +74,8 @@
             </v-overlay>
 
         </div>
-        <v-card-item id="card-img-overlay" :style="relativeCardImage">
 
+        <v-card-item v-if="!isSpotlight" id="card-img-overlay" :style="relativeCardImage">
         </v-card-item>
     </v-card>
     <!-- </v-skeleton-loader> -->
@@ -86,7 +84,8 @@
 <script>
 export default {
     props: {
-        project: Object
+        project: Object,
+        isSpotlight: Boolean
     },
     data: () => ({
         tab: null,
@@ -145,12 +144,12 @@ export default {
 
             return {
                 /* Note: The first URL is drawn on top. Order them as needed. */
-                // backgroundImage: `url(${this.cardTexture})`,
+                backgroundImage: `url(${this.cardTexture})`,
                 // backgroundImage: `url(${this.cardTexture}), url(${relativeImage})`,
-                // backgroundBlendMode: 'darken',
+                backgroundBlendMode: 'darken',
                 backgroundSize: '100%',
                 backgroundPosition: 'top left',
-                backgroundRepeat: 'repeat',
+                // backgroundRepeat: 'repeat',
                 // borderImage: `url(${relativeImage})`
             };
         },
@@ -170,7 +169,30 @@ export default {
 .v-card {
     display: block;
     /* border: rgb(103, 103, 103) 2px solid; */
+    max-width: 300px; /* Ensures a fixed width in normal mode */
+    min-width: 120px;
     aspect-ratio: 2/3;
+    transition: transform 0.5s ease-in-out, width 0.5s ease-in-out, opacity 0.5s;
+}
+
+.spotlight-card {
+    width: 300px;
+    max-width: 90vw;
+    z-index: 10;
+}
+
+.v-card:not(.spotlight-card) {
+    width: 80px;
+}
+
+/* On Deck Mode */
+.v-card:not(.spotlight-card) {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.v-card:not(.spotlight-card):hover {
+    transform: scale(1.02);
 }
 
 #card-img-overlay {
@@ -178,34 +200,35 @@ export default {
     pointer-events: none;
     position: absolute;
     z-index: -1;
-    top: 0px;
+    top: 1em;
+    height: calc(100% - 1em);
     left: 0px;
     width: 100%;
-    height: 100%;
     opacity: 1;
     filter: grayscale(0) contrast(1.4) saturate(1);
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    /* padding: -5px; */
-}
-
-#card-img-overlay:hover {
-    filter: blur(5px) saturate(1.4);
+    /* mix-blend-mode: darken; */
 }
 
 .v-card-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 0px;
-    font-size: 14px;
+    width: 100%;
+    
+    font-size: 1em;
+
     font-weight: 700;
-    line-height: 0px;
+    line-height: 1rem;
 
     background-color: rgb(41, 41, 41);
     color: white;
     text-overflow: ellipsis;
 }
 
-.title-text-wrapper {
-    width: 80px;
+.title-text-container {
+    padding-left: 4px;
+    width: 100%;
     display: block;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -224,7 +247,11 @@ export default {
 }
 
 .card-core-items {
-    display: none;
+    display: flex;
+    width: 100%;
+    flex-flow: column;
+    height: 95%;
+    justify-content: space-between;
 }
 
 .vcard-item {
@@ -288,12 +315,6 @@ export default {
     opacity: 0.9;
 }
 
-.v-tabs {
-    /* bottom: 8px; */
-    position: absolute;
-    width: calc(100% - 16px);
-}
-
 .overlay-card {
     max-width: 90vw;
     /* Ensures it never overflows the viewport width */
@@ -308,11 +329,9 @@ export default {
 
 .links-wrapper {
     display: flex;
-    position: absolute;
     flex-direction: row;
     flex-wrap: wrap;
     bottom: 8px;
 }
 </style>
-<style>
-</style>
+<style></style>
