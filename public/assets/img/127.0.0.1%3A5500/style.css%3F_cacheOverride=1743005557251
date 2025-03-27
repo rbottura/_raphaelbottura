@@ -1,0 +1,75 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(230, 230, 230);
+  /* overflow: hidden; */
+}
+
+p {
+  margin: 0;
+}
+
+@font-face {
+  font-family: metaF;
+  src: local("mn128_clean_META"), url('./assets/fonts/mn128_clean_META.otf') format("opentype");
+  /* font-weight: 700; */
+}
+
+@font-face {
+  font-family: notoEmoji;
+  src: url('./assets/fonts/NotoEmoji-VariableFont_wght.ttf');
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.label {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  height: 100%;
+}
+
+#test-metafont {
+  display: block;
+  position: absolute;
+  margin-top: 30px;
+  font-family: metaF;
+  font-size: 350px;
+}
+
+#status-container {
+  display: flex;
+  position: absolute;
+  margin-left: 20px;
+}
+
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode:vertical-lr;
+  /* width: 200px; */
+}
+
+option {
+  padding: 0;
+}
+
+.p5c-container {
+  z-index: 500;
+}
+
+#p5-base-dashboard {
+  display: flex;
+  flex-direction: row;
+  /* width: 100vw; */
+  /* height: 100vh; */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
