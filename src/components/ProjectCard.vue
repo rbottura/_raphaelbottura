@@ -55,7 +55,8 @@
                             </template>
 
                             <v-carousel-item v-for="(image, index) in project.images" :key="index"
-                                :src="`/medias/${project.title}/${image}`" cover
+                                :src="`/medias/${project.title}/${image}`"
+                                :lazy-src="`/medias/${project.title}/thumbnail_${image}`" loading="lazy" cover
                                 @click="openImage(`${project.title}/${image}`)">
                             </v-carousel-item>
                         </v-carousel>
@@ -82,6 +83,9 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
+import { VCard, VBadge, VChip, VTabs, VTab, VCarousel, VCarouselItem, VOverlay, VBtn } from 'vuetify/components'
+
 export default {
     props: {
         project: Object,
@@ -169,7 +173,8 @@ export default {
 .v-card {
     display: block;
     /* border: rgb(103, 103, 103) 2px solid; */
-    max-width: 300px; /* Ensures a fixed width in normal mode */
+    max-width: 300px;
+    /* Ensures a fixed width in normal mode */
     min-width: 120px;
     aspect-ratio: 2/3;
     transition: transform 0.5s ease-in-out, width 0.5s ease-in-out, opacity 0.5s;
@@ -215,7 +220,7 @@ export default {
     justify-content: space-between;
     padding: 0px;
     width: 100%;
-    
+
     font-size: 1em;
 
     font-weight: 700;
