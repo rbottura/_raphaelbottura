@@ -57,3 +57,11 @@ button:focus-visible {
     width: 100%;
     justify-content: space-between;
 }
+
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .4rem;
+    margin: 4rem 20px;
+}

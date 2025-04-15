@@ -49,13 +49,6 @@ const nonSpotlightProjects = computed(() => {
 });
 </script>
 <style scoped>
-.board {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: .4rem;
-    margin: 4rem 20px;
-}
 
 /* Spotlight Wrapper */
 .spotlight-wrapper {
