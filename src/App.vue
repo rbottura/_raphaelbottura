@@ -26,13 +26,12 @@
       </v-app-bar>
     </template>
 
-    <!-- <v-divider></v-divider> -->
     <router-view />
 
     <v-footer>
       <v-row justify="center" no-gutters>
         <v-col class="text-center mt-4" cols="12">
-          {{ new Date().getFullYear() }} — <strong>raphaelbottura.com</strong>
+          {{ new Date().getFullYear() }} — <strong>©️ raphaelbottura.com</strong>
         </v-col>
       </v-row>
     </v-footer>
@@ -63,7 +62,4 @@ export default {
 }
 </script>
 <style>
-.v-divider {
-  margin: 2rem 3rem;
-}
 </style>

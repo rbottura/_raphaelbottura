@@ -1,19 +1,19 @@
 <template>
 
     <!-- Spotlight Card Section -->
-    <transition name="spotlight">
+    <v-expand-transition>
         <div v-if="spotlightProject" class="spotlight-wrapper">
             <ProjectCard :project="spotlightProject" :isSpotlight="true" />
             <v-btn class="remove-spotlight" @click="spotlightProject = null">Remove Spotlight</v-btn>
         </div>
-    </transition>
+    </v-expand-transition>
 
     <!-- Deck of Project Cards -->
     <div id="btn-toggle-container">
         <v-btn-toggle id="btn-toggle-wrapper" v-model="activeFilter" density="compact" mandatory>
             <v-btn value="all">All</v-btn>
             <v-btn value="creative">Creative</v-btn>
-            <v-btn value="it">IT</v-btn>
+            <v-btn value="it">I.T.</v-btn>
         </v-btn-toggle>
     </div>
     <div class="project-deck board">
@@ -65,7 +65,7 @@ const nonSpotlightProjects = computed(() => {
     display: flex;
     opacity: 1;
     aspect-ratio: 2/3;
-    transition: opacity 0.3s ease-in-out, transform 0.4s ease;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease;
 }
 
 .project-card-wrapper.minified {
@@ -76,7 +76,7 @@ const nonSpotlightProjects = computed(() => {
 /* Spotlight Animation */
 .spotlight-enter-active,
 .spotlight-leave-active {
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .spotlight-enter-from,
@@ -89,7 +89,6 @@ const nonSpotlightProjects = computed(() => {
     margin-top: 10px;
     color: red;
     cursor: pointer;
-    margin-top: 30px;
 }
 
 #btn-toggle-wrapper {

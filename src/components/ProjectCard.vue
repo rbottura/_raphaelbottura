@@ -177,7 +177,10 @@ export default {
     /* Ensures a fixed width in normal mode */
     min-width: 120px;
     aspect-ratio: 2/3;
-    transition: transform 0.5s ease-in-out, width 0.5s ease-in-out, opacity 0.5s;
+    transition: transform 0.2s ease-in-out, width 0.5s ease-in-out, opacity 0.5s;
+    border: grey double 3px;
+
+    /* transition: ; */
 }
 
 .spotlight-card {
@@ -187,7 +190,7 @@ export default {
 }
 
 .v-card:not(.spotlight-card) {
-    width: 80px;
+    width: 150px;
 }
 
 /* On Deck Mode */
@@ -218,16 +221,17 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0px;
+    padding: 2px;
     width: 100%;
 
-    font-size: 1em;
+    font-size: .8em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 
-    font-weight: 700;
+    font-weight: 400;
     line-height: 1rem;
 
-    background-color: rgb(41, 41, 41);
-    color: white;
+    background-color: rgb(228, 228, 228);
+    color: rgb(69, 69, 69);
     text-overflow: ellipsis;
 }
 
@@ -237,7 +241,7 @@ export default {
     display: block;
     white-space: nowrap;
     text-overflow: ellipsis;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     overflow: hidden;
 }
 
