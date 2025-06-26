@@ -1,29 +1,3 @@
-<template>
-
-    <!-- Spotlight Card Section -->
-    <v-expand-transition>
-        <div v-if="spotlightProject" class="spotlight-wrapper">
-            <ProjectCard :project="spotlightProject" :isSpotlight="true" />
-            <v-btn class="remove-spotlight" @click="spotlightProject = null">Remove Spotlight</v-btn>
-        </div>
-    </v-expand-transition>
-
-    <!-- Deck of Project Cards -->
-    <div id="btn-toggle-container">
-        <v-btn-toggle id="btn-toggle-wrapper" v-model="activeFilter" density="compact" mandatory>
-            <v-btn value="all">All</v-btn>
-            <v-btn value="creative">Creative</v-btn>
-            <v-btn value="it">I.T.</v-btn>
-        </v-btn-toggle>
-    </div>
-    <div class="project-deck board">
-        <div v-for="(project, index) in filteredProjects" :key="index" class="project-card-wrapper"
-            :class="{ 'minified': spotlightProject }" @click="setSpotlight(project)">
-            <ProjectCard :project="project" :isSpotlight="false" />
-
-        </div>
-    </div>
-</template>
 <script setup>
 import { ref, computed } from 'vue';
 import ProjectCard from '@/components/ProjectCard.vue';
@@ -48,15 +22,42 @@ const nonSpotlightProjects = computed(() => {
     return filteredProjects.value.filter(project => project !== spotlightProject.value);
 });
 </script>
-<style scoped>
+<template>
+    <div id="btn-toggle-container">
+        <v-btn-toggle id="btn-toggle-wrapper" v-model="activeFilter" density="compact" mandatory>
+            <v-btn value="all">All</v-btn>
+            <v-btn value="creative">Creative</v-btn>
+            <v-btn value="it">I.T.</v-btn>
+        </v-btn-toggle>
+    </div>
+    <!-- Spotlight Card Section -->
+    <v-expand-transition>
+        <div v-if="spotlightProject" class="spotlight-wrapper">
+            <ProjectCard :project="spotlightProject" :isSpotlight="true" />
+            <v-btn class="remove-spotlight" @click="spotlightProject = null">Remove Spotlight</v-btn>
+        </div>
+    </v-expand-transition>
 
+    <!-- Deck of Project Cards -->
+    <div class="project-deck board">
+        <div v-for="(project, index) in projects" :key="index" class="project-card-wrapper"
+            :class="{ 'minified': spotlightProject }" @click="setSpotlight(project)">
+
+            <v-expand-x-transition>
+                <ProjectCard v-if="activeFilter === 'all' || project.type === activeFilter" :project="project" :isSpotlight="false" class="mx-auto deck-card"/>
+            </v-expand-x-transition>
+        </div>
+    </div>
+</template>
+
+<style scoped>
 /* Spotlight Wrapper */
 .spotlight-wrapper {
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    margin-top: 98px;
+    margin-top: 20px;
     gap: 20px;
 }
 
@@ -65,12 +66,13 @@ const nonSpotlightProjects = computed(() => {
     display: flex;
     opacity: 1;
     aspect-ratio: 2/3;
-    transition: opacity 0.3s ease-in-out, transform 0.2s ease;
+    width: 200px;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease, width .3s ease;
 }
 
 .project-card-wrapper.minified {
     opacity: 1;
-    transform: scale(0.9);
+    width: 100px;
 }
 
 /* Spotlight Animation */
@@ -92,8 +94,11 @@ const nonSpotlightProjects = computed(() => {
 }
 
 #btn-toggle-wrapper {
-    margin-top: 4rem;
     justify-content: center;
     width: 100%;
 }
+/* 
+.v-card:not(.spotlight-card) {
+    width: 150px;
+} */
 </style>

@@ -76,7 +76,8 @@
 
         </div>
 
-        <v-card-item v-if="!isSpotlight" id="card-img-overlay" :style="relativeCardImage">
+        <v-card-item v-if="!isSpotlight" id="card-img-overlay" >
+            <v-img :src="`/medias/${project.title}/bg-img.webp`" loading="lazy" height="100%" cover />
         </v-card-item>
     </v-card>
     <!-- </v-skeleton-loader> -->
@@ -158,7 +159,7 @@ export default {
             };
         },
         relativeCardImage() {
-            const relativeImage = `./medias/${this.project.title}/bg-img.png`
+            const relativeImage = `./medias/${this.project.title}/bg-img.webp`
             return {
                 backgroundImage: `url(${relativeImage})`,
                 backgroundSize: 'cover',
@@ -175,7 +176,7 @@ export default {
     /* border: rgb(103, 103, 103) 2px solid; */
     max-width: 300px;
     /* Ensures a fixed width in normal mode */
-    min-width: 120px;
+    /* min-width: 120px; */
     aspect-ratio: 2/3;
     transition: transform 0.2s ease-in-out, width 0.5s ease-in-out, opacity 0.5s;
     border: grey double 3px;
@@ -187,10 +188,6 @@ export default {
     width: 300px;
     max-width: 90vw;
     z-index: 10;
-}
-
-.v-card:not(.spotlight-card) {
-    width: 150px;
 }
 
 /* On Deck Mode */
@@ -208,8 +205,8 @@ export default {
     pointer-events: none;
     position: absolute;
     z-index: -1;
-    top: 1em;
-    height: calc(100% - 1em);
+    top: .5em;
+    padding: 0;
     left: 0px;
     width: 100%;
     opacity: 1;
@@ -224,10 +221,12 @@ export default {
     padding: 2px;
     width: 100%;
 
-    font-size: .8em;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1em;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
 
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1rem;
 
     background-color: rgb(228, 228, 228);
@@ -343,4 +342,3 @@ export default {
     bottom: 8px;
 }
 </style>
-<style></style>

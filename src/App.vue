@@ -26,7 +26,9 @@
       </v-app-bar>
     </template>
 
-    <router-view />
+    <div class="main-container">
+      <router-view />
+    </div>
 
     <v-footer>
       <v-row justify="center" no-gutters>
@@ -62,4 +64,8 @@ export default {
 }
 </script>
 <style>
+.main-container {
+  margin-top: 48px;
+  padding: 15px 8px;
+}
 </style>
