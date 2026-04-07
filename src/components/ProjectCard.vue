@@ -77,7 +77,7 @@
         </div>
 
         <v-card-item v-if="!isSpotlight" id="card-img-overlay" >
-            <v-img :src="`/medias/${project.title}/bg-img.webp`" loading="lazy" height="100%" cover />
+            <v-img :src="`/medias/${project.title}/bg-img.webp`" loading="lazy" contain />
         </v-card-item>
     </v-card>
     <!-- </v-skeleton-loader> -->
@@ -179,7 +179,7 @@ export default {
     /* min-width: 120px; */
     aspect-ratio: 2/3;
     transition: transform 0.2s ease-in-out, width 0.5s ease-in-out, opacity 0.5s;
-    border: grey double 3px;
+    /* border: grey double 3px; */
 
     /* transition: ; */
 }
@@ -205,11 +205,14 @@ export default {
     pointer-events: none;
     position: absolute;
     z-index: -1;
-    top: .5em;
-    padding: 0;
+    /* top: .5em; */
+    padding: 0; 
     left: 0px;
     width: 100%;
+    height: 80%;
+    bottom: 0px;
     opacity: 1;
+    overflow: hidden;
     filter: grayscale(0) contrast(1.4) saturate(1);
     /* mix-blend-mode: darken; */
 }
@@ -220,14 +223,16 @@ export default {
     justify-content: space-between;
     padding: 2px;
     width: 100%;
+    height: 20%;
+    align-items:end;
 
-    font-size: 1em;
+    font-size: 2em;
     /* font-family: Georgia, 'Times New Roman', Times, serif; */
     font-family: 'Courier New', Courier, monospace;
     text-transform: uppercase;
 
     font-weight: 600;
-    line-height: 1rem;
+    line-height: 2rem;
 
     background-color: rgb(228, 228, 228);
     color: rgb(69, 69, 69);

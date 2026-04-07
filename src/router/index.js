@@ -5,7 +5,8 @@ import Contact from '../views/Contact.vue';
 const routes = [
   { path: '/', component: Projects },
   { path: '/projects', component: Projects },
-  { path: '/contact', component: Contact }
+  { path: '/contact', component: Contact },
+  { path: '/workbench', component: () => import('@/views/ProjectCardWorkbench.vue') }
 ];
 
 const router = createRouter({
