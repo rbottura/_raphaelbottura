@@ -52,6 +52,12 @@ const nonSpotlightProjects = computed(() => {
 
 <style scoped>
 /* Spotlight Wrapper */
+#btn-toggle-container {
+    display: none;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
 .spotlight-wrapper {
     display: flex;
     flex-flow: column;

@@ -11,7 +11,7 @@
     </template>
 
     <template v-else>
-      <v-app-bar flat density="compact">
+      <v-app-bar class="v-app-bar-cst" flat density="compact">
         <v-app-bar-title to="/">
           <a href="/">🧙‍♂️</a>
         </v-app-bar-title>
@@ -64,6 +64,10 @@ export default {
 }
 </script>
 <style>
+.v-app-bar-cst {
+  background: rgb(189, 32, 32);
+}
+
 .main-container {
   margin-top: 48px;
   padding: 15px 8px;

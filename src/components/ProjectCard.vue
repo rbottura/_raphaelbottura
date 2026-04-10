@@ -1,6 +1,6 @@
 <template>
     <!-- <v-skeleton-loader type="card"> -->
-    <v-card :class="['rounded-lg', { 'spotlight-card': isSpotlight }]" elevation="4" :style="cardStyle">
+    <v-card :class="['', { 'spotlight-card': isSpotlight }]" elevation="0" :style="cardStyle">
 
         <v-card-title class="vcard-item">
             <div class="title-text-container">
@@ -10,7 +10,7 @@
 
         <div class="card-core-items" v-if="isSpotlight">
             <v-card-item class="tags-wrapper vcard-item">
-                <v-chip v-for="(tag, index) in project.tags" :key="index" class="tags-class" variant="elevated"
+                <v-chip v-for="(tag, index) in project.tags" :key="index" class="tags-class" variant="text"
                     size="small">
                     {{ tag }}
                 </v-chip>
@@ -180,8 +180,8 @@ export default {
     aspect-ratio: 2/3;
     transition: transform 0.2s ease-in-out, width 0.5s ease-in-out, opacity 0.5s;
     /* border: grey double 3px; */
-
-    /* transition: ; */
+    border-radius: 0px;
+    border: solid rgb(22, 22, 22) 2px    ;
 }
 
 .spotlight-card {
@@ -209,7 +209,7 @@ export default {
     padding: 0; 
     left: 0px;
     width: 100%;
-    height: 80%;
+    /* height: 80%; */
     bottom: 0px;
     opacity: 1;
     overflow: hidden;
@@ -223,19 +223,19 @@ export default {
     justify-content: space-between;
     padding: 2px;
     width: 100%;
-    height: 20%;
+    /* height: 10%; */
     align-items:end;
 
     font-size: 2em;
     /* font-family: Georgia, 'Times New Roman', Times, serif; */
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-transform: uppercase;
 
     font-weight: 600;
     line-height: 2rem;
 
-    background-color: rgb(228, 228, 228);
-    color: rgb(69, 69, 69);
+    background-color: rgb(22, 22, 22);
+    color: rgb(219, 219, 219);
     text-overflow: ellipsis;
 }
 
@@ -243,19 +243,21 @@ export default {
     padding-left: 4px;
     width: 100%;
     display: block;
+    border-top: solid rgb(255, 0, 212) 2px;
     white-space: nowrap;
     text-overflow: ellipsis;
     /* text-transform: uppercase; */
     overflow: hidden;
+    font-size: .5em;
 }
 
 .description-class {
-    font-family: roboto;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 22px;
     font-weight: 800;
     line-height: normal;
     margin: 10px 5px;
-    border-radius: 5px;
+    border-radius: 0px;
     opacity: 1;
 }
 
@@ -263,12 +265,12 @@ export default {
     display: flex;
     width: 100%;
     flex-flow: column;
-    height: 95%;
+    height: 90%;
     justify-content: space-between;
 }
 
 .vcard-item {
-    border-radius: 2px;
+    border-radius: 0px;
     box-sizing: border-box;
 }
 
@@ -320,7 +322,7 @@ export default {
 }
 
 .images-tab-container {
-    border-radius: 5px;
+    border-radius: 0px;
 }
 
 .small-btn {

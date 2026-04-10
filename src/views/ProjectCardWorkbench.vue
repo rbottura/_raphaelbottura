@@ -262,7 +262,7 @@ const edgeCases = [
 .wb-dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: 0%;
   background: #4ade80;
   box-shadow: 0 0 6px #4ade8088;
 }
@@ -387,7 +387,7 @@ const edgeCases = [
   color: #bbb;
   padding: 2px 6px;
   background: #1a1a1a22;
-  border-radius: 3px;
+  border-radius: 0px;
   width: fit-content;
 }
 
