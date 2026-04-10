@@ -213,6 +213,7 @@ export default {
     bottom: 0px;
     opacity: 1;
     overflow: hidden;
+    transform: translate(0, 7%);
     filter: grayscale(0) contrast(1.4) saturate(1);
     /* mix-blend-mode: darken; */
 }

@@ -1,5 +1,5 @@
 <template>
-    <v-card class="global-card-class contact-card mx-auto rounded-lg" elevation="4" subtitle="Developper - p5js fan"
+    <v-card class="global-card-class contact-card mx-auto rounded-lg" elevation="4" subtitle=""
         title="Raphael Bottura">
         <template v-slot:prepend>
             <v-avatar size="64">
