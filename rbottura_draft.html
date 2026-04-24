@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raphael Bottura</title>
+<style>
+  :root {
+    --bg: #f2efe8;
+    --fg: #111;
+    --muted: #666;
+    --accent: #e02a00;
+    --border: #ccc9be;
+    --panel: #e8e5de;
+    --mono: 'Courier New', 'Lucida Console', monospace;
+    --preview-w: 420px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 13px; background: var(--bg); color: var(--fg); }
+  body { font-family: var(--mono); min-height: 100vh; }
+
+  /* LAYOUT */
+  .site {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+  }
+  @media (min-width: 900px) {
+    .site {
+      grid-template-columns: 1fr var(--preview-w);
+    }
+    .preview-panel { display: flex; }
+  }
+
+  /* LEFT COLUMN */
+  .left {
+    padding: 2rem 1.5rem;
+    max-width: 520px;
+  }
+  @media (min-width: 900px) {
+    .left {
+      padding: 2.5rem 2rem;
+      overflow-y: auto;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+    }
+  }
+
+  /* HEADER */
+  header { margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1.25rem; }
+  .name { font-size: 1.15rem; font-weight: bold; letter-spacing: -0.02em; color: var(--fg); }
+  .tagline { font-size: 0.9rem; color: var(--muted); margin-top: 0.3rem; line-height: 1.4; }
+  .tagline em { font-style: normal; color: var(--accent); }
+
+  .links { display: flex; gap: 1rem; margin-top: 0.9rem; flex-wrap: wrap; }
+  .links a {
+    font-size: 0.8rem; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .links a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* PROJECT LIST */
+  .projects { margin-top: 0.5rem; }
+  .section { margin-bottom: 0.25rem; }
+
+  .section-toggle {
+    width: 100%; background: none; border: none; text-align: left; cursor: pointer;
+    font-family: var(--mono); font-size: 0.85rem; font-weight: bold;
+    color: var(--fg); padding: 0.5rem 0;
+    display: flex; align-items: center; gap: 0.5rem;
+    border-top: 1px solid var(--border);
+    transition: color 0.15s;
+  }
+  .section-toggle:hover { color: var(--accent); }
+  .section-toggle .arrow {
+    font-size: 0.7rem; color: var(--muted); transition: transform 0.2s; display: inline-block;
+  }
+  .section-toggle.open .arrow { transform: rotate(90deg); }
+  .section-label { flex: 1; }
+  .section-count { font-size: 0.72rem; color: var(--muted); font-weight: normal; }
+
+  .section-items {
+    display: none; padding: 0 0 0.5rem 1rem; border-left: 2px solid var(--border);
+    margin-left: 0.25rem;
+  }
+  .section-items.open { display: block; }
+
+  .project-item {
+    padding: 0.4rem 0;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .project-item:hover .project-name { color: var(--accent); }
+  .project-item.active .project-name { color: var(--accent); }
+
+  .project-name { font-size: 0.85rem; color: var(--fg); transition: color 0.15s; }
+  .project-tags {
+    font-size: 0.68rem; color: var(--muted); display: flex; gap: 0.3rem; flex-wrap: wrap;
+    margin-top: 0.15rem;
+  }
+  .tag { border: 1px solid var(--border); padding: 0.05rem 0.3rem; border-radius: 2px; }
+  .project-year { font-size: 0.7rem; color: var(--muted); white-space: nowrap; }
+
+  .ext-link { font-size: 0.7rem; color: var(--accent); text-decoration: none; }
+  .ext-link:hover { text-decoration: underline; }
+
+  /* MOBILE PREVIEW */
+  .mobile-preview {
+    display: none;
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+    padding: 1rem;
+  }
+  .mobile-preview.open { display: block; }
+  @media (min-width: 900px) {
+    .mobile-preview { display: none !important; }
+  }
+
+  .preview-meta { font-size: 0.78rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem; }
+  .preview-meta strong { color: var(--fg); }
+
+  .slideshow { position: relative; }
+  .slides { display: flex; gap: 0.5rem; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .slides::-webkit-scrollbar { height: 3px; }
+  .slides::-webkit-scrollbar-track { background: var(--border); }
+  .slides::-webkit-scrollbar-thumb { background: var(--muted); }
+  .slide {
+    scroll-snap-align: start; flex-shrink: 0;
+    width: calc(100% - 2rem); max-height: 220px;
+    object-fit: contain; background: #ddd;
+    border: 1px solid var(--border);
+  }
+  .slide-placeholder {
+    scroll-snap-align: start; flex-shrink: 0;
+    width: calc(100% - 2rem); height: 140px;
+    background: var(--panel); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; color: var(--muted);
+  }
+
+  /* DESKTOP PREVIEW PANEL */
+  .preview-panel {
+    display: none;
+    background: var(--panel);
+    border-left: 1px solid var(--border);
+    height: 100vh;
+    position: sticky; top: 0;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .preview-panel-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .preview-title { font-size: 0.85rem; font-weight: bold; }
+  .preview-desc { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; line-height: 1.4; }
+  .preview-actions { display: flex; gap: 0.75rem; margin-top: 0.6rem; flex-wrap: wrap; align-items: center; }
+  .preview-actions a {
+    font-size: 0.72rem; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);
+  }
+  .preview-actions a:hover { opacity: 0.7; }
+
+  .preview-content { flex: 1; overflow: hidden; position: relative; }
+
+  .preview-iframe {
+    width: 100%; height: 100%; border: none; display: none; background: #fff;
+  }
+  .preview-iframe.active { display: block; }
+
+  .preview-gallery {
+    padding: 1rem; height: 100%; overflow-y: auto; display: none;
+    gap: 0.5rem; flex-direction: column; align-items: flex-start;
+  }
+  .preview-gallery.active { display: flex; }
+  .preview-gallery img {
+    max-width: 100%; border: 1px solid var(--border); display: block;
+  }
+
+  .preview-empty {
+    height: 100%; display: flex; flex-direction: column; justify-content: center;
+    align-items: center; color: var(--muted); font-size: 0.78rem; gap: 0.5rem;
+    text-align: center; padding: 2rem;
+  }
+  .preview-empty-icon { font-size: 2rem; opacity: 0.3; }
+
+  /* FOOTER */
+  footer {
+    font-size: 0.72rem; color: var(--muted); border-top: 1px solid var(--border);
+    padding-top: 1.25rem; margin-top: 2rem;
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  /* SUBSECTION */
+  .sub-label {
+    font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 0.6rem 0 0.2rem; display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="site">
+  <!-- LEFT PANEL -->
+  <div class="left">
+    <header>
+      <div class="name">Raphael Bottura</div>
+      <div class="tagline">
+        building <em>playground tools</em> for graphics &amp; print —<br>
+        always trying to make them actually useful.
+      </div>
+      <div class="links">
+        <a href="mailto:raphael.bottura@gmail.com">email</a>
+        <a href="https://github.com/rbottura" target="_blank">github</a>
+        <a href="https://gitlab.com/esad-gv1/epe" target="_blank">gitlab/epe</a>
+        <a href="https://romainlaurent.com" target="_blank">romainlaurent.com</a>
+      </div>
+    </header>
+
+    <div class="projects" id="projects">
+
+      <!-- EPE workshops -->
+      <div class="section">
+        <button class="section-toggle" onclick="toggleSection(this)">
+          <span class="arrow">▶</span>
+          <span class="section-label">EPE workshops</span>
+          <span class="section-count">3</span>
+        </button>
+        <div class="section-items">
+          <span class="sub-label">one-week residencies, assistant professor + dev support</span>
+          <div class="project-item" onclick="selectProject(this)" data-id="zagreb">
+            <div>
+              <div class="project-name">Zagreb</div>
+              <div class="project-tags">
+                <span class="tag">web2print</span>
+                <span class="tag">workshop</span>
+              </div>
+            </div>
+            <span class="project-year">2024</span>
+          </div>
+          <div class="project-item" onclick="selectProject(this)" data-id="izmir">
+            <div>
+              <div class="project-name">Izmir</div>
+              <div class="project-tags">
+                <span class="tag">web2print</span>
+                <span class="tag">workshop</span>
+              </div>
+            </div>
+            <span class="project-year">2024</span>
+          </div>
+          <div class="project-item" onclick="selectProject(this)" data-id="hexagone">
+            <div>
+              <div class="project-name">Hexagone</div>
+              <div class="project-tags">
+                <span class="tag">web2print</span>
+                <span class="tag">workshop</span>
+              </div>
+            </div>
+            <span class="project-year">2024</span>
+          </div>
+          <div class="mobile-preview" id="mobile-zagreb">
+            <div class="preview-meta"><strong>Zagreb</strong> — EPE workshop, assistant professor. <a href="https://epe.esad-gv.fr" target="_blank" class="ext-link">EPE website ↗</a></div>
+            <div class="slide-placeholder">→ see EPE website for details</div>
+          </div>
+          <div class="mobile-preview" id="mobile-izmir">
+            <div class="preview-meta"><strong>Izmir</strong> — EPE workshop. <a href="https://epe.esad-gv.fr" target="_blank" class="ext-link">EPE website ↗</a></div>
+            <div class="slide-placeholder">→ see EPE website for details</div>
+          </div>
+          <div class="mobile-preview" id="mobile-hexagone">
+            <div class="preview-meta"><strong>Hexagone</strong> — EPE workshop. <a href="https://epe.esad-gv.fr" target="_blank" class="ext-link">EPE website ↗</a></div>
+            <div class="slide-placeholder">→ see EPE website for details</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EPE & NLnet dev -->
+      <div class="section">
+        <button class="section-toggle" onclick="toggleSection(this)">
+          <span class="arrow">▶</span>
+          <span class="section-label">EPE &amp; NLnet development</span>
+          <span class="section-count">3</span>
+        </button>
+        <div class="section-items">
+          <span class="sub-label">open-source tools for web-to-print education</span>
+          <div class="project-item" onclick="selectProject(this)" data-id="p5rcs">
+            <div>
+              <div class="project-name">p5-RCS</div>
+              <div class="project-tags">
+                <span class="tag">p5js</span><span class="tag">cmyk</span><span class="tag">rastering</span>
+              </div>
+            </div>
+            <a class="ext-link" href="https://p5-rcs-0e6526.gitlab.io/" target="_blank" onclick="event.stopPropagation()">↗</a>
+          </div>
+          <div class="project-item" onclick="selectProject(this)" data-id="pagedmd">
+            <div>
+              <div class="project-name">paged-md-editor</div>
+              <div class="project-tags">
+                <span class="tag">markdown</span><span class="tag">pagedjs</span><span class="tag">vuejs</span>
+              </div>
+            </div>
+            <a class="ext-link" href="https://paged-markdown-editor-8149d2.gitlab.io/" target="_blank" onclick="event.stopPropagation()">↗</a>
+          </div>
+          <div class="project-item" onclick="selectProject(this)" data-id="prerip">
+            <div>
+              <div class="project-name">PRE-RIP</div>
+              <div class="project-tags">
+                <span class="tag">print</span><span class="tag">pipeline</span>
+              </div>
+            </div>
+            <span class="project-year">WIP</span>
+          </div>
+          <div class="mobile-preview" id="mobile-p5rcs">
+            <div class="preview-meta"><strong>p5-RCS</strong> — JS library &amp; python scripts to process RGB images for CMYK/riso printing. <a href="https://p5-rcs-0e6526.gitlab.io/" target="_blank" class="ext-link">Demo ↗</a> <a href="https://gitlab.com/esad-gv1/epe/p5-RCS" target="_blank" class="ext-link">Repo ↗</a></div>
+          </div>
+          <div class="mobile-preview" id="mobile-pagedmd">
+            <div class="preview-meta"><strong>paged-md-editor</strong> — Markdown editor with paginated preview for web2print. <a href="https://paged-markdown-editor-8149d2.gitlab.io/" target="_blank" class="ext-link">Demo ↗</a></div>
+          </div>
+          <div class="mobile-preview" id="mobile-prerip">
+            <div class="preview-meta"><strong>PRE-RIP</strong> — Print processing pipeline tool. In progress.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESAD experimentations -->
+      <div class="section">
+        <button class="section-toggle" onclick="toggleSection(this)">
+          <span class="arrow">▶</span>
+          <span class="section-label">ESAD experimentations</span>
+          <span class="section-count">5</span>
+        </button>
+        <div class="section-items">
+          <span class="sub-label">school projects, interactive &amp; print</span>
+          <div class="project-item" onclick="selectProject(this)" data-id="ckt">
+            <div>
+              <div class="project-name">ColorKineType</div>
+              <div class="project-tags">
+                <span class="tag">p5js</span><span class="tag">matter.js</span><span class="tag">typography</span>
+              </div>
+            </div>
+            <a class="ext-link" href="https://colorkinetype.netlify.app/" target="_blank" onclick="event.stopPropagation()">↗</a>
+          </div>
+          <div class="project-item" onclick="selectProject(this)" data-id="s2p">
+            <div>
+              <div class="project-name">Sketch-to-Print</div>
+              <div class="project-tags">
+                <span class="tag">p5js</span><span class="tag">pagedjs</span><span class="tag">web2print</span>
+              </div>
+            </div>
+            <a class="ext-link" href="https://github.com/rbottura/sketch-2-print" target="_blank" onclick="event.stopPropagation()">repo ↗</a>
+          </div>
+          <div class="project-item" onclick="selectProject(this)" data-id="bonjour">
+            <div>
+              <div class="project-name">Bonjour</div>
+              <div class="project-tags">
+                <span class="tag">exhibition</span><span class="tag">print</span><span class="tag">animated</span>
+              </div>
+            </div>
+            <span class="project-year">'23</span>
+          </div>
+          <div class="project-item" onclick="selectProject(this)" data-id="flowers">
+            <div>
+              <div class="project-name">Flowers from Mars</div>
+              <div class="project-tags">
+                <span class="tag">p5js</span><span class="tag">gamepad</span><span class="tag">riso</span>
+              </div>
+            </div>
+            <span class="project-year">'23</span>
+          </div>
+          <div class="project-item" onclick="selectProject(this)" data-id="eclate">
+            <div>
+              <div class="project-name">Projet Éclaté</div>
+              <div class="project-tags">
+                <span class="tag">3D</span><span class="tag">blender</span><span class="tag">video</span>
+              </div>
+            </div>
+            <span class="project-year">'22</span>
+          </div>
+          <div class="mobile-preview" id="mobile-ckt">
+            <div class="preview-meta"><strong>ColorKineType</strong> — Text data into textured &amp; animated points with physical behaviors. <a href="https://colorkinetype.netlify.app/" target="_blank" class="ext-link">Live ↗</a> <a href="https://github.com/rbottura/ColorKineType_v2" target="_blank" class="ext-link">Repo ↗</a></div>
+          </div>
+          <div class="mobile-preview" id="mobile-s2p">
+            <div class="preview-meta"><strong>Sketch-to-Print</strong> — Manipulate graphic content in a print-ready layout. <a href="https://github.com/rbottura/sketch-2-print" target="_blank" class="ext-link">Repo ↗</a></div>
+          </div>
+          <div class="mobile-preview" id="mobile-bonjour">
+            <div class="preview-meta"><strong>Bonjour</strong> — Exhibition project using ColorKineType for printed media &amp; Instagram animations.</div>
+          </div>
+          <div class="mobile-preview" id="mobile-flowers">
+            <div class="preview-meta"><strong>Flowers from Mars</strong> — Biological life forms illustrated &amp; manipulated with Xbox controller on web canvas. Printed riso.</div>
+          </div>
+          <div class="mobile-preview" id="mobile-eclate">
+            <div class="preview-meta"><strong>Projet Éclaté</strong> — 3D pieces manipulated to generate unique vessel-like designs. Sound-synced video.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BEC 2025 -->
+      <div class="section">
+        <button class="section-toggle" onclick="toggleSection(this)">
+          <span class="arrow">▶</span>
+          <span class="section-label">BEC 2025</span>
+          <span class="section-count">1</span>
+        </button>
+        <div class="section-items">
+          <span class="sub-label">commissioned webapp, biennale en communs, south of paris</span>
+          <div class="project-item" onclick="selectProject(this)" data-id="bec">
+            <div>
+              <div class="project-name">BEC 2025 playground</div>
+              <div class="project-tags">
+                <span class="tag">p5js</span><span class="tag">3D</span><span class="tag">generative</span><span class="tag">interactive</span>
+              </div>
+            </div>
+            <a class="ext-link" href="https://bec2025.netlify.app/" target="_blank" onclick="event.stopPropagation()">↗</a>
+          </div>
+          <div class="mobile-preview" id="mobile-bec">
+            <div class="preview-meta"><strong>BEC 2025</strong> — Web app for graphic designer romainlaurent, generating content for biennale en communs. <a href="https://bec2025.netlify.app/" target="_blank" class="ext-link">Open ↗</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Playgrounds -->
+      <div class="section">
+        <button class="section-toggle" onclick="toggleSection(this)">
+          <span class="arrow">▶</span>
+          <span class="section-label">playground projects</span>
+          <span class="section-count">4</span>
+        </button>
+        <div class="section-items">
+          <span class="sub-label">personal experiments, fun + sometimes useful</span>
+          <div class="project-item" onclick="selectProject(this)" data-id="cerebro">
+            <div>
+              <div class="project-name">Cerebro</div>
+              <div class="project-tags">
+                <span class="tag">p5js</span><span class="tag">3D</span><span class="tag">brain scans</span>
+              </div>
+            </div>
+            <a class="ext-link" href="https://editor.p5js.org/rbottura/sketches/QDTitB_fm" target="_blank" onclick="event.stopPropagation()">↗</a>
+          </div>
+          <div class="project-item" onclick="selectProject(this)" data-id="apear">
+            <div>
+              <div class="project-name">Apear clip</div>
+              <div class="project-tags">
+                <span class="tag">p5js</span><span class="tag">music video</span>
+              </div>
+            </div>
+            <a class="ext-link" href="https://vimeo.com/857095741" target="_blank" onclick="event.stopPropagation()">↗</a>
+          </div>
+          <div class="project-item" onclick="selectProject(this)" data-id="grid">
+            <div>
+              <div class="project-name">Grid Sketches</div>
+              <div class="project-tags">
+                <span class="tag">p5js</span><span class="tag">rastering</span><span class="tag">generated</span>
+              </div>
+            </div>
+            <a class="ext-link" href="https://github.com/rbottura/grid_sketch" target="_blank" onclick="event.stopPropagation()">repo ↗</a>
+          </div>
+          <div class="project-item" onclick="selectProject(this)" data-id="hash">
+            <div>
+              <div class="project-name">hash_running</div>
+              <div class="project-tags">
+                <span class="tag">p5js</span><span class="tag">generative</span><span class="tag">nft</span>
+              </div>
+            </div>
+            <a class="ext-link" href="https://hash-running.netlify.app/" target="_blank" onclick="event.stopPropagation()">↗</a>
+          </div>
+          <div class="mobile-preview" id="mobile-cerebro">
+            <div class="preview-meta"><strong>Cerebro</strong> — Brain scan slices visualized as tinted 3D layers in p5js. Immersion concept. <a href="https://editor.p5js.org/rbottura/sketches/QDTitB_fm" target="_blank" class="ext-link">Open p5 editor ↗</a></div>
+          </div>
+          <div class="mobile-preview" id="mobile-apear">
+            <div class="preview-meta"><strong>Apear clip</strong> — Music video for Villacanas. Built in p5js. <a href="https://vimeo.com/857095741" target="_blank" class="ext-link">Watch on Vimeo ↗</a></div>
+          </div>
+          <div class="mobile-preview" id="mobile-grid">
+            <div class="preview-meta"><strong>Grid Sketches</strong> — Gridded interface to discretize images. Generated images &amp; videos. <a href="https://github.com/rbottura/grid_sketch" target="_blank" class="ext-link">Repo ↗</a></div>
+          </div>
+          <div class="mobile-preview" id="mobile-hash">
+            <div class="preview-meta"><strong>hash_running</strong> — Silhouette sprite running in the dark, diffusing colorful texture. 6 scenes. <a href="https://hash-running.netlify.app/" target="_blank" class="ext-link">Live ↗</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- romainlaurent.com -->
+      <div class="section">
+        <button class="section-toggle" onclick="toggleSection(this)">
+          <span class="arrow">▶</span>
+          <span class="section-label">romainlaurent.com</span>
+          <span class="section-count">1</span>
+        </button>
+        <div class="section-items">
+          <span class="sub-label">website project, kirby cms</span>
+          <div class="project-item" onclick="selectProject(this)" data-id="rl">
+            <div>
+              <div class="project-name">romainlaurent.com</div>
+              <div class="project-tags">
+                <span class="tag">kirby</span><span class="tag">cms</span><span class="tag">design</span>
+              </div>
+            </div>
+            <a class="ext-link" href="https://romainlaurent.com" target="_blank" onclick="event.stopPropagation()">↗</a>
+          </div>
+          <div class="mobile-preview" id="mobile-rl">
+            <div class="preview-meta"><strong>romainlaurent.com</strong> — Website built in Kirby CMS for graphic designer Romain Laurent. <a href="https://romainlaurent.com" target="_blank" class="ext-link">Visit ↗</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /projects -->
+
+    <footer>
+      <span>based in paris / île-de-france</span> ·
+      <span>open to projects &amp; collaborations</span>
+    </footer>
+  </div>
+
+  <!-- RIGHT PANEL (desktop only) -->
+  <div class="preview-panel" id="previewPanel">
+    <div class="preview-panel-header">
+      <div class="preview-title" id="panelTitle">select a project</div>
+      <div class="preview-desc" id="panelDesc">← click any item to preview</div>
+      <div class="preview-actions" id="panelActions"></div>
+    </div>
+    <div class="preview-content">
+      <div class="preview-empty" id="panelEmpty">
+        <div class="preview-empty-icon">[ ]</div>
+        <div>nothing selected yet</div>
+      </div>
+      <iframe class="preview-iframe" id="panelIframe" src="" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+      <div class="preview-gallery" id="panelGallery"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = {
+  zagreb:  { title: 'Zagreb', desc: 'EPE workshop residency. Web-to-print dev support for local students.', links: [{ label: 'EPE website', url: 'https://epe.esad-gv.fr' }] },
+  izmir:   { title: 'Izmir', desc: 'EPE workshop residency in Turkey. One-week intensive web-to-print tools.', links: [{ label: 'EPE website', url: 'https://epe.esad-gv.fr' }] },
+  hexagone:{ title: 'Hexagone', desc: 'EPE workshop at Hexagone. Assistant professor & dev support.', links: [{ label: 'EPE website', url: 'https://epe.esad-gv.fr' }] },
+  p5rcs:   { title: 'p5-RCS', desc: 'JS library + python scripts to process RGB images for CMYK/riso printing.', links: [{ label: 'demo', url: 'https://p5-rcs-0e6526.gitlab.io/' }, { label: 'gitlab repo', url: 'https://gitlab.com/esad-gv1/epe/p5-RCS' }], iframe: 'https://p5-rcs-0e6526.gitlab.io/' },
+  pagedmd: { title: 'paged-md-editor', desc: 'Markdown editor with paginated web2print previewer. Vue + Paged.js.', links: [{ label: 'demo', url: 'https://paged-markdown-editor-8149d2.gitlab.io/' }, { label: 'gitlab repo', url: 'https://gitlab.com/esad-gv1/epe/markdown-editors/paged-markdown-editor' }], iframe: 'https://paged-markdown-editor-8149d2.gitlab.io/' },
+  prerip:  { title: 'PRE-RIP', desc: 'Print processing pipeline. In development.', links: [] },
+  ckt:     { title: 'ColorKineType', desc: 'Text → textured animated points with physics. p5js + matter.js + openCV.', links: [{ label: 'live app', url: 'https://colorkinetype.netlify.app/' }, { label: 'github', url: 'https://github.com/rbottura/ColorKineType_v2' }], iframe: 'https://colorkinetype.netlify.app/' },
+  s2p:     { title: 'Sketch-to-Print', desc: 'Graphic content manipulation in a print-ready layout. p5js + Paged.js.', links: [{ label: 'github', url: 'https://github.com/rbottura/sketch-2-print' }] },
+  bonjour: { title: 'Bonjour', desc: 'Exhibition project. ColorKineType for printed media + Instagram animations.', links: [] },
+  flowers: { title: 'Flowers from Mars', desc: 'Unknown biological life forms — drawn & manipulated with Xbox controller on web canvas, printed riso.', links: [] },
+  eclate:  { title: 'Projet Éclaté', desc: '3D pieces manipulated to generate vessel-like designs. Sound-synced video.', links: [] },
+  bec:     { title: 'BEC 2025', desc: 'Web app playground for graphic designer romainlaurent — generating content for biennale en communs.', links: [{ label: 'open app', url: 'https://bec2025.netlify.app/' }, { label: 'alt', url: 'https://vuetify-ui--bec2025.netlify.app/' }], iframe: 'https://bec2025.netlify.app/' },
+  cerebro: { title: 'Cerebro', desc: 'Brain scan slices visualized as tinted 3D layers. Immersion concept with p5js.', links: [{ label: 'p5 editor', url: 'https://editor.p5js.org/rbottura/sketches/QDTitB_fm' }], iframe: 'https://editor.p5js.org/rbottura/sketches/QDTitB_fm' },
+  apear:   { title: 'Apear clip', desc: 'Music video for "Apear" by Villacanas. Built in p5js.', links: [{ label: 'vimeo', url: 'https://vimeo.com/857095741' }] },
+  grid:    { title: 'Grid Sketches', desc: 'Gridded interface to discretize images into cells. Generated images & videos.', links: [{ label: 'github', url: 'https://github.com/rbottura/grid_sketch' }] },
+  hash:    { title: 'hash_running', desc: 'Silhouette running in the dark, diffusing colorful texture. 6 generative scenes.', links: [{ label: 'live', url: 'https://hash-running.netlify.app/' }], iframe: 'https://hash-running.netlify.app/' },
+  rl:      { title: 'romainlaurent.com', desc: 'Website for graphic designer Romain Laurent. Built in Kirby CMS.', links: [{ label: 'visit', url: 'https://romainlaurent.com' }] },
+};
+
+let activeId = null;
+
+function toggleSection(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+
+function selectProject(item) {
+  const id = item.dataset.id;
+  const isMobile = window.innerWidth < 900;
+
+  document.querySelectorAll('.project-item').forEach(el => el.classList.remove('active'));
+  item.classList.add('active');
+
+  if (isMobile) {
+    const mobileEl = document.getElementById('mobile-' + id);
+    if (mobileEl) {
+      if (mobileEl.classList.contains('open') && activeId === id) {
+        mobileEl.classList.remove('open');
+        activeId = null;
+        return;
+      }
+      document.querySelectorAll('.mobile-preview').forEach(el => el.classList.remove('open'));
+      mobileEl.classList.add('open');
+      mobileEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    activeId = id;
+    return;
+  }
+
+  // Desktop
+  updatePanel(id);
+  activeId = id;
+}
+
+function updatePanel(id) {
+  const d = DATA[id];
+  if (!d) return;
+
+  document.getElementById('panelTitle').textContent = d.title;
+  document.getElementById('panelDesc').textContent = d.desc;
+
+  const actEl = document.getElementById('panelActions');
+  actEl.innerHTML = d.links.map(l =>
+    `<a href="${l.url}" target="_blank">${l.label} ↗</a>`
+  ).join('');
+
+  const iframe = document.getElementById('panelIframe');
+  const gallery = document.getElementById('panelGallery');
+  const empty = document.getElementById('panelEmpty');
+
+  if (d.iframe) {
+    empty.style.display = 'none';
+    gallery.classList.remove('active');
+    iframe.classList.add('active');
+    if (iframe.src !== d.iframe) iframe.src = d.iframe;
+  } else if (d.images && d.images.length) {
+    empty.style.display = 'none';
+    iframe.classList.remove('active');
+    gallery.classList.add('active');
+    gallery.innerHTML = d.images.map(src =>
+      `<img src="images/${id}/${src}" alt="${d.title}" loading="lazy">`
+    ).join('');
+  } else {
+    empty.style.display = '';
+    empty.innerHTML = `<div class="preview-empty-icon">[ ]</div><div>${
+      d.links.length ? `<a href="${d.links[0].url}" target="_blank" style="color:var(--accent)">${d.links[0].label} ↗</a>` : 'no preview available'
+    }</div>`;
+    iframe.classList.remove('active');
+    gallery.classList.remove('active');
+  }
+}
+
+// open first section by default
+document.querySelector('.section-toggle').click();
+</script>
+</body>
+</html>

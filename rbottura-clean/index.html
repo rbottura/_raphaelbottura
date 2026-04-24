@@ -1,13 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>rbottura-clean</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raphael Bottura</title>
+</head>
+<body>
+
+<div class="site">
+  <div class="left">
+    <header>
+      <div class="name">Raphael Bottura</div>
+      <div class="tagline">
+        building <em>playground tools</em> for graphics & print
+      </div>
+    </header>
+
+    <div id="projects"></div>
+
+    <footer>
+      Paris / île-de-france
+    </footer>
+  </div>
+
+  <div class="preview-panel" id="previewPanel">
+    <div class="preview-panel-header">
+      <div id="panelTitle">select a project</div>
+      <div id="panelDesc"></div>
+      <div id="panelActions"></div>
+    </div>
+
+    <div class="preview-content">
+      <div id="panelEmpty">nothing selected</div>
+      <iframe id="panelIframe"></iframe>
+      <div id="panelGallery"></div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
 </html>

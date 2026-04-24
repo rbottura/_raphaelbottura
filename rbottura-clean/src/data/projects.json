@@ -1,143 +1,334 @@
-[
-  {
-    "title": "Cerebro",
-    "type": "it",
-    "tags": ["p5js", "webapp", "3D", "tool"],
-    "description": "p5js sketch to visualize my brain scans as tinted layers in a 3D space for immersion concept vue",
-    "link": "https://editor.p5js.org/rbottura/sketches/QDTitB_fm",
-    "images": ["board.jpg", "slice.png", "slice2.png", "slice3.png"],
-    "beginDate": "2024 11",
-    "endDate": "2025 01"
-  },
-  {
-    "title": "BEC_2025",
-    "type": "creative",
-    "tags": ["p5js", "js", "3D", "generative", "interactive"],
-    "description": "A web app mounted with p5 for the exhibition \"biennale en communs\"",
-    "link": "https://vuetify-ui--bec2025.netlify.app/",
-    "link2": "https://bec2025.netlify.app/",
-    "repo": "",
-    "images": ["main_app.png"],
-    "beginDate": "2024 11",
-    "endDate": "2025 03"
-  },
-  {
-    "title": "p5-RCS",
-    "type": "it",
-    "tags": ["p5js", "js", "ES6", "rastering"],
-    "description": "JS library and python scripts to process images rgb for cmyk usages",
-    "link": "https://p5-rcs-0e6526.gitlab.io/",
-    "repo": "https://gitlab.com/esad-gv1/epe/p5-RCS",
-    "images": ["test.png", "aff.png"],
-    "beginDate": "2024 11",
-    "endDate": ""
-  },
-  {
-    "title": "paged-md-editor",
-    "type": "it",
-    "tags": ["web2print", "vuejs", "js", "pagedjs", "md", "epe"],
-    "description": "A markdown editor with a paginated previewer for web2print cases",
-    "link": "https://paged-markdown-editor-8149d2.gitlab.io/",
-    "repo": "https://gitlab.com/esad-gv1/epe/markdown-editors/paged-markdown-editor",
-    "images": ["ui.png", "ui2.png"],
-    "beginDate": "2025 01",
-    "endDate": ""
-  },
-  {
-    "title": "ColorKineType",
-    "type": "creative",
-    "tags": ["p5js", "matter.js", "openCV", "typography", "webapp", "MIT"],
-    "description": "A web application that processes text data into textured and animated points with physical behaviors.",
-    "link": "https://colorkinetype.netlify.app/",
-    "repo": "https://github.com/rbottura/ColorKineType_v2",
-    "images": ["input_layer.png", "render_layer.png", "render_image.png"],
-    "beginDate": "2022 05",
-    "endDate": "2023 06"
-  },
-  {
-    "title": "Bonjour",
-    "type": "creative",
-    "tags": ["web2print", "exhibition", "animated"],
-    "description": "Exhibition project using ColorKineType for communication printed media and animations for Instagram.",
-    "images": [
-      "bonjour.png",
-      "bonjour_contraste_infos.png",
-      "bonjour_Maq.png",
-      "cartonTest.png",
-      "image_flyer_png.png",
-      "instaBjr2.mp4",
-      "poster.png"
-    ],
-    "beginDate": "2023 11",
-    "endDate": "2023 10"
-  },
-  {
-    "title": "Sketch-2-Print",
-    "type": "creative",
-    "tags": ["p5js", "pagedjs", "web2print", "interactive", "webapp"],
-    "description": "A web application for manipulating graphic content in a layout document ready for printing.",
-    "repo": "https://github.com/rbottura/sketch-2-print",
-    "images": ["sketch2print_screen2_30.webp", "s2p_1.webp", "s2p_2.webp"],
-    "beginDate": "2021 05",
-    "endDate": ""
-  },
-  {
-    "title": "Flowers_From_Mars",
-    "type": "creative",
-    "tags": ["p5js", "gamepad", "illustrations", "riso"],
-    "description": "A concept exploring unknown biological life forms, manipulated with an Xbox controller on a web canvas.",
-    "images": ["plancheFlower.png", "planche.webp", "2.webp"],
-    "beginDate": "2023 04",
-    "endDate": "2023 05"
-  },
-  {
-    "title": "Projet_Éclaté",
-    "type": "creative",
-    "tags": ["p5js", "3D", "blender", "animated", "sound synch", "video"],
-    "description": "An experimental project manipulating 3D pieces to generate unique vessel-like designs.",
-    "link": "",
-    "video": "https://vimeo.com/",
-    "images": ["pencil_explo.png", "pencil.png", "planes.png"],
-    "beginDate": "2022 06",
-    "endDate": "2022 07"
-  },
-  {
-    "title": "Grid_Sketches",
-    "type": "creative",
-    "tags": ["p5js", "rastering", "animated", "generated"],
-    "description": "Generated images and videos exploring a gridded interface to discretize images.",
-    "repo": "https://github.com/rbottura/grid_sketch",
-    "images": [
-      "chaise.webp",
-      "chaise2_v2.png",
-      "chaise_v1.png",
-      "maFace.png",
-      "coif.gif"
-    ],
-    "beginDate": "2023 11",
-    "endDate": "2024 06"
-  },
-  {
-    "title": "Apear_clip",
-    "type": "creative",
-    "tags": ["p5js", "music", "video"],
-    "description": "A video clip for the music \"Apear\" by Villacanas",
-    "video": "https://vimeo.com/857095741",
-    "link": null,
-    "repoLink": null,
-    "images": [],
-    "beginDate": "2023 08",
-    "endDate": "2023 08"
-  },
-  {
-    "title": "Hash_running",
-    "type": "creative",
-    "tags": ["p5js", "animation", "video", "nft"],
-    "description": "6 Scenes of a simple sprite of a silhouette running in the dark, diffusing its colorfull texture",
-    "link": "https://hash-running.netlify.app/",
-    "repo": "https://github.com/rbottura/-hash_running",
-    "images": [ "run2.gif"],
-    "beginDate": "2023 07",
-    "endDate": "2023 08"
-  }
-]
+{
+  "sections": [
+    {
+      "id": "epe-workshops",
+      "title": "EPE workshops",
+      "projects": [
+        {
+          "id": "zagreb",
+          "title": "Propagation Workshop #2 — University of Zagreb Faculty of Graphic Arts",
+          "description": "EPE workshop residency.",
+          "tags": ["web2print", "workshop"],
+          "preview": {
+            "type": "gallery"
+          },
+          
+          "media": {
+            "path": "/medias/EPE_wk/",
+            "images": ["epe_zagreb_group.jpg", "epe_zagreb_group3.jpg", "epe_zagreb_group2.jpg"]
+          }
+        },
+        {
+          "id": "izmir",
+          "title": "Propagation Workshop #3 — Izmir University of economics, Visual Communication Department",
+          "description": "EPE workshop residency.",
+          "tags": ["web2print", "workshop"],
+          "preview": {
+            "type": "gallery"
+          },
+          "media": {
+            "path": "/medias/EPE_wk/",
+            "images": ["epe_izmir_wk.jpg", "epe_izmir_wk2.jpg", "epe_izmir_wk3.jpg"]
+          },
+          "links": [
+            { "label": "EPE website", "url": "https://epe.esad-gv.fr" }
+          ]
+        },
+        {
+          "id": "hexagone",
+          "title": "Production Workshop - Théâtre Hexagone, Meylan (Grenoble)",
+          "description": "EPE workshop residency.",
+          "tags": ["web2print", "workshop"],
+          "preview": {
+            "type": "gallery"
+          },
+          "media": {
+            "path": "/medias/EPE_wk/",
+            "images": ["epe_hexagone_wk.jpg", "epe_hexagone_wk2.jpg", "epe_hexagone_wk3.jpeg"]
+          },
+          "links": [
+            { "label": "EPE website", "url": "https://epe.esad-gv.fr" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "epe-dev",
+      "title": "EPE & NLnet development",
+      "projects": [
+        {
+          "id": "p5-rcs",
+          "title": "p5-RCS",
+          "tags": ["p5js", "js", "ES6", "rastering"],
+          "description": "JS library and Python scripts to process RGB images for CMYK usages.",
+          "dates": { "start": "2024-11", "end": null },
+
+          "preview": {
+            "type": "iframe",
+            "src": "https://p5-rcs-0e6526.gitlab.io/"
+          },
+
+          "links": [
+            { "label": "demo", "url": "https://gitlab.com/esad-gv1/epe/p5-RCS" },
+            { "label": "repository", "url": "https://gitlab.com/esad-gv1/epe/p5-RCS" }
+          ],
+
+          "media": {
+            "path": "/medias/p5-rcs/",
+            "images": ["test.png", "aff.png"]
+          }
+        },
+
+        {
+          "id": "paged-md-editor",
+          "title": "paged-md-editor",
+          "tags": ["web2print", "vuejs", "pagedjs", "markdown"],
+          "description": "Markdown editor with a paginated previewer for web2print cases.",
+          "dates": { "start": "2025-01", "end": null },
+
+          "preview": {
+            "type": "iframe",
+            "src": "https://paged-markdown-editor-8149d2.gitlab.io/"
+          },
+
+          "links": [
+            { "label": "demo", "url": "https://paged-markdown-editor-8149d2.gitlab.io/" },
+            { "label": "repository", "url": "https://gitlab.com/esad-gv1/epe/markdown-editors/paged-markdown-editor" }
+          ],
+
+          "media": {
+            "path": "/medias/paged-md-editor/",
+            "images": ["ui.png", "ui2.png"]
+          }
+        },
+
+        {
+          "id": "pre-rip",
+          "title": "PRE-RIP",
+          "description": "Print processing pipeline (work in progress).",
+          "tags": ["print", "pipeline"],
+          "preview": { "type": "none" },
+          "links": []
+        }
+      ]
+    },
+
+    {
+      "id": "esad-experimentations",
+      "title": "ESAD experimentations",
+      "projects": [
+        {
+          "id": "colorkinetype",
+          "title": "ColorKineType",
+          "tags": ["p5js", "matter.js", "openCV", "typography"],
+          "description": "Processes text data into textured and animated points with physical behaviors.",
+          "dates": { "start": "2022-05", "end": "2023-06" },
+
+          "preview": {
+            "type": "iframe",
+            "src": "https://colorkinetype.netlify.app/"
+          },
+
+          "links": [
+            { "label": "live", "url": "https://colorkinetype.netlify.app/" },
+            { "label": "repository", "url": "https://github.com/rbottura/ColorKineType_v2" }
+          ],
+
+          "media": {
+            "path": "/medias/ColorKineType/",
+            "images": ["input_layer.png", "render_layer.png", "render_image.png"]
+          }
+        },
+
+        {
+          "id": "sketch-2-print",
+          "title": "Sketch-to-Print",
+          "tags": ["p5js", "pagedjs", "web2print"],
+          "description": "Web app for manipulating graphic content in a print-ready layout.",
+          "dates": { "start": "2021-05", "end": null },
+
+          "preview": { "type": "external" },
+
+          "links": [
+            { "label": "repository", "url": "https://github.com/rbottura/sketch-2-print" }
+          ],
+
+          "media": {
+            "path": "/medias/Sketch-2-Print/",
+            "images": ["sketch2print_screen2_30.webp", "s2p_1.webp", "s2p_2.webp"]
+          }
+        },
+
+        {
+          "id": "bonjour",
+          "title": "Bonjour",
+          "tags": ["web2print", "exhibition", "animated"],
+          "description": "Exhibition project using ColorKineType for printed media and Instagram animations.",
+          "dates": { "start": "2023-11", "end": "2023-10" },
+
+          "preview": { "type": "gallery" },
+
+          "links": [],
+
+          "media": {
+            "path": "/medias/Bonjour/",
+            "images": [
+              "bonjour.png",
+              "bonjour_contraste_infos.png",
+              "bonjour_Maq.png",
+              "cartonTest.png",
+              "image_flyer_png.png",
+              "instaBjr2.mp4",
+              "poster.png"
+            ]
+          }
+        },
+
+        {
+          "id": "flowers-from-mars",
+          "title": "Flowers from Mars",
+          "tags": ["p5js", "gamepad", "illustration", "riso"],
+          "description": "Exploration of fictional biological life forms controlled via gamepad.",
+          "dates": { "start": "2023-04", "end": "2023-05" },
+
+          "preview": { "type": "gallery" },
+
+          "links": [],
+
+          "media": {
+            "path": "/medias/Flowers_From_Mars/",
+            "images": ["plancheFlower.png", "planche.webp", "2.webp"]
+          }
+        },
+
+        {
+          "id": "Projet_Eclate",
+          "title": "Projet Éclaté",
+          "tags": ["3D", "blender", "video"],
+          "description": "3D experimental project generating vessel-like structures.",
+          "dates": { "start": "2022-06", "end": "2022-07" },
+
+          "preview": {
+            "type": "video",
+            "src": "https://vimeo.com/"
+          },
+
+          "links": [],
+
+          "media": {
+            "path": "/medias/Projet_Eclate/",
+            "images": ["pencil_explo.png", "pencil.png", "planes.png"]
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "bec-2025",
+      "title": "BEC 2025",
+      "projects": [
+        {
+          "id": "bec-2025",
+          "title": "BEC 2025 playground",
+          "tags": ["p5js", "3D", "generative", "interactive"],
+          "description": "Web app created for Biennale en communs.",
+          "dates": { "start": "2024-11", "end": "2025-03" },
+
+          "preview": {
+            "type": "iframe",
+            "src": "https://bec2025.netlify.app/"
+          },
+
+          "links": [
+            { "label": "live", "url": "https://bec2025.netlify.app/" },
+            { "label": "alt version", "url": "https://vuetify-ui--bec2025.netlify.app/" }
+          ],
+
+          "media": {
+            "path": "/medias/bec-2025/",
+            "images": ["main_app.png"]
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "playgrounds",
+      "title": "Playground projects",
+      "projects": [
+        {
+          "id": "cerebro",
+          "title": "Cerebro",
+          "tags": ["p5js", "3D"],
+          "description": "Brain scan visualization in 3D.",
+          "preview": {
+            "type": "iframe",
+            "src": "https://editor.p5js.org/rbottura/sketches/QDTitB_fm"
+          },
+          "links": [
+            { "label": "open", "url": "https://editor.p5js.org/rbottura/sketches/QDTitB_fm" }
+          ]
+        },
+
+        {
+          "id": "apear-clip",
+          "title": "Apear clip",
+          "tags": ["p5js", "music", "video"],
+          "description": "Music video for Villacanas.",
+          "preview": {
+            "type": "video",
+            "src": "https://vimeo.com/857095741"
+          },
+          "links": []
+        },
+
+        {
+          "id": "grid-sketches",
+          "title": "Grid Sketches",
+          "tags": ["p5js", "rastering"],
+          "description": "Gridded image processing experiments.",
+          "preview": { "type": "external" },
+          "links": [
+            { "label": "repository", "url": "https://github.com/rbottura/grid_sketch" }
+          ]
+        },
+
+        {
+          "id": "hash-running",
+          "title": "hash_running",
+          "tags": ["p5js", "animation"],
+          "description": "Generative animation of a running silhouette.",
+          "preview": {
+            "type": "iframe",
+            "src": "https://hash-running.netlify.app/"
+          },
+          "links": [
+            { "label": "live", "url": "https://hash-running.netlify.app/" },
+            { "label": "repository", "url": "https://github.com/rbottura/-hash_running" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "romainlaurent",
+      "title": "romainlaurent.com",
+      "projects": [
+        {
+          "id": "romainlaurent",
+          "title": "romainlaurent.com",
+          "tags": ["kirby", "cms"],
+          "description": "Website built with Kirby CMS.",
+          "preview": {
+            "type": "iframe",
+            "src": "https://romainlaurent.com"
+          },
+          "links": [
+            { "label": "visit", "url": "https://romainlaurent.com" }
+          ]
+        }
+      ]
+    }
+  ]
+}
