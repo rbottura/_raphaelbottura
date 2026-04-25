@@ -75,7 +75,7 @@
           ],
 
           "media": {
-            "path": "/medias/p5-rcs/",
+            "path": "/medias/p5-RCS/",
             "images": ["test.png", "aff.png"]
           }
         },
@@ -108,8 +108,19 @@
           "title": "PRE-RIP",
           "description": "Print processing pipeline (work in progress).",
           "tags": ["print", "pipeline"],
-          "preview": { "type": "none" },
-          "links": []
+           "preview": {
+            "type": "iframe",
+            "src": "https://pre-rip-proto-845f70.gitlab.io/"
+          },
+
+          "links": [
+            { "label": "demo", "url": "https://pre-rip-proto-845f70.gitlab.io/" },
+            { "label": "repository", "url": "https://gitlab.com/esad-gv1/epe/nlnet/pre-rip_proto" }
+          ],
+          "media":{
+            "path":"/medias/PRE-RIP/",
+            "images":["demo_test.gif"]
+          }
         }
       ]
     },
@@ -211,7 +222,7 @@
 
           "preview": {
             "type": "video",
-            "src": "https://vimeo.com/"
+            "src": "https://vimeo.com/949288976?fl=pl&fe=sh"
           },
 
           "links": [],
@@ -246,7 +257,7 @@
           ],
 
           "media": {
-            "path": "/medias/bec-2025/",
+            "path": "/medias/BEC_2025/",
             "images": ["main_app.png"]
           }
         }
@@ -264,7 +275,7 @@
           "description": "Brain scan visualization in 3D.",
           "preview": {
             "type": "iframe",
-            "src": "https://editor.p5js.org/rbottura/sketches/QDTitB_fm"
+            "src": "https://p5cerebro.netlify.app/"
           },
           "links": [
             { "label": "open", "url": "https://editor.p5js.org/rbottura/sketches/QDTitB_fm" }
@@ -273,9 +284,9 @@
 
         {
           "id": "apear-clip",
-          "title": "Apear clip",
+          "title": "Apear - Music video clip",
           "tags": ["p5js", "music", "video"],
-          "description": "Music video for Villacanas.",
+          "description": "Music video for Villacanas. Video processing was made with a custom application I made with p5js.",
           "preview": {
             "type": "video",
             "src": "https://vimeo.com/857095741"
@@ -288,10 +299,14 @@
           "title": "Grid Sketches",
           "tags": ["p5js", "rastering"],
           "description": "Gridded image processing experiments.",
-          "preview": { "type": "external" },
+          "preview": { "type": "gallery" },
           "links": [
             { "label": "repository", "url": "https://github.com/rbottura/grid_sketch" }
-          ]
+          ],
+          "media": {
+            "path": "/medias/Grid_Sketches/",
+            "images": ["chaise.webp", "chair.mp4", "maFace.png", "face.mp4", "coiffure2.mp4"]
+          }
         },
 
         {
@@ -329,6 +344,20 @@
           ]
         }
       ]
+    },
+    {
+     "id":"More",
+     "title": "More / About",
+     "projects" : [
+        {
+          "id":"infos",
+          "title":"About me"
+        },
+        {
+          "id":"personnal playground",
+          "title":"Personal Playground"
+        }
+     ]
     }
   ]
 }

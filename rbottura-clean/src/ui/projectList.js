@@ -1,4 +1,5 @@
 import { updatePanel } from './panel'
+import { openCarousel, setupCarouselTouchSupport } from './carousel'
 
 export function renderProjectList(state) {
   const container = document.getElementById('projects')
@@ -31,6 +32,17 @@ export function renderProjectList(state) {
                   <strong>${p.title}</strong> — ${p.description}
                   ${p.url ? `<a href="${p.url}" target="_blank" class="ext-link">${p.urlLabel || '↗'}</a>` : ''}
                 </div>
+                ${p.media?.images && p.media.images.length > 0 ? `
+                  <div class="thumb-gallery">
+                    <div class="thumb-scroll">
+                      ${p.media.images.map((img, idx) => `
+                        <div class="thumb-item" data-idx="${idx}" data-id="${p.id}">
+                          <img src="${p.media.path}${img}" alt="thumbnail ${idx + 1}">
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                ` : ''}
               </div>
             `)
             .join('')}
@@ -74,4 +86,15 @@ export function renderProjectList(state) {
   // Open first section by default
   const firstToggle = container.querySelector('.section-toggle')
   if (firstToggle) firstToggle.click()
+
+  // Handle thumbnail clicks to open carousel
+  container.addEventListener('click', (e) => {
+    const thumb = e.target.closest('.thumb-item')
+    if (thumb) {
+      const projectId = thumb.dataset.id
+      const idx = parseInt(thumb.dataset.idx, 10)
+      openCarousel(projectId, idx, state.projects)
+      setupCarouselTouchSupport()
+    }
+  })
 }
