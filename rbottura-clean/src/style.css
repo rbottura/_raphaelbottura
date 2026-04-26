@@ -30,6 +30,7 @@ html {
   font-size: 13px;
   background: var(--bg);
   color: var(--fg);
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -57,7 +58,9 @@ body {
 /* LEFT COLUMN */
 .left {
   padding: 2rem 1.5rem;
+  width: 100%;
   max-width: 570px;
+  overflow-x: hidden;
 }
 
 @media (min-width: 900px) {
@@ -268,9 +271,11 @@ header {
 /* MOBILE PREVIEW */
 .mobile-preview {
   display: none;
+  width: 100%;
   background: var(--panel);
   border-top: 1px solid var(--border);
   padding: 1rem;
+  overflow: hidden;
 }
 
 .mobile-preview.open {
@@ -310,6 +315,7 @@ header {
   display: flex;
   gap: 0.5rem;
   height: 100%;
+  width: 100%;
   overflow-x: auto;
   padding: 0.5rem;
   -webkit-overflow-scrolling: touch;
@@ -335,7 +341,7 @@ header {
 
 .thumb-item {
   flex-shrink: 0;
-  height: 90%;
+  height: 100%;
   aspect-ratio: 1;
   background: #fff;
   border: 1px solid var(--border);
@@ -374,11 +380,13 @@ header {
   justify-content: center;
   opacity: 0;
   transition: opacity 0.2s ease;
+  pointer-events: none;
 }
 
 .carousel-modal.open {
   display: flex;
   opacity: 1;
+  pointer-events: auto;
 }
 
 .carousel-container {
@@ -390,6 +398,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: auto;
 }
 
 .carousel-close {

@@ -327,8 +327,8 @@
     },
 
     {
-      "id": "romainlaurent",
-      "title": "romainlaurent.com",
+      "id": "webbsites",
+      "title": "websites",
       "projects": [
         {
           "id": "romainlaurent",
@@ -341,7 +341,17 @@
           },
           "links": [
             { "label": "visit", "url": "https://romainlaurent.com" }
-          ]
+          ],
+          "media": {
+            "path": "/medias/Romain_Laurent/",
+            "images": ["screen.png"]
+          }
+        },
+        {
+          "id": "malouchapurlat",
+          "title": "malouchapurlat.com (to be published)",
+          "tags": ["kirby", "cms"],
+          "description": "Website built with Kirby CMS."
         }
       ]
     },

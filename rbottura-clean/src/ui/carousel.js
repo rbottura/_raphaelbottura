@@ -106,14 +106,21 @@ export function setupCarouselTouchSupport() {
   const modal = document.getElementById('carouselModal')
   const viewport = document.querySelector('.carousel-viewport')
   const viewer = document.getElementById('carouselViewer')
-  if (!viewport || !viewer) return
+  const container = document.querySelector('.carousel-container')
+  if (!viewport || !viewer || !container) return
 
-  // Close on outside click (modal background only)
+  // Close on outside click (modal background only) and prevent event propagation
   modal.addEventListener('click', (e) => {
+    e.stopPropagation()
     if (e.target === modal) {
       closeCarousel()
       return
     }
+  })
+
+  // Prevent clicks on container from bubbling to modal background
+  container.addEventListener('click', (e) => {
+    e.stopPropagation()
   })
 
   // Swipe/drag support on carousel slides
