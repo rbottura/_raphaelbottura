@@ -1,4 +1,5 @@
 let currentCarousel = null
+let carouselClosedTime = 0
 
 function isVideoFile(filename) {
   return /\.(mp4|webm|ogg|mov|avi)$/i.test(filename)
@@ -43,6 +44,17 @@ export function openCarousel(projectId, initialIndex, projects) {
   document.body.style.overflow = 'hidden'
   updateCarouselPosition()
 
+  console.log('[Carousel] Opened, z-index:', window.getComputedStyle(modal).zIndex)
+  
+  // Debug: Log all clicks on modal
+  modal.addEventListener('click', (e) => {
+    console.log('[Modal Click]', {
+      target: e.target.id || e.target.className || e.target.tagName,
+      currentTarget: e.currentTarget.id,
+      path: e.composedPath().map(el => el.id || el.className || el.tagName).slice(0, 5)
+    })
+  }, { once: false, capture: true })
+
   // Add keyboard support
   document.addEventListener('keydown', handleCarouselKeydown)
 }
@@ -66,6 +78,11 @@ export function closeCarousel() {
   modal.classList.remove('open')
   document.body.style.overflow = ''
   document.removeEventListener('keydown', handleCarouselKeydown)
+  
+  // Record close time to prevent event propagation
+  carouselClosedTime = Date.now()
+  console.log('[Carousel] Closed, buffer active for 50ms')
+  
   currentCarousel = null
 }
 
@@ -95,7 +112,11 @@ function handleCarouselKeydown(e) {
   }
 }
 
-// Touch/swipe support
+// Export buffer check for use in other modules
+export function isCarouselCloseBufferActive() {
+  const elapsed = Date.now() - carouselClosedTime
+  return elapsed < 50
+}
 let touchStartX = 0
 let touchStartY = 0
 let touchEndX = 0

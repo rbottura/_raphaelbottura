@@ -54,6 +54,7 @@ export function updatePanel(state) {
   desc.textContent = project.description || ''
 
   // Check what preview options are available
+  const hasAbout = project.preview?.type === 'about' && project.about
   const hasIframe = project.preview?.type === 'iframe' && project.preview?.src
   const hasVideo = project.preview?.type === 'video' && project.preview?.src
   const hasGallery = project.media?.images && project.media.images.length > 0
@@ -109,21 +110,27 @@ export function updatePanel(state) {
 }
 
 function renderPreviewContent(state, project, iframe, empty, gallery) {
+  const hasAbout = project.preview?.type === 'about' && project.about
   const hasIframe = project.preview?.type === 'iframe' && project.preview?.src
   const hasVideo = project.preview?.type === 'video' && project.preview?.src
   const hasGallery = project.media?.images && project.media.images.length > 0
 
   // Determine what to show based on preview mode
+  let showAbout = false
   let showIframe = false
   let showVideo = false
   let showGallery = false
 
-  if (state.previewMode === 'iframe' && hasIframe) {
+  if (state.previewMode === 'about' && hasAbout) {
+    showAbout = true
+  } else if (state.previewMode === 'iframe' && hasIframe) {
     showIframe = true
   } else if (state.previewMode === 'video' && hasVideo) {
     showVideo = true
   } else if (state.previewMode === 'gallery' && hasGallery) {
     showGallery = true
+  } else if (hasAbout) {
+    showAbout = true
   } else if (hasIframe) {
     showIframe = true
   } else if (hasVideo) {
@@ -137,7 +144,9 @@ function renderPreviewContent(state, project, iframe, empty, gallery) {
   if (gallery) gallery.style.display = 'none'
   empty.style.display = 'none'
 
-  if (showIframe) {
+  if (showAbout) {
+    renderAboutContent(project, gallery)
+  } else if (showIframe) {
     iframe.src = project.preview.src
     iframe.style.display = 'block'
   } else if (showVideo) {
@@ -145,26 +154,118 @@ function renderPreviewContent(state, project, iframe, empty, gallery) {
     iframe.style.display = 'block'
   } else if (showGallery) {
     if (gallery) {
-      gallery.innerHTML = project.media.images
-        .map(img => {
-          if (isVideoFile(img)) {
+      // Build gallery content with optional long description and captions
+      let galleryHTML = ''
+      
+      // Add long description if available
+      if (project.longDescription) {
+        galleryHTML += `
+          <div class="gallery-description">
+            <p>${project.longDescription}</p>
+          </div>
+        `
+      }
+      
+      // Add images/videos with optional captions
+      galleryHTML += `<div class="gallery-items">`
+      galleryHTML += project.media.images
+        .map(item => {
+          // Handle both string format (backward compatibility) and object format {src, caption}
+          const imgSrc = typeof item === 'string' ? item : item.src
+          const caption = typeof item === 'string' ? '' : (item.caption || '')
+          
+          if (isVideoFile(imgSrc)) {
             return `
-              <video 
-                style="max-width: 100%; border: 1px solid var(--border); display: block;" 
-                controls
-                preload="metadata"
-              >
-                <source src="${project.media.path}${img}" type="video/${img.split('.').pop()}">
-                Your browser does not support the video tag.
-              </video>
+              <figure class="gallery-item">
+                <video 
+                  style="max-width: 100%; border: 1px solid var(--border); display: block;" 
+                  controls
+                  preload="metadata"
+                >
+                  <source src="${project.media.path}${imgSrc}" type="video/${imgSrc.split('.').pop()}">
+                  Your browser does not support the video tag.
+                </video>
+                ${caption ? `<figcaption class="gallery-caption">${caption}</figcaption>` : ''}
+              </figure>
             `
           }
-          return `<img src="${project.media.path}${img}" alt="${project.title}" style="max-width: 100%; border: 1px solid var(--border); display: block;">`
+          return `
+            <figure class="gallery-item">
+              <img src="${project.media.path}${imgSrc}" alt="${project.title}" style="max-width: 100%; border: 1px solid var(--border); display: block;">
+              ${caption ? `<figcaption class="gallery-caption">${caption}</figcaption>` : ''}
+            </figure>
+          `
         })
         .join('')
+      galleryHTML += `</div>`
+      
+      gallery.innerHTML = galleryHTML
       gallery.style.display = 'flex'
     }
   } else {
     empty.style.display = 'flex'
   }
+}
+
+function renderAboutContent(project, container) {
+  if (!project.about) return
+  
+  const about = project.about
+  let html = '<div class="about-content">'
+  
+  // Bio
+  if (about.bio) {
+    html += `<div class="about-section"><p class="about-bio">${about.bio}</p></div>`
+  }
+  
+  // Education
+  if (about.education && about.education.length > 0) {
+    html += `<div class="about-section">
+      <h3 class="about-heading">Education</h3>
+      <ul class="about-list">`
+    about.education.forEach(edu => {
+      html += `<li class="about-list-item"><strong>${edu.degree}</strong> — ${edu.school} (${edu.year})</li>`
+    })
+    html += `</ul></div>`
+  }
+  
+  // Skills
+  if (about.skills && about.skills.length > 0) {
+    html += `<div class="about-section">
+      <h3 class="about-heading">Skills</h3>
+      <ul class="about-list">`
+    about.skills.forEach(skill => {
+      html += `<li class="about-list-item">${skill}</li>`
+    })
+    html += `</ul></div>`
+  }
+  
+  // Languages
+  if (about.languages && about.languages.length > 0) {
+    html += `<div class="about-section">
+      <h3 class="about-heading">Languages</h3>
+      <ul class="about-list">`
+    about.languages.forEach(lang => {
+      html += `<li class="about-list-item"><strong>${lang.name}</strong> — ${lang.level}</li>`
+    })
+    html += `</ul></div>`
+  }
+  
+  // Contact
+  if (about.contact) {
+    html += `<div class="about-section">
+      <h3 class="about-heading">Contact</h3>
+      <div class="about-contact">`
+    if (about.contact.email) {
+      html += `<p><a href="mailto:${about.contact.email}">${about.contact.email}</a></p>`
+    }
+    if (about.contact.location) {
+      html += `<p>${about.contact.location}</p>`
+    }
+    html += `</div></div>`
+  }
+  
+  html += '</div>'
+  container.innerHTML = html
+  container.style.display = 'flex'
 }

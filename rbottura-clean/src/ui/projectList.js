@@ -1,5 +1,5 @@
 import { updatePanel } from './panel'
-import { openCarousel, setupCarouselTouchSupport } from './carousel'
+import { openCarousel, setupCarouselTouchSupport, isCarouselCloseBufferActive } from './carousel'
 
 export function renderProjectList(state) {
   const container = document.getElementById('projects')
@@ -53,16 +53,31 @@ export function renderProjectList(state) {
 
   // Section toggle functionality
   window.toggleSection = function(btn) {
+    // Ignore toggles within 50ms of carousel close
+    if (isCarouselCloseBufferActive()) {
+      console.log('[Section Toggle] Ignored - carousel close buffer active')
+      return
+    }
     btn.classList.toggle('open')
     btn.nextElementSibling.classList.toggle('open')
   }
 
   // Project selection functionality
   container.addEventListener('click', (e) => {
+    // Ignore clicks within 50ms of carousel close
+    if (isCarouselCloseBufferActive()) {
+      console.log('[Project List] Click ignored - carousel close buffer active')
+      return
+    }
+
     const item = e.target.closest('.project-item')
-    if (!item) return
+    if (!item) {
+      console.log('[Project List] Click on:', e.target.className || e.target.tagName)
+      return
+    }
 
     const id = item.dataset.id
+    console.log('[Project Item] Selected:', id)
     state.activeId = id
 
     document.querySelectorAll('.project-item')
@@ -93,8 +108,16 @@ export function renderProjectList(state) {
     if (thumb) {
       const projectId = thumb.dataset.id
       const idx = parseInt(thumb.dataset.idx, 10)
+      console.log('[Thumbnail] Clicked, opening carousel for:', projectId, 'index:', idx)
       openCarousel(projectId, idx, state.projects)
       setupCarouselTouchSupport()
     }
   })
+
+  // Debug: Log clicks on section labels
+  container.addEventListener('click', (e) => {
+    if (e.target.closest('.section-label')) {
+      console.log('[Section Label] Clicked:', e.target.textContent, 'Buffer active?', isCarouselCloseBufferActive())
+    }
+  }, true)  // Capture phase
 }

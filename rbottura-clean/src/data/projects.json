@@ -8,6 +8,7 @@
           "id": "zagreb",
           "title": "Propagation Workshop #2 — University of Zagreb Faculty of Graphic Arts",
           "description": "EPE workshop residency.",
+          "longDescription": "A collaborative workshop exploring the intersection of digital tools and print production at the University of Zagreb. This residency brought together students and practitioners to experiment with web-to-print workflows and emerging technologies.",
           "tags": ["web2print", "workshop"],
           "preview": {
             "type": "gallery"
@@ -15,7 +16,11 @@
           
           "media": {
             "path": "/medias/EPE_wk/",
-            "images": ["epe_zagreb_group.jpg", "epe_zagreb_group3.jpg", "epe_zagreb_group2.jpg"]
+            "images": [
+              {"src": "epe_zagreb_group.jpg", "caption": "Workshop participants collaborating"},
+              {"src": "epe_zagreb_group3.jpg", "caption": "Group work session"},
+              {"src": "epe_zagreb_group2.jpg", "caption": "Final documentation"}
+            ]
           }
         },
         {
@@ -76,7 +81,7 @@
 
           "media": {
             "path": "/medias/p5-RCS/",
-            "images": ["test.png", "aff.png"]
+            "images": ["test.png"]
           }
         },
 
@@ -167,7 +172,7 @@
 
           "media": {
             "path": "/medias/Sketch-2-Print/",
-            "images": ["sketch2print_screen2_30.webp", "s2p_1.webp", "s2p_2.webp"]
+            "images": ["montagne-format.webp","calme-format.webp","potager-format.webp","plaine-format.webp","ile-format.webp","sketch2print_screen2_30.webp", "s2p_1.webp", "s2p_2.webp"]
           }
         },
 
@@ -361,7 +366,39 @@
      "projects" : [
         {
           "id":"infos",
-          "title":"About me"
+          "title":"About me",
+          "preview": { "type": "about" },
+          "about": {
+            "bio": "Creative technologist and digital designer exploring the intersection of print and web. Passionate about building tools for visual creators and experimentation.",
+            "education": [
+              {
+                "degree": "Master's in Graphic Design",
+                "school": "ESAD Grenoble-Valence",
+                "year": "2023"
+              },
+              {
+                "degree": "Bachelor's in Digital Arts",
+                "school": "Your University Name",
+                "year": "2021"
+              }
+            ],
+            "skills": [
+              "Web Development (JavaScript, Vue.js, React)",
+              "Creative Coding (p5.js, Three.js)",
+              "Print & Web2Print (Paged.js)",
+              "Design Tools (Figma, Blender)",
+              "Python & Full-stack Development"
+            ],
+            "languages": [
+              { "name": "French", "level": "Native" },
+              { "name": "English", "level": "Fluent" },
+              { "name": "Italian", "level": "Conversational" }
+            ],
+            "contact": {
+              "email": "your.email@example.com",
+              "location": "Paris, France"
+            }
+          }
         },
         {
           "id":"personnal playground",
