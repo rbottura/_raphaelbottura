@@ -833,6 +833,7 @@ header {
   align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
   /* background: var(--skeleton-base); */
 }
 

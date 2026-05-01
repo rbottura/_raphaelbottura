@@ -189,9 +189,9 @@
           "media": {
             "path": "/medias/ColorKineType/",
             "images": [
-              {"src": "input_layer.png", "caption": "Input layer visualization"},
-              {"src": "render_layer.png", "caption": "Render layer visualization"},
-              {"src": "render_image.png", "caption": "Final rendered image"}
+              {"src": "screen1_mockup.png", "caption": "Input layer visualization"},
+              {"src": "screen2_mockup.png", "caption": "Render layer visualization"},
+              {"src": "screen3_mockup.png", "caption": "Final rendered image"}
             ]
           }
         },
@@ -414,7 +414,7 @@
           "media": {
             "path": "/medias/Romain_Laurent/",
             "images": [
-              {"src": "screen.png", "caption": "Website screenshot"}
+              {"src": "screen_mockup.png", "caption": "Website screenshot"}
             ]
           }
         },
