@@ -85,11 +85,16 @@ function renderProjectItem(p) {
       ${p.media?.images && p.media.images.length > 0 ? `
         <div class="thumb-gallery">
           <div class="thumb-scroll">
-            ${p.media.images.map((img, idx) => `
-              <div class="thumb-item" data-idx="${idx}" data-id="${p.id}">
-                <img src="${p.media.path}${img}" alt="thumbnail ${idx + 1}">
-              </div>
-            `).join('')}
+            ${p.media.images.map((img, idx) => {
+              // Handle both string format (backward compatibility) and object format {src, caption}
+              const imgSrc = typeof img === 'string' ? img : img.src
+              const caption = typeof img === 'string' ? '' : (img.caption || '')
+              return `
+                <div class="thumb-item" data-idx="${idx}" data-id="${p.id}" title="${caption ? caption : ''}">
+                  <img src="${p.media.path}${imgSrc}" alt="thumbnail ${idx + 1}">
+                </div>
+              `
+            }).join('')}
           </div>
         </div>
       ` : ''}

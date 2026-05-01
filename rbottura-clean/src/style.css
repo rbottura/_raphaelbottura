@@ -49,12 +49,12 @@
 }
 
 html.dark-mode {
-  --bg: #1a1a1a;
+  --bg: #111111;
   --fg: #e8e8e8;
   --muted: #999;
   --accent: #ffe13a;
   --border: #333;
-  --panel: #242424;
+  --panel: #111111;
   --skeleton-base: #333;
   --skeleton-shine: #444;
 }

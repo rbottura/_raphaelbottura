@@ -22,19 +22,25 @@ export function openCarousel(projectId, initialIndex, projects) {
   // Build slides HTML
   carousel.innerHTML = currentCarousel.images
     .map((img, idx) => {
-      if (isVideoFile(img)) {
+      // Handle both string format (backward compatibility) and object format {src, caption}
+      const imgSrc = typeof img === 'string' ? img : img.src
+      const caption = typeof img === 'string' ? '' : (img.caption || '')
+      
+      if (isVideoFile(imgSrc)) {
         return `
           <div class="carousel-slide" data-idx="${idx}">
             <video controls preload="metadata">
-              <source src="${currentCarousel.mediaPath}${img}" type="video/${img.split('.').pop()}">
+              <source src="${currentCarousel.mediaPath}${imgSrc}" type="video/${imgSrc.split('.').pop()}">
               Your browser does not support the video tag.
             </video>
+            ${caption ? `<div style="position: absolute; bottom: 15px; width: 90%; background: rgba(0,0,0,0.9); color: white; padding: 0.5rem; font-size: 0.85rem;">${caption}</div>` : ''}
           </div>
         `
       }
       return `
         <div class="carousel-slide" data-idx="${idx}">
-          <img src="${currentCarousel.mediaPath}${img}" alt="slide ${idx + 1}">
+          <img src="${currentCarousel.mediaPath}${imgSrc}" alt="slide ${idx + 1}">
+          ${caption ? `<div style="position: absolute; bottom: 15px; width: 90%; background: rgba(0,0,0,0.9); color: white; padding: 0.5rem; font-size: 0.85rem;">${caption}</div>` : ''}
         </div>
       `
     })
