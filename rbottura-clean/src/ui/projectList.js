@@ -65,6 +65,9 @@ function renderAllView(state, container) {
 }
 
 function renderProjectItem(p) {
+  // Check if this is an about preview
+  const hasAbout = p.preview?.type === 'about' && p.about
+  
   return `
     <div class="project-item" data-id="${p.id}">
       <div>
@@ -78,28 +81,89 @@ function renderProjectItem(p) {
       ${p.url ? `<a class="ext-link" href="${p.url}" target="_blank" onclick="event.stopPropagation()">${p.urlLabel || '↗'}</a>` : ''}
     </div>
     <div class="mobile-preview" id="mobile-${p.id}">
-      <div class="preview-meta">
-        <strong>${p.title}</strong> — ${p.description}
-        ${p.url ? `<a href="${p.url}" target="_blank" class="ext-link">${p.urlLabel || '↗'}</a>` : ''}
-      </div>
-      ${p.media?.images && p.media.images.length > 0 ? `
-        <div class="thumb-gallery">
-          <div class="thumb-scroll">
-            ${p.media.images.map((img, idx) => {
-              // Handle both string format (backward compatibility) and object format {src, caption}
-              const imgSrc = typeof img === 'string' ? img : img.src
-              const caption = typeof img === 'string' ? '' : (img.caption || '')
-              return `
-                <div class="thumb-item" data-idx="${idx}" data-id="${p.id}" title="${caption ? caption : ''}">
-                  <img src="${p.media.path}${imgSrc}" alt="thumbnail ${idx + 1}">
-                </div>
-              `
-            }).join('')}
-          </div>
+      ${hasAbout ? renderMobileAboutContent(p.about) : `
+        <div class="preview-meta">
+          <strong>${p.title}</strong> — ${p.description || ''}
+          ${p.url ? `<a href="${p.url}" target="_blank" class="ext-link">${p.urlLabel || '↗'}</a>` : ''}
         </div>
-      ` : ''}
+        ${p.media?.images && p.media.images.length > 0 ? `
+          <div class="thumb-gallery">
+            <div class="thumb-scroll">
+              ${p.media.images.map((img, idx) => {
+                // Handle both string format (backward compatibility) and object format {src, caption}
+                const imgSrc = typeof img === 'string' ? img : img.src
+                const caption = typeof img === 'string' ? '' : (img.caption || '')
+                return `
+                  <div class="thumb-item" data-idx="${idx}" data-id="${p.id}" title="${caption ? caption : ''}">
+                    <img src="${p.media.path}${imgSrc}" alt="thumbnail ${idx + 1}">
+                  </div>
+                `
+              }).join('')}
+            </div>
+          </div>
+        ` : ''}
+      `}
     </div>
   `
+}
+
+function renderMobileAboutContent(about) {
+  let html = '<div class="about-content">'
+  
+  // Bio
+  if (about.bio) {
+    html += `<div class="about-section"><p class="about-bio">${about.bio}</p></div>`
+  }
+  
+  // Education
+  if (about.education && about.education.length > 0) {
+    html += `<div class="about-section">
+      <h3 class="about-heading">Education</h3>
+      <ul class="about-list">`
+    about.education.forEach(edu => {
+      html += `<li class="about-list-item"><strong>${edu.degree}</strong> — ${edu.school} (${edu.year})</li>`
+    })
+    html += `</ul></div>`
+  }
+  
+  // Skills
+  if (about.skills && about.skills.length > 0) {
+    html += `<div class="about-section">
+      <h3 class="about-heading">Skills</h3>
+      <ul class="about-list">`
+    about.skills.forEach(skill => {
+      html += `<li class="about-list-item">${skill}</li>`
+    })
+    html += `</ul></div>`
+  }
+  
+  // Languages
+  if (about.languages && about.languages.length > 0) {
+    html += `<div class="about-section">
+      <h3 class="about-heading">Languages</h3>
+      <ul class="about-list">`
+    about.languages.forEach(lang => {
+      html += `<li class="about-list-item"><strong>${lang.name}</strong> — ${lang.level}</li>`
+    })
+    html += `</ul></div>`
+  }
+  
+  // Contact
+  if (about.contact) {
+    html += `<div class="about-section">
+      <h3 class="about-heading">Contact</h3>
+      <div class="about-contact">`
+    if (about.contact.email) {
+      html += `<p><a href="mailto:${about.contact.email}">${about.contact.email}</a></p>`
+    }
+    if (about.contact.location) {
+      html += `<p>${about.contact.location}</p>`
+    }
+    html += `</div></div>`
+  }
+  
+  html += '</div>'
+  return html
 }
 
 function renderGalleryView(state, container) {
