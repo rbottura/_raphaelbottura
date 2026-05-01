@@ -4,7 +4,43 @@ import { openCarousel, setupCarouselTouchSupport, isCarouselCloseBufferActive } 
 export function renderProjectList(state) {
   const container = document.getElementById('projects')
 
-  container.innerHTML = state.projects.sections
+  // Add gallery filter button at the top
+  const filterHtml = `
+    <div class="projects-filter">
+      <button class="filter-btn active" data-filter="all">all</button>
+      <button class="filter-btn" data-filter="gallery">gallery</button>
+    </div>
+  `
+
+  // Initialize filter state if not already set
+  if (!state.viewFilter) {
+    state.viewFilter = 'all'
+  }
+
+  // container.innerHTML = filterHtml
+
+  // Render appropriate view based on filter
+  if (state.viewFilter === 'gallery') {
+    renderGalleryView(state, container)
+  } else {
+    renderAllView(state, container)
+  }
+
+  // Add filter button event listeners
+  container.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation()
+      container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'))
+      btn.classList.add('active')
+      state.viewFilter = btn.dataset.filter
+      renderProjectList(state)
+    })
+  })
+}
+
+function renderAllView(state, container) {
+  // Render normal sections view
+  const sectionsHtml = state.projects.sections
     .map(section => `
       <div class="section">
         <button class="section-toggle" onclick="toggleSection(this)">
@@ -15,45 +51,89 @@ export function renderProjectList(state) {
         <div class="section-items">
           ${section.subLabel ? `<span class="sub-label">${section.subLabel}</span>` : ''}
           ${section.projects
-            .map(p => `
-              <div class="project-item" data-id="${p.id}">
-                <div>
-                  <div class="project-name">${p.title}</div>
-                  ${p.tags ? `
-                    <div class="project-tags">
-                      ${p.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                    </div>
-                  ` : ''}
-                </div>
-                ${p.url ? `<a class="ext-link" href="${p.url}" target="_blank" onclick="event.stopPropagation()">${p.urlLabel || '↗'}</a>` : ''}
-              </div>
-              <div class="mobile-preview" id="mobile-${p.id}">
-                <div class="preview-meta">
-                  <strong>${p.title}</strong> — ${p.description}
-                  ${p.url ? `<a href="${p.url}" target="_blank" class="ext-link">${p.urlLabel || '↗'}</a>` : ''}
-                </div>
-                ${p.media?.images && p.media.images.length > 0 ? `
-                  <div class="thumb-gallery">
-                    <div class="thumb-scroll">
-                      ${p.media.images.map((img, idx) => `
-                        <div class="thumb-item" data-idx="${idx}" data-id="${p.id}">
-                          <img src="${p.media.path}${img}" alt="thumbnail ${idx + 1}">
-                        </div>
-                      `).join('')}
-                    </div>
-                  </div>
-                ` : ''}
-              </div>
-            `)
+            .map(p => renderProjectItem(p))
             .join('')}
         </div>
       </div>
     `)
     .join('')
 
+  container.innerHTML += sectionsHtml
+
+  // Attach event listeners
+  attachProjectListeners(state)
+}
+
+function renderProjectItem(p) {
+  return `
+    <div class="project-item" data-id="${p.id}">
+      <div>
+        <div class="project-name">${p.title}</div>
+        ${p.tags ? `
+          <div class="project-tags">
+            ${p.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+        ` : ''}
+      </div>
+      ${p.url ? `<a class="ext-link" href="${p.url}" target="_blank" onclick="event.stopPropagation()">${p.urlLabel || '↗'}</a>` : ''}
+    </div>
+    <div class="mobile-preview" id="mobile-${p.id}">
+      <div class="preview-meta">
+        <strong>${p.title}</strong> — ${p.description}
+        ${p.url ? `<a href="${p.url}" target="_blank" class="ext-link">${p.urlLabel || '↗'}</a>` : ''}
+      </div>
+      ${p.media?.images && p.media.images.length > 0 ? `
+        <div class="thumb-gallery">
+          <div class="thumb-scroll">
+            ${p.media.images.map((img, idx) => `
+              <div class="thumb-item" data-idx="${idx}" data-id="${p.id}">
+                <img src="${p.media.path}${img}" alt="thumbnail ${idx + 1}">
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+    </div>
+  `
+}
+
+function renderGalleryView(state, container) {
+  // Collect all projects with galleries from all sections
+  const galleryProjects = []
+  state.projects.sections.forEach(section => {
+    section.projects.forEach(p => {
+      if (p.media?.images && p.media.images.length > 0) {
+        galleryProjects.push(p)
+      }
+    })
+  })
+
+  const galleryHtml = `
+    <div class="section">
+      <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="arrow">▶</span>
+        <span class="section-label">Gallery</span>
+        <span class="section-count">${galleryProjects.length}</span>
+      </button>
+      <div class="section-items">
+        ${galleryProjects
+          .map(p => renderProjectItem(p))
+          .join('')}
+      </div>
+    </div>
+  `
+
+  container.innerHTML += galleryHtml
+
+  // Attach event listeners
+  attachProjectListeners(state)
+}
+
+function attachProjectListeners(state) {
+  const container = document.getElementById('projects')
+
   // Section toggle functionality
   window.toggleSection = function(btn) {
-    // Ignore toggles within 50ms of carousel close
     if (isCarouselCloseBufferActive()) {
       console.log('[Section Toggle] Ignored - carousel close buffer active')
       return
@@ -64,7 +144,6 @@ export function renderProjectList(state) {
 
   // Project selection functionality
   container.addEventListener('click', (e) => {
-    // Ignore clicks within 50ms of carousel close
     if (isCarouselCloseBufferActive()) {
       console.log('[Project List] Click ignored - carousel close buffer active')
       return
@@ -72,7 +151,6 @@ export function renderProjectList(state) {
 
     const item = e.target.closest('.project-item')
     if (!item) {
-      console.log('[Project List] Click on:', e.target.className || e.target.tagName)
       return
     }
 
@@ -85,7 +163,6 @@ export function renderProjectList(state) {
 
     item.classList.add('active')
 
-    // Handle mobile vs desktop
     const isMobile = window.innerWidth < 900
     if (isMobile) {
       const mobileEl = document.getElementById('mobile-' + id)
@@ -119,5 +196,5 @@ export function renderProjectList(state) {
     if (e.target.closest('.section-label')) {
       console.log('[Section Label] Clicked:', e.target.textContent, 'Buffer active?', isCarouselCloseBufferActive())
     }
-  }, true)  // Capture phase
+  }, true)
 }

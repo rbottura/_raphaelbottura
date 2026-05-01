@@ -6,9 +6,9 @@
       "projects": [
         {
           "id": "zagreb",
-          "title": "Propagation Workshop #2 — University of Zagreb Faculty of Graphic Arts",
-          "description": "EPE workshop residency.",
-          "longDescription": "A collaborative workshop exploring the intersection of digital tools and print production at the University of Zagreb. This residency brought together students and practitioners to experiment with web-to-print workflows and emerging technologies.",
+          "title": "Propagation Workshop #2",
+          "description": "EPE workshop residency at University of Zagreb Faculty of Graphic Arts.",
+          "longDescription": "Propagation workshops explore Web-to-print by engaging students in collaborative editorial projects. Using HTML, CSS, and JavaScript, they create printed outputs from web-based content while testing the limits of these tools. The process unfolds in two phases: first, designing a printed booklet from provided materials; then, developing interactive screen-based publications that can also be printed, highlighting the connection between digital and physical formats.",
           "tags": ["web2print", "workshop"],
           "preview": {
             "type": "gallery"
@@ -17,23 +17,49 @@
           "media": {
             "path": "/medias/EPE_wk/",
             "images": [
-              {"src": "epe_zagreb_group.jpg", "caption": "Workshop participants collaborating"},
-              {"src": "epe_zagreb_group3.jpg", "caption": "Group work session"},
-              {"src": "epe_zagreb_group2.jpg", "caption": "Final documentation"}
+              {"src": "epe_zagreb_group.jpg", "caption": "Workshop participants"},
+              {"src": "epe_zagreb_group2.jpg", "caption": "Group work session"},
+              {"src": "epe_zagreb_group3.jpg", "caption": "Productions and documentations"}
             ]
           }
         },
         {
           "id": "izmir",
-          "title": "Propagation Workshop #3 — Izmir University of economics, Visual Communication Department",
-          "description": "EPE workshop residency.",
+          "title": "Propagation Workshop #3",
+          "description": "EPE workshop residency at Izmir University of economics, Visual Communication Department.",
+          "longDescription": "Propagation workshops introduce Web-to-print tools through collaborative student projects hosted by partner schools. Using HTML, CSS, and JavaScript, participants learn to create printed editorial objects from web-based content, exploring both possibilities and limits. The workshops are structured in two phases: first, designing a printed booklet from given materials; second, developing interactive web publications that can also be printed. This final phase emphasizes the link between screen and print, requiring each project to include an interactive website component with printable outputs.",
           "tags": ["web2print", "workshop"],
           "preview": {
             "type": "gallery"
           },
           "media": {
             "path": "/medias/EPE_wk/",
-            "images": ["epe_izmir_wk.jpg", "epe_izmir_wk2.jpg", "epe_izmir_wk3.jpg"]
+            "images": [
+              {"src": "epe_izmir_wk.jpg", "caption": "Presentations of past workshops productions"},
+              {"src": "epe_izmir_wk2.jpg", "caption": "Workshop session"},
+              {"src": "epe_izmir_wk3.jpg", "caption": "Workshop session"}
+            ]
+          },
+          "links": [
+            { "label": "EPE website", "url": "https://epe.esad-gv.fr" }
+          ]
+        },
+        {
+          "id": "pagora",
+          "title": "Prototyping Workshop #1 ",
+          "description": "EPE workshop residency at Pagora, École internationale du papier, de la communication imprimée et des biomatériaux (Grenoble).",
+          "longDescription": "The EPE prototyping phase focused on refining web-to-print workflows through a 5-day workshop at Pagora (Dec 2024). Collaborating with printing engineers, participants explored key technical limits of browser-based PDF generation, especially color separation (CMYK layers) and rasterization processes required for industrial printing. The workshop questioned how to achieve professional print compatibility from web tools. A major goal was to prototype alternative image-processing tools, enabling designers to control color layers and halftone patterns without relying on Adobe software, drawing inspiration from p5.js libraries like p5.riso and p5.FIP.",
+          "tags": ["web2print", "workshop"],
+          "preview": {
+            "type": "gallery"
+          },
+          "media": {
+            "path": "/medias/EPE_wk/",
+            "images": [
+              {"src": "epe_pagora_wk.jpg", "caption": "Workshop session at Pagora"},
+              {"src": "epe_pagora_wk2.jpg", "caption": "Process image with halftone patterns and color separation by prototyped tools made by students"},
+              {"src": "epe_pagora_wk3.jpg", "caption": "Final project presentations"}
+            ]
           },
           "links": [
             { "label": "EPE website", "url": "https://epe.esad-gv.fr" }
@@ -41,15 +67,19 @@
         },
         {
           "id": "hexagone",
-          "title": "Production Workshop - Théâtre Hexagone, Meylan (Grenoble)",
-          "description": "EPE workshop residency.",
+          "title": "Production Workshop",
+          "description": "EPE workshop residency at Théâtre Hexagone, Meylan (Grenoble).",
           "tags": ["web2print", "workshop"],
           "preview": {
             "type": "gallery"
           },
           "media": {
             "path": "/medias/EPE_wk/",
-            "images": ["epe_hexagone_wk.jpg", "epe_hexagone_wk2.jpg", "epe_hexagone_wk3.jpeg"]
+            "images": [
+              {"src": "epe_hexagone_wk.jpg", "caption": "Workshop session at Hexagone open space"},
+              {"src": "epe_hexagone_wk2.jpg", "caption": "Roundtable with contributors of the workshops and guests"},
+              {"src": "epe_hexagone_wk3.jpeg", "caption": "Photo of liflets produced during the workshop"}
+            ]
           },
           "links": [
             { "label": "EPE website", "url": "https://epe.esad-gv.fr" }
@@ -104,7 +134,10 @@
 
           "media": {
             "path": "/medias/paged-md-editor/",
-            "images": ["ui.png", "ui2.png"]
+            "images": [
+              {"src": "ui.png", "caption": "User interface of the paged-md-editor"},
+              {"src": "ui2.png", "caption": "Alternative layout options"}
+            ]
           }
         },
 
@@ -124,7 +157,9 @@
           ],
           "media":{
             "path":"/medias/PRE-RIP/",
-            "images":["demo_test.gif"]
+            "images":[
+              {"src": "demo_test.gif", "caption": "Demo of the PRE-RIP pipeline"}
+            ]
           }
         }
       ]
@@ -153,7 +188,11 @@
 
           "media": {
             "path": "/medias/ColorKineType/",
-            "images": ["input_layer.png", "render_layer.png", "render_image.png"]
+            "images": [
+              {"src": "input_layer.png", "caption": "Input layer visualization"},
+              {"src": "render_layer.png", "caption": "Render layer visualization"},
+              {"src": "render_image.png", "caption": "Final rendered image"}
+            ]
           }
         },
 
@@ -172,7 +211,16 @@
 
           "media": {
             "path": "/medias/Sketch-2-Print/",
-            "images": ["montagne-format.webp","calme-format.webp","potager-format.webp","plaine-format.webp","ile-format.webp","sketch2print_screen2_30.webp", "s2p_1.webp", "s2p_2.webp"]
+            "images": [
+              {"src": "montagne-format.webp", "caption": "Mountain format"},
+              {"src": "calme-format.webp", "caption": "Calm format"},
+              {"src": "potager-format.webp", "caption": "Garden format"},
+              {"src": "plaine-format.webp", "caption": "Plain format"},
+              {"src": "ile-format.webp", "caption": "Island format"},
+              {"src": "sketch2print_screen2_30.webp", "caption": "Sketch-to-Print interface"},
+              {"src": "s2p_1.webp", "caption": "Design iteration 1"},
+              {"src": "s2p_2.webp", "caption": "Design iteration 2"}
+            ]
           }
         },
 
@@ -190,13 +238,13 @@
           "media": {
             "path": "/medias/Bonjour/",
             "images": [
-              "bonjour.png",
-              "bonjour_contraste_infos.png",
-              "bonjour_Maq.png",
-              "cartonTest.png",
-              "image_flyer_png.png",
-              "instaBjr2.mp4",
-              "poster.png"
+              {"src": "bonjour.png", "caption": "Bonjour exhibition poster"},
+              {"src": "bonjour_contraste_infos.png", "caption": "Contrast information visualization"},
+              {"src": "bonjour_Maq.png", "caption": "Maquette for the exhibition"},
+              {"src": "cartonTest.png", "caption": "Cardboard prototype"},
+              {"src": "image_flyer_png.png", "caption": "Flyer design"},
+              {"src": "instaBjr2.mp4", "caption": "Instagram animation"},
+              {"src": "poster.png", "caption": "Final exhibition poster"}
             ]
           }
         },
@@ -214,7 +262,11 @@
 
           "media": {
             "path": "/medias/Flowers_From_Mars/",
-            "images": ["plancheFlower.png", "planche.webp", "2.webp"]
+            "images": [
+              {"src": "plancheFlower.png", "caption": "Flower design"},
+              {"src": "planche.webp", "caption": "Initial concept"},
+              {"src": "2.webp", "caption": "Final illustration"}
+            ]
           }
         },
 
@@ -234,7 +286,11 @@
 
           "media": {
             "path": "/medias/Projet_Eclate/",
-            "images": ["pencil_explo.png", "pencil.png", "planes.png"]
+            "images": [
+              {"src": "pencil_explo.png", "caption": "Pencil exploration"},
+              {"src": "pencil.png", "caption": "Final pencil sketch"},
+              {"src": "planes.png", "caption": "Plane visualization"}
+            ]
           }
         }
       ]
@@ -263,7 +319,9 @@
 
           "media": {
             "path": "/medias/BEC_2025/",
-            "images": ["main_app.png"]
+            "images": [
+              {"src": "screen_mockup.png", "caption": "Main application interface"}
+            ]
           }
         }
       ]
@@ -310,7 +368,13 @@
           ],
           "media": {
             "path": "/medias/Grid_Sketches/",
-            "images": ["chaise.webp", "chair.mp4", "maFace.png", "face.mp4", "coiffure2.mp4"]
+            "images": [
+              {"src": "chaise.webp", "caption": "Chair design"},
+              {"src": "chair.mp4", "caption": "Chair animation"},
+              {"src": "maFace.png", "caption": "My face sketch"},
+              {"src": "face.mp4", "caption": "Face animation"},
+              {"src": "coiffure2.mp4", "caption": "Hairstyle animation"}
+            ]
           }
         },
 
@@ -349,7 +413,9 @@
           ],
           "media": {
             "path": "/medias/Romain_Laurent/",
-            "images": ["screen.png"]
+            "images": [
+              {"src": "screen.png", "caption": "Website screenshot"}
+            ]
           }
         },
         {

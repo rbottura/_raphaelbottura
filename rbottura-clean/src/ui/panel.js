@@ -71,13 +71,14 @@ export function updatePanel(state) {
     }
     
     toggleContainer.innerHTML = `
-      ${hasIframe ? `<button class="preview-toggle-btn" data-preview="iframe">embed</button>` : ''}
+      ${hasIframe ? `<button class="preview-toggle-btn" data-preview="iframe" id="embed-btn-${project.id}"><span>embed</span><span class="loading-indicator"></span></button>` : ''}
       ${hasVideo ? `<button class="preview-toggle-btn" data-preview="video">video</button>` : ''}
       <button class="preview-toggle-btn" data-preview="gallery">gallery</button>
     `
     
     // Set default view or stored preference
-    const defaultPreview = state.previewMode || (hasIframe ? 'iframe' : hasVideo ? 'video' : 'gallery')
+    // For iframe projects with gallery, default to gallery first
+    const defaultPreview = state.previewMode || (hasGallery ? 'gallery' : (hasIframe ? 'iframe' : hasVideo ? 'video' : 'gallery'))
     state.previewMode = defaultPreview
     
     toggleContainer.querySelectorAll('.preview-toggle-btn').forEach(btn => {
@@ -149,9 +150,11 @@ function renderPreviewContent(state, project, iframe, empty, gallery) {
   } else if (showIframe) {
     iframe.src = project.preview.src
     iframe.style.display = 'block'
+    updateEmbedButtonState(project, 'loaded')
   } else if (showVideo) {
     iframe.src = getVimeoEmbedUrl(project.preview.src)
     iframe.style.display = 'block'
+    updateEmbedButtonState(project, 'loaded')
   } else if (showGallery) {
     if (gallery) {
       // Build gallery content with optional long description and captions
@@ -191,7 +194,7 @@ function renderPreviewContent(state, project, iframe, empty, gallery) {
           }
           return `
             <figure class="gallery-item">
-              <img src="${project.media.path}${imgSrc}" alt="${project.title}" style="max-width: 100%; border: 1px solid var(--border); display: block;">
+              <img src="${project.media.path}${imgSrc}" alt="${project.title}" style="border: 1px solid var(--border); display: block;">
               ${caption ? `<figcaption class="gallery-caption">${caption}</figcaption>` : ''}
             </figure>
           `
@@ -201,6 +204,11 @@ function renderPreviewContent(state, project, iframe, empty, gallery) {
       
       gallery.innerHTML = galleryHTML
       gallery.style.display = 'flex'
+    }
+    
+    // Preload iframe in the background if it exists
+    if (hasIframe) {
+      preloadIframeInBackground(project)
     }
   } else {
     empty.style.display = 'flex'
@@ -268,4 +276,67 @@ function renderAboutContent(project, container) {
   html += '</div>'
   container.innerHTML = html
   container.style.display = 'flex'
+}
+
+function preloadIframeInBackground(project) {
+  const iframe = document.getElementById('panelIframe')
+  
+  // Create a hidden iframe for preloading
+  let hiddenIframe = document.getElementById(`hidden-iframe-${project.id}`)
+  if (!hiddenIframe) {
+    hiddenIframe = document.createElement('iframe')
+    hiddenIframe.id = `hidden-iframe-${project.id}`
+    hiddenIframe.style.display = 'none'
+    document.body.appendChild(hiddenIframe)
+  }
+  
+  // Track loading state
+  hiddenIframe.onload = () => {
+    updateEmbedButtonState(project, 'ready')
+  }
+  
+  hiddenIframe.onerror = () => {
+    updateEmbedButtonState(project, 'error')
+  }
+  
+  // Start loading
+  updateEmbedButtonState(project, 'loading')
+  hiddenIframe.src = project.preview.src
+}
+
+function updateEmbedButtonState(project, state) {
+  const btn = document.getElementById(`embed-btn-${project.id}`)
+  if (!btn) return
+  
+  const indicator = btn.querySelector('.loading-indicator')
+  const span = btn.querySelector('span:first-child')
+  
+  if (state === 'loading') {
+    btn.classList.add('loading')
+    btn.disabled = true
+    if (span) span.textContent = 'embed'
+    if (indicator) indicator.classList.add('active')
+  } else if (state === 'ready') {
+    btn.classList.remove('loading')
+    btn.classList.add('ready')
+    btn.disabled = false
+    if (span) span.textContent = 'embed ✓'
+    if (indicator) indicator.classList.remove('active')
+    // Remove ready state after 2 seconds
+    setTimeout(() => {
+      btn.classList.remove('ready')
+      if (span) span.textContent = 'embed'
+    }, 2000)
+  } else if (state === 'loaded') {
+    btn.classList.remove('loading')
+    btn.classList.add('ready')
+    btn.disabled = false
+    if (span) span.textContent = 'embed ✓'
+    if (indicator) indicator.classList.remove('active')
+    // Remove ready state after 2 seconds
+    setTimeout(() => {
+      btn.classList.remove('ready')
+      if (span) span.textContent = 'embed'
+    }, 2000)
+  }
 }
