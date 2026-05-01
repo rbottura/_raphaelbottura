@@ -444,12 +444,12 @@
               },
               {
                 "degree": "Bachelor's in Digital Arts",
-                "school": "Your University Name",
+                "school": "ESAD Grenoble-Valence",
                 "year": "2021"
               }
             ],
             "skills": [
-              "Web Development (JavaScript, Vue.js, React)",
+              "Web Development (JavaScript, Vue.js)",
               "Creative Coding (p5.js, Three.js)",
               "Print & Web2Print (Paged.js)",
               "Design Tools (Figma, Blender)",
@@ -457,11 +457,10 @@
             ],
             "languages": [
               { "name": "French", "level": "Native" },
-              { "name": "English", "level": "Fluent" },
-              { "name": "Italian", "level": "Conversational" }
+              { "name": "English", "level": "Fluent" }
             ],
             "contact": {
-              "email": "your.email@example.com",
+              "email": "bottura.raphael@gmail.com",
               "location": "Paris, France"
             }
           }

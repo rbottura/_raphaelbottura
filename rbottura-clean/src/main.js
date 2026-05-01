@@ -4,12 +4,14 @@ import projects from './data/projects.json'
 import { renderProjectList } from './ui/projectList'
 import { setupPanel } from './ui/panel'
 import { closeCarousel, nextSlide, prevSlide, setupCarouselTouchSupport } from './ui/carousel'
+import { setupTheme } from './ui/theme'
 
 const state = {
   activeId: null,
   projects
 }
 
+setupTheme()
 renderProjectList(state)
 setupPanel(state)
 
