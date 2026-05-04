@@ -70,8 +70,9 @@ function renderProjectItem(p) {
   
   return `
     <div class="project-item" data-id="${p.id}">
-      <div>
-        <div class="project-name">${p.title}</div>
+    <div>
+      <div class="project-info">
+        <div class="project-name">${p.title}</div><div class="project-dates"><p>${p.dates ? p.dates.year || p.dates.start : ''}</p></div></div>
         ${p.tags ? `
           <div class="project-tags">
             ${p.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}

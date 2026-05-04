@@ -10,6 +10,7 @@
           "description": "EPE workshop residency at University of Zagreb Faculty of Graphic Arts.",
           "longDescription": "Propagation workshops explore Web-to-print by engaging students in collaborative editorial projects. Using HTML, CSS, and JavaScript, they create printed outputs from web-based content while testing the limits of these tools. The process unfolds in two phases: first, designing a printed booklet from provided materials; then, developing interactive screen-based publications that can also be printed, highlighting the connection between digital and physical formats.",
           "tags": ["web2print", "workshop"],
+          "dates": { "year": "2024" },
           "preview": {
             "type": "gallery"
           },
@@ -29,6 +30,7 @@
           "description": "EPE workshop residency at Izmir University of economics, Visual Communication Department.",
           "longDescription": "Propagation workshops introduce Web-to-print tools through collaborative student projects hosted by partner schools. Using HTML, CSS, and JavaScript, participants learn to create printed editorial objects from web-based content, exploring both possibilities and limits. The workshops are structured in two phases: first, designing a printed booklet from given materials; second, developing interactive web publications that can also be printed. This final phase emphasizes the link between screen and print, requiring each project to include an interactive website component with printable outputs.",
           "tags": ["web2print", "workshop"],
+          "dates": { "year": "2024" },
           "preview": {
             "type": "gallery"
           },
@@ -50,6 +52,7 @@
           "description": "EPE workshop residency at Pagora, École internationale du papier, de la communication imprimée et des biomatériaux (Grenoble).",
           "longDescription": "The EPE prototyping phase focused on refining web-to-print workflows through a 5-day workshop at Pagora (Dec 2024). Collaborating with printing engineers, participants explored key technical limits of browser-based PDF generation, especially color separation (CMYK layers) and rasterization processes required for industrial printing. The workshop questioned how to achieve professional print compatibility from web tools. A major goal was to prototype alternative image-processing tools, enabling designers to control color layers and halftone patterns without relying on Adobe software, drawing inspiration from p5.js libraries like p5.riso and p5.FIP.",
           "tags": ["web2print", "workshop"],
+          "dates": { "year": "2024" },
           "preview": {
             "type": "gallery"
           },
@@ -69,6 +72,7 @@
           "id": "hexagone",
           "title": "Production Workshop",
           "description": "EPE workshop residency at Théâtre Hexagone, Meylan (Grenoble).",
+          "dates": { "year": "2024" },
           "tags": ["web2print", "workshop"],
           "preview": {
             "type": "gallery"
@@ -96,8 +100,9 @@
           "id": "p5-rcs",
           "title": "p5-RCS",
           "tags": ["p5js", "js", "ES6", "rastering"],
+          "longDescription": "Project of using what was done with p5.riso to explore new ways and tools combinations to process images with rasterizing functions and color separation (not only focused on the Risograph printers), in an attempt to help graphics designers managing their virtual workspaces. From EPE Prototyping #1 workshop at INP Pagora School of printing technics. One week during our organisation issued some requests to the participants to be able to understand better what is going on in color profiles during printing processes, and maybe try to mess around with the technology.",
           "description": "JS library and Python scripts to process RGB images for CMYK usages.",
-          "dates": { "start": "2024-11", "end": null },
+          "dates": { "start": "2024-11", "end": null, "year": "2024" },
 
           "preview": {
             "type": "iframe",
@@ -119,9 +124,9 @@
           "id": "paged-md-editor",
           "title": "paged-md-editor",
           "tags": ["web2print", "vuejs", "pagedjs", "markdown"],
-          "description": "Markdown editor with a paginated previewer for web2print cases.",
-          "dates": { "start": "2025-01", "end": null },
-
+          "description": "Vue + Vite app using v-md-editor custom component. ",
+          "longDescription":"The app is designed to create print-ready layouts from markdown content, leveraging Paged.js for pagination and print formatting. It allows users to write in markdown and see a live preview of the paginated output, making it easier to design documents that are both web-friendly and print-ready.",
+          "dates": { "start": "2025-01", "end": null, "year": "2025" },
           "preview": {
             "type": "iframe",
             "src": "https://paged-markdown-editor-8149d2.gitlab.io/"
@@ -146,11 +151,12 @@
           "title": "PRE-RIP",
           "description": "Print processing pipeline (work in progress).",
           "tags": ["print", "pipeline"],
+
            "preview": {
             "type": "iframe",
             "src": "https://pre-rip-proto-845f70.gitlab.io/"
           },
-
+          "dates": { "year": "2026" },
           "links": [
             { "label": "demo", "url": "https://pre-rip-proto-845f70.gitlab.io/" },
             { "label": "repository", "url": "https://gitlab.com/esad-gv1/epe/nlnet/pre-rip_proto" }
@@ -174,7 +180,7 @@
           "title": "ColorKineType",
           "tags": ["p5js", "matter.js", "openCV", "typography"],
           "description": "Processes text data into textured and animated points with physical behaviors.",
-          "dates": { "start": "2022-05", "end": "2023-06" },
+          "dates": { "start": "2022-05", "end": "2023-06", "year": "2023" },
 
           "preview": {
             "type": "iframe",
@@ -201,7 +207,7 @@
           "title": "Sketch-to-Print",
           "tags": ["p5js", "pagedjs", "web2print"],
           "description": "Web app for manipulating graphic content in a print-ready layout.",
-          "dates": { "start": "2021-05", "end": null },
+          "dates": { "start": "2021-05", "end": null, "year": "2021" },
 
           "preview": { "type": "external" },
 
@@ -229,7 +235,7 @@
           "title": "Bonjour",
           "tags": ["web2print", "exhibition", "animated"],
           "description": "Exhibition project using ColorKineType for printed media and Instagram animations.",
-          "dates": { "start": "2023-11", "end": "2023-10" },
+          "dates": { "start": "2023-11", "end": "2023-10", "year": "2023" },
 
           "preview": { "type": "gallery" },
 
@@ -254,7 +260,7 @@
           "title": "Flowers from Mars",
           "tags": ["p5js", "gamepad", "illustration", "riso"],
           "description": "Exploration of fictional biological life forms controlled via gamepad.",
-          "dates": { "start": "2023-04", "end": "2023-05" },
+          "dates": { "start": "2023-04", "end": "2023-05", "year": "2023" },
 
           "preview": { "type": "gallery" },
 
@@ -275,7 +281,7 @@
           "title": "Projet Éclaté",
           "tags": ["3D", "blender", "video"],
           "description": "3D experimental project generating vessel-like structures.",
-          "dates": { "start": "2022-06", "end": "2022-07" },
+          "dates": { "start": "2022-06", "end": "2022-07", "year": "2022" },
 
           "preview": {
             "type": "video",
@@ -305,7 +311,7 @@
           "title": "BEC 2025 playground",
           "tags": ["p5js", "3D", "generative", "interactive"],
           "description": "Web app created for Biennale en communs.",
-          "dates": { "start": "2024-11", "end": "2025-03" },
+          "dates": { "start": "2024-11", "end": "2025-03", "year": "2025" },
 
           "preview": {
             "type": "iframe",
@@ -340,6 +346,7 @@
             "type": "iframe",
             "src": "https://p5cerebro.netlify.app/"
           },
+          "dates": { "year": "2025" },
           "links": [
             { "label": "open", "url": "https://editor.p5js.org/rbottura/sketches/QDTitB_fm" }
           ]
@@ -354,6 +361,7 @@
             "type": "video",
             "src": "https://vimeo.com/857095741"
           },
+          "dates": { "year": "2023" },
           "links": []
         },
 
@@ -366,6 +374,7 @@
           "links": [
             { "label": "repository", "url": "https://github.com/rbottura/grid_sketch" }
           ],
+          "dates": { "year": "2024" },
           "media": {
             "path": "/medias/Grid_Sketches/",
             "images": [
@@ -408,6 +417,7 @@
             "type": "iframe",
             "src": "https://romainlaurent.com"
           },
+          "dates": { "year": "2026" },
           "links": [
             { "label": "visit", "url": "https://romainlaurent.com" }
           ],
@@ -422,6 +432,7 @@
           "id": "malouchapurlat",
           "title": "malouchapurlat.com (to be published)",
           "tags": ["kirby", "cms"],
+          "dates": { "year": "2026" },
           "description": "Website built with Kirby CMS."
         }
       ]

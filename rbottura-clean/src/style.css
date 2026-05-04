@@ -164,10 +164,11 @@ header {
 }
 
 .name {
-  font-size: 1.35rem;
-  font-weight: bold;
-  letter-spacing: -0.02em;
+  font-size: 1.05rem;
+  /* font-weight: bold; */
+  /* letter-spacing: -0.02em; */
   color: var(--fg);
+  font-family: libreBaskerville;
 }
 
 .tagline {
@@ -345,11 +346,31 @@ header {
   color: var(--accent);
 }
 
+.project-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
 .project-name {
   font-size: 1.4rem;
   color: var(--fg);
   transition: color 0.15s;
   font-family: monospace;
+}
+
+.project-dates {
+  flex: 1 1 auto;
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-left: 0.5rem;
+  font-family: libreBaskerville;
+  padding-right: 2rem;
+  display: flex;
+  justify-content: right;
+  align-self: flex-end;
+  justify-self: right;
 }
 
 .project-tags {
@@ -771,7 +792,7 @@ header {
 }
 
 #panelTitle {
-  font-size: 3.85rem;
+  font-size: 2.85rem;
   /* font-weight: bold; */
   font-family: Thestral;
   text-transform: uppercase;
