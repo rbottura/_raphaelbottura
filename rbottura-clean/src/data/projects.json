@@ -22,7 +22,11 @@
               {"src": "epe_zagreb_group2.jpg", "caption": "Group work session"},
               {"src": "epe_zagreb_group3.jpg", "caption": "Productions and documentations"}
             ]
-          }
+          },
+          
+          "links": [
+            { "label": "EPE website", "url": "https://epe.esad-gv.fr" }
+          ]
         },
         {
           "id": "izmir",
@@ -72,6 +76,7 @@
           "id": "hexagone",
           "title": "Production Workshop",
           "description": "EPE workshop residency at Théâtre Hexagone, Meylan (Grenoble).",
+          "longDescription":"The Production workshop concludes the EPE program, following 5 workshops and ~25 experimental projects combining web and print. After phases of Propagation and Prototyping, it tests full-scale production in a near-professional context. Partnering with the Hexagone theater, the workshop focuses on improving visibility of artist residencies. Participants develop editorial workflows to showcase these activities through web-to-print outputs, using materials like texts, images, and recordings.",
           "dates": { "year": "2024" },
           "tags": ["web2print", "workshop"],
           "preview": {
@@ -96,55 +101,6 @@
       "id": "epe-dev",
       "title": "EPE & NLnet development",
       "projects": [
-        {
-          "id": "p5-rcs",
-          "title": "p5-RCS",
-          "tags": ["p5js", "js", "ES6", "rastering"],
-          "longDescription": "Project of using what was done with p5.riso to explore new ways and tools combinations to process images with rasterizing functions and color separation (not only focused on the Risograph printers), in an attempt to help graphics designers managing their virtual workspaces. From EPE Prototyping #1 workshop at INP Pagora School of printing technics. One week during our organisation issued some requests to the participants to be able to understand better what is going on in color profiles during printing processes, and maybe try to mess around with the technology.",
-          "description": "JS library and Python scripts to process RGB images for CMYK usages.",
-          "dates": { "start": "2024-11", "end": null, "year": "2024" },
-
-          "preview": {
-            "type": "iframe",
-            "src": "https://p5-rcs-0e6526.gitlab.io/"
-          },
-
-          "links": [
-            { "label": "demo", "url": "https://gitlab.com/esad-gv1/epe/p5-RCS" },
-            { "label": "repository", "url": "https://gitlab.com/esad-gv1/epe/p5-RCS" }
-          ],
-
-          "media": {
-            "path": "/medias/p5-RCS/",
-            "images": ["test.png"]
-          }
-        },
-
-        {
-          "id": "paged-md-editor",
-          "title": "paged-md-editor",
-          "tags": ["web2print", "vuejs", "pagedjs", "markdown"],
-          "description": "Vue + Vite app using v-md-editor custom component. ",
-          "longDescription":"The app is designed to create print-ready layouts from markdown content, leveraging Paged.js for pagination and print formatting. It allows users to write in markdown and see a live preview of the paginated output, making it easier to design documents that are both web-friendly and print-ready.",
-          "dates": { "start": "2025-01", "end": null, "year": "2025" },
-          "preview": {
-            "type": "iframe",
-            "src": "https://paged-markdown-editor-8149d2.gitlab.io/"
-          },
-
-          "links": [
-            { "label": "demo", "url": "https://paged-markdown-editor-8149d2.gitlab.io/" },
-            { "label": "repository", "url": "https://gitlab.com/esad-gv1/epe/markdown-editors/paged-markdown-editor" }
-          ],
-
-          "media": {
-            "path": "/medias/paged-md-editor/",
-            "images": [
-              {"src": "ui.png", "caption": "User interface of the paged-md-editor"},
-              {"src": "ui2.png", "caption": "Alternative layout options"}
-            ]
-          }
-        },
 
         {
           "id": "pre-rip",
@@ -167,13 +123,38 @@
               {"src": "demo_test.gif", "caption": "Demo of the PRE-RIP pipeline"}
             ]
           }
+        },
+
+        {
+          "id": "p5-rcs",
+          "title": "p5-RCS",
+          "tags": ["p5js", "js", "ES6", "rastering"],
+          "longDescription": "Project of using what was done with p5.riso to explore new ways and tools combinations to process images with rasterizing functions and color separation (not only focused on the Risograph printers), in an attempt to help graphics designers managing their virtual workspaces. From EPE Prototyping #1 workshop at INP Pagora School of printing technics. One week during our organisation issued some requests to the participants to be able to understand better what is going on in color profiles during printing processes, and maybe try to mess around with the technology.",
+          "description": "JS library and Python scripts to process RGB images for CMYK usages.",
+          "dates": { "start": "2024-11", "end": null, "year": "2024" },
+
+          "preview": {
+            "type": "iframe",
+            "src": "https://p5-rcs-0e6526.gitlab.io/"
+          },
+
+          "links": [
+            { "label": "demo", "url": "https://gitlab.com/esad-gv1/epe/p5-RCS" },
+            { "label": "repository", "url": "https://gitlab.com/esad-gv1/epe/p5-RCS" }
+          ],
+
+          "media": {
+            "path": "/medias/p5-RCS/",
+            "images": ["test.png"]
+          }
         }
+
       ]
     },
 
     {
       "id": "esad-experimentations",
-      "title": "ESAD experimentations",
+      "title": "ESAD PRODUCTIONS",
       "projects": [
         {
           "id": "colorkinetype",
@@ -206,7 +187,7 @@
           "id": "sketch-2-print",
           "title": "Sketch-to-Print",
           "tags": ["p5js", "pagedjs", "web2print"],
-          "description": "Web app for manipulating graphic content in a print-ready layout.",
+          "description": "Web app for manipulating patterns and text with an XBOX controller in a print-ready layout.",
           "dates": { "start": "2021-05", "end": null, "year": "2021" },
 
           "preview": { "type": "external" },
@@ -348,7 +329,10 @@
           },
           "dates": { "year": "2025" },
           "links": [
-            { "label": "open", "url": "https://editor.p5js.org/rbottura/sketches/QDTitB_fm" }
+            { "label": "p5 online editor", "url": "https://editor.p5js.org/rbottura/sketches/QDTitB_fm" },
+            { "label": "repository", "url": "https://github.com/rbottura/p5_cerebro" },
+            { "label": "live", "url": "https://p5cerebro.netlify.app/" },
+            { "label": "reddit", "url": "https://www.reddit.com/r/p5js/comments/1i80d3v/used_p5js_webgl_to_visualise_a_layered_render_of/"}
           ]
         },
 

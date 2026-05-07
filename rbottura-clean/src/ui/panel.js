@@ -157,6 +157,9 @@ function renderPreviewContent(state, project, iframe, empty, gallery) {
     updateEmbedButtonState(project, 'loaded')
   } else if (showGallery) {
     if (gallery) {
+      console.log('Gallery element found:', gallery)
+      console.log('Gallery element classes:', gallery.className)
+   
       // Build gallery content with optional long description and captions
       let galleryHTML = ''
       
@@ -204,6 +207,9 @@ function renderPreviewContent(state, project, iframe, empty, gallery) {
       
       gallery.innerHTML = galleryHTML
       gallery.style.display = 'flex'
+      console.log('Gallery rendered - scrollTop:', gallery.scrollTop, 'scrollLeft:', gallery.scrollLeft)
+    
+      gallery.scrollTop = 0
     }
     
     // Preload iframe in the background if it exists

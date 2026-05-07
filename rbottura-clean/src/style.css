@@ -78,6 +78,14 @@ html.light-mode {
   padding: 0;
 }
 
+@supports not selector(::-webkit-scrollbar) {
+  html {
+      scrollbar-width: auto;
+      scrollbar-color: rgb(190, 190, 190) rgb(240, 240, 240);
+  }
+}
+
+
 html {
   font-size: 13px;
   background: var(--bg);
