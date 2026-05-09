@@ -778,10 +778,10 @@ header {
 
 .loading-indicator {
   display: none;
-  width: 0.8rem;
+  width: 0;
   height: 0.8rem;
-  border: 2px solid var(--accent);
-  border-top: 2px solid transparent;
+  /* border: 2px solid var(--accent); */
+  /* border-top: 2px solid transparent; */
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   margin-left: 0.4rem;
@@ -790,7 +790,7 @@ header {
 }
 
 .loading-indicator.active {
-  display: inline-block;
+  display: none;
 }
 
 @keyframes spin {
