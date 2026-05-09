@@ -430,12 +430,24 @@
           "title":"About me",
           "preview": { "type": "about" },
           "about": {
-            "bio": "Creative technologist and digital designer exploring the intersection of print and web. Passionate about building tools for visual creators and experimentation.",
+            "bio": "Creative coder. Passionate about building playground tools for visual creators and experimentation.",
+            "professionalExperience": [
+              {
+                "position": "Assistant professor and web developer",
+                "company": "EPE w/ ESAD VALENCE",
+                "year": "2024 - 2026"
+              }
+            ],
             "education": [
               {
                 "degree": "Master's in Graphic Design",
                 "school": "ESAD Grenoble-Valence",
                 "year": "2023"
+              },
+              {
+                "degree": "Internship at Ksawery Komputery",
+                "school": "Gdansk, Poland",
+                "year": "2022"
               },
               {
                 "degree": "Bachelor's in Digital Arts",
@@ -444,11 +456,9 @@
               }
             ],
             "skills": [
-              "Web Development (JavaScript, Vue.js)",
-              "Creative Coding (p5.js, Three.js)",
-              "Print & Web2Print (Paged.js)",
-              "Design Tools (Figma, Blender)",
-              "Python & Full-stack Development"
+              "Web Development (Kirby)",
+              "Creative Coding (p5.js, processing)",
+              "Print & Web2Print (Paged.js)"
             ],
             "languages": [
               { "name": "French", "level": "Native" },

@@ -231,7 +231,17 @@ function renderAboutContent(project, container) {
   if (about.bio) {
     html += `<div class="about-section"><p class="about-bio">${about.bio}</p></div>`
   }
-  
+
+  if (about.professionalExperience && about.professionalExperience.length > 0) {
+    html += `<div class="about-section">
+      <h3 class="about-heading">Professional Experience</h3>
+      <ul class="about-list">`
+    about.professionalExperience.forEach(exp => {
+      html += `<li class="about-list-item"><strong>${exp.position}</strong> — ${exp.company} (${exp.year})</li>`
+    })
+    html += `</ul></div>`
+  }
+
   // Education
   if (about.education && about.education.length > 0) {
     html += `<div class="about-section">
