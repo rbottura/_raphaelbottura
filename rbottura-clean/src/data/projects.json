@@ -250,9 +250,9 @@
           "media": {
             "path": "/medias/Flowers_From_Mars/",
             "images": [
-              {"src": "plancheFlower.png", "caption": "Flower design"},
-              {"src": "planche.webp", "caption": "Initial concept"},
-              {"src": "2.webp", "caption": "Final illustration"}
+              {"src": "plancheFlower.png", "caption": "color flowers composition"},
+              {"src": "planche.webp", "caption": "black and white flower compositions - printed in riso"},
+              {"src": "2.webp", "caption": "One green red specie"}
             ]
           }
         },
@@ -307,7 +307,8 @@
           "media": {
             "path": "/medias/BEC_2025/",
             "images": [
-              {"src": "screen_mockup.png", "caption": "Main application interface"}
+              {"src": "screen_mockup.png", "caption": "Main application interface"},
+              {"src": "video_interface.mp4", "caption": "Video of minified interface"}
             ]
           }
         }
