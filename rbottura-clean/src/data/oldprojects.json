@@ -81,6 +81,7 @@
     "beginDate": "2021 05",
     "endDate": ""
   },
+
   {
     "title": "Flowers_From_Mars",
     "type": "creative",
@@ -139,5 +140,31 @@
     "images": [ "run2.gif"],
     "beginDate": "2023 07",
     "endDate": "2023 08"
-  }
+  },
+        {
+      "id": "epe-dev",
+      "title": "EPE & NLnet development",
+      "projects": [
+        {
+          "id": "p5-rcs",
+          "title": "p5-RCS",
+          "tags": ["p5js", "js", "ES6", "rastering"],
+          "longDescription": "Project of using what was done with p5.riso to explore new ways and tools combinations to process images with rasterizing functions and color separation (not only focused on the Risograph printers), in an attempt to help graphics designers managing their virtual workspaces. From EPE Prototyping #1 workshop at INP Pagora School of printing technics. One week during our organisation issued some requests to the participants to be able to understand better what is going on in color profiles during printing processes, and maybe try to mess around with the technology.",
+          "description": "JS library and Python scripts to process RGB images for CMYK usages.",
+          "dates": { "start": "2024-11", "end": null, "year": "2024" },
+          "preview": {
+            "type": "iframe",
+            "src": "https://p5-rcs-0e6526.gitlab.io/"
+          },
+          "links": [
+            { "label": "demo", "url": "https://gitlab.com/esad-gv1/epe/p5-RCS" },
+            { "label": "repository", "url": "https://gitlab.com/esad-gv1/epe/p5-RCS" }
+          ],
+          "media": {
+            "path": "/medias/p5-RCS/",
+            "images": ["test.png"]
+          }
+        }
+      ]
+    }
 ]

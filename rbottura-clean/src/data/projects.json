@@ -1,9 +1,31 @@
 {
   "sections": [
     {
-      "id": "epe-workshops",
-      "title": "EPE workshops",
+      "id": "epe-nlnet",
+      "title": "EPE & NLNET",
       "projects": [
+          {
+          "id": "pre-rip",
+          "title": "PRE-RIP",
+          "description": "Print processing pipeline (work in progress).",
+          "tags": ["print", "pipeline"],
+
+           "preview": {
+            "type": "iframe",
+            "src": "https://pre-rip-proto-845f70.gitlab.io/"
+          },
+          "dates": { "year": "2026" },
+          "links": [
+            { "label": "demo", "url": "https://pre-rip-proto-845f70.gitlab.io/" },
+            { "label": "repository", "url": "https://gitlab.com/esad-gv1/epe/nlnet/pre-rip_proto" }
+          ],
+          "media":{
+            "path":"/medias/PRE-RIP/",
+            "images":[
+              {"src": "demo_test.gif", "caption": "Demo of the PRE-RIP pipeline"}
+            ]
+          }
+        },
         {
           "id": "zagreb",
           "title": "Propagation Workshop #2",
@@ -96,62 +118,6 @@
         }
       ]
     },
-
-    {
-      "id": "epe-dev",
-      "title": "EPE & NLnet development",
-      "projects": [
-
-        {
-          "id": "pre-rip",
-          "title": "PRE-RIP",
-          "description": "Print processing pipeline (work in progress).",
-          "tags": ["print", "pipeline"],
-
-           "preview": {
-            "type": "iframe",
-            "src": "https://pre-rip-proto-845f70.gitlab.io/"
-          },
-          "dates": { "year": "2026" },
-          "links": [
-            { "label": "demo", "url": "https://pre-rip-proto-845f70.gitlab.io/" },
-            { "label": "repository", "url": "https://gitlab.com/esad-gv1/epe/nlnet/pre-rip_proto" }
-          ],
-          "media":{
-            "path":"/medias/PRE-RIP/",
-            "images":[
-              {"src": "demo_test.gif", "caption": "Demo of the PRE-RIP pipeline"}
-            ]
-          }
-        },
-
-        {
-          "id": "p5-rcs",
-          "title": "p5-RCS",
-          "tags": ["p5js", "js", "ES6", "rastering"],
-          "longDescription": "Project of using what was done with p5.riso to explore new ways and tools combinations to process images with rasterizing functions and color separation (not only focused on the Risograph printers), in an attempt to help graphics designers managing their virtual workspaces. From EPE Prototyping #1 workshop at INP Pagora School of printing technics. One week during our organisation issued some requests to the participants to be able to understand better what is going on in color profiles during printing processes, and maybe try to mess around with the technology.",
-          "description": "JS library and Python scripts to process RGB images for CMYK usages.",
-          "dates": { "start": "2024-11", "end": null, "year": "2024" },
-
-          "preview": {
-            "type": "iframe",
-            "src": "https://p5-rcs-0e6526.gitlab.io/"
-          },
-
-          "links": [
-            { "label": "demo", "url": "https://gitlab.com/esad-gv1/epe/p5-RCS" },
-            { "label": "repository", "url": "https://gitlab.com/esad-gv1/epe/p5-RCS" }
-          ],
-
-          "media": {
-            "path": "/medias/p5-RCS/",
-            "images": ["test.png"]
-          }
-        }
-
-      ]
-    },
-
     {
       "id": "esad-experimentations",
       "title": "ESAD PRODUCTIONS",
@@ -308,7 +274,10 @@
             "path": "/medias/BEC_2025/",
             "images": [
               {"src": "screen_mockup.png", "caption": "Main application interface"},
-              {"src": "video_interface.mp4", "caption": "Video of minified interface"}
+              {"src": "video_interface.mp4", "caption": "Video of minified interface"},
+              {"src": "affiche_of.png", "caption": "poster design from app"},
+              {"src": "test_affiche.jpg", "caption": "poster test n°1"},
+              {"src": "test_affiche2.jpg", "caption": "poster test n°2"}
             ]
           }
         }
