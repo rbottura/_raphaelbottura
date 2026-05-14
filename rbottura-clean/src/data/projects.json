@@ -181,7 +181,7 @@
           "id": "Gamepad draw",
           "title": "Gamepaddraw",
           "tags": ["p5js", "gamepad", "pattern"],
-          "description": "Web app for manipulating patterns with gamepad purely for drawing from sketch to print app",
+          "description": "from sketch to print app and with Antigravity agents like gemini and sonnet, rewrote with a gamepad interface to explore pattern painting with better interface",
           "dates": { "start": "2021-05", "end": null, "year": "2026" },
           "preview": {
             "type": "iframe",
