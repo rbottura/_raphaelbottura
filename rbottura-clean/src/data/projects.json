@@ -155,8 +155,10 @@
           "tags": ["p5js", "pagedjs", "web2print"],
           "description": "Web app for manipulating patterns and text with an XBOX controller in a print-ready layout.",
           "dates": { "start": "2021-05", "end": null, "year": "2021" },
-
-          "preview": { "type": "external" },
+          "preview": {
+            "type": "iframe",
+            "src": "https://sketch2print.netlify.app/"
+          },
 
           "links": [
             { "label": "repository", "url": "https://github.com/rbottura/sketch-2-print" }
@@ -169,10 +171,31 @@
               {"src": "calme-format.webp", "caption": "Calm format"},
               {"src": "potager-format.webp", "caption": "Garden format"},
               {"src": "plaine-format.webp", "caption": "Plain format"},
-              {"src": "ile-format.webp", "caption": "Island format"},
               {"src": "sketch2print_screen2_30.webp", "caption": "Sketch-to-Print interface"},
               {"src": "s2p_1.webp", "caption": "Design iteration 1"},
               {"src": "s2p_2.webp", "caption": "Design iteration 2"}
+            ]
+          }
+        },
+         {
+          "id": "Gamepad draw",
+          "title": "Gamepaddraw",
+          "tags": ["p5js", "gamepad", "pattern"],
+          "description": "Web app for manipulating patterns with gamepad purely for drawing from sketch to print app",
+          "dates": { "start": "2021-05", "end": null, "year": "2026" },
+          "preview": {
+            "type": "iframe",
+            "src": "https://sketch2print.netlify.app/gamepad"
+          },
+
+          "links": [
+            { "label": "repository", "url": "https://github.com/rbottura/sketch-2-print/gamepad" }
+          ],
+
+          "media": {
+            "path": "/medias/gamepaddraw/",
+            "images": [
+              {"src": "", "caption": ""}
             ]
           }
         },
@@ -367,10 +390,6 @@
           "title": "romainlaurent.com",
           "tags": ["kirby", "cms"],
           "description": "Website built with Kirby CMS.",
-          "preview": {
-            "type": "iframe",
-            "src": "https://romainlaurent.com"
-          },
           "dates": { "year": "2026" },
           "links": [
             { "label": "visit", "url": "https://romainlaurent.com" }
@@ -384,10 +403,19 @@
         },
         {
           "id": "malouchapurlat",
-          "title": "malouchapurlat.com (to be published)",
+          "title": "malouchapurlat.com",
           "tags": ["kirby", "cms"],
           "dates": { "year": "2026" },
-          "description": "Website built with Kirby CMS."
+          "description": "Website built with Kirby CMS.",
+          "links": [
+            { "label": "visit", "url": "https://malouchapurlat.com" }
+          ],
+          "media": {
+            "path": "/medias/Malou_Chapurlat/",
+            "images": [
+              {"src": "screen_mockup.png", "caption": "Website screenshot"}
+            ]
+          }
         }
       ]
     },
@@ -404,7 +432,7 @@
             "professionalExperience": [
               {
                 "position": "Assistant professor and web developer",
-                "company": "EPE w/ ESAD VALENCE",
+                "company": "EPE with ESAD VALENCE",
                 "year": "2024 - 2026"
               }
             ],
