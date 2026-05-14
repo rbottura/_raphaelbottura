@@ -195,7 +195,11 @@
           "media": {
             "path": "/medias/gamepaddraw/",
             "images": [
-              {"src": "", "caption": ""}
+              {"src": "gamepad_1.png", "caption": "gamepad test"},
+              {"src": "gamepad_2.png", "caption": "gamepad test"},
+              {"src": "gamepad_3.png", "caption": "gamepad test"},
+              {"src": "gamepad_4.png", "caption": "gamepad test"},
+              {"src": "gamepad_5.png", "caption": "gamepad test"}
             ]
           }
         },
