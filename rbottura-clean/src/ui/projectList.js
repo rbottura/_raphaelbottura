@@ -1,5 +1,70 @@
 import { updatePanel } from './panel'
 import { openCarousel, setupCarouselTouchSupport, isCarouselCloseBufferActive } from './carousel'
+import { setUrlForProject, updateDocumentTitle } from './router'
+
+function findProjectById(projects, id) {
+  for (const section of projects.sections) {
+    const found = section.projects.find(p => p.id === id)
+    if (found) return found
+  }
+  return null
+}
+
+function escapeAttr(value) {
+  return String(value).replace(/(["\\])/g, '\\$1')
+}
+
+/**
+ * Open a project: mark it active, reveal its section, show its preview
+ * (side panel on desktop, inline accordion on mobile), and sync the URL/title.
+ * Shared by user clicks and the router (deep links / back-forward).
+ */
+export function selectProject(state, id, { updateHistory = true, scroll = false } = {}) {
+  const project = findProjectById(state.projects, id)
+  if (!project) return
+
+  state.activeId = id
+
+  document.querySelectorAll('.project-item').forEach(el => el.classList.remove('active'))
+  const item = document.querySelector(`.project-item[data-id="${escapeAttr(id)}"]`)
+  if (item) {
+    item.classList.add('active')
+
+    // Make sure the section holding this project is expanded.
+    const sectionItems = item.closest('.section-items')
+    if (sectionItems && !sectionItems.classList.contains('open')) {
+      sectionItems.classList.add('open')
+      const toggle = sectionItems.previousElementSibling
+      if (toggle && toggle.classList.contains('section-toggle')) toggle.classList.add('open')
+    }
+  }
+
+  const isMobile = window.innerWidth < 900
+  if (isMobile) {
+    document.querySelectorAll('.mobile-preview').forEach(el => el.classList.remove('open'))
+    const mobileEl = document.getElementById('mobile-' + id)
+    if (mobileEl) mobileEl.classList.add('open')
+  } else {
+    updatePanel(state)
+  }
+
+  if (scroll && item) {
+    item.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+
+  if (updateHistory) setUrlForProject(project)
+  updateDocumentTitle(project)
+}
+
+/** Return to the empty/home state (used by the router on back-to-root). */
+export function clearSelection(state, { updateHistory = false } = {}) {
+  state.activeId = null
+  document.querySelectorAll('.project-item').forEach(el => el.classList.remove('active'))
+  document.querySelectorAll('.mobile-preview').forEach(el => el.classList.remove('open'))
+  updatePanel(state)
+  updateDocumentTitle(null)
+  if (updateHistory) setUrlForProject(null)
+}
 
 export function renderProjectList(state) {
   const container = document.getElementById('projects')
@@ -235,28 +300,13 @@ function attachProjectListeners(state) {
 
     const id = item.dataset.id
     console.log('[Project Item] Selected:', id)
-    state.activeId = id
-
-    document.querySelectorAll('.project-item')
-      .forEach(el => el.classList.remove('active'))
-
-    item.classList.add('active')
-
-    const isMobile = window.innerWidth < 900
-    if (isMobile) {
-      const mobileEl = document.getElementById('mobile-' + id)
-      if (mobileEl) {
-        document.querySelectorAll('.mobile-preview').forEach(el => el.classList.remove('open'))
-        mobileEl.classList.add('open')
-      }
-    } else {
-      updatePanel(state)
-    }
+    selectProject(state, id)
   })
 
-  // Open first section by default
+  // Open first section by default, unless a deep link already targets a project
+  // (in that case the router opens the relevant section instead).
   const firstToggle = container.querySelector('.section-toggle')
-  if (firstToggle) firstToggle.click()
+  if (firstToggle && !state.activeId) firstToggle.click()
 
   // Handle thumbnail clicks to open carousel
   container.addEventListener('click', (e) => {

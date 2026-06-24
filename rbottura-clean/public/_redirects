@@ -1,0 +1,4 @@
+# SPA fallback: serve the app for deep links like /colorkinetype.
+# Real files (assets, /medias, favicon...) are served before this rule,
+# so only unknown paths fall through to index.html (200 = rewrite, not redirect).
+/*    /index.html   200
